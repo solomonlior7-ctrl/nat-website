@@ -19,7 +19,7 @@ export async function addGalleryItem({
   sortOrder: number;
 }) {
   const supabase = await createClient();
-  await supabase.from("gallery_items").insert({
+  const { error } = await supabase.from("gallery_items").insert({
     site_id: siteId,
     title,
     category,
@@ -27,7 +27,11 @@ export async function addGalleryItem({
     storage_path: storagePath,
     sort_order: sortOrder,
   });
+
+  if (error) return { error: error.message };
+
   revalidatePath("/gallery");
+  return { error: null };
 }
 
 export async function deleteGalleryItem(id: string) {
