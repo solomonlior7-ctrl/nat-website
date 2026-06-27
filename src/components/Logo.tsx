@@ -1,15 +1,18 @@
+import Image from "next/image";
+
 interface LogoProps {
   variant?: "light" | "dark";
 }
 
-export default function Logo({ variant = "light" }: LogoProps) {
-  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+export default function Logo(_props: LogoProps) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={`${base}/logo.png`}
+    <Image
+      src="/logo.png"
       alt="NAT Technologies"
+      width={180}
+      height={48}
       className="h-12 w-auto"
+      priority
     />
   );
 }
