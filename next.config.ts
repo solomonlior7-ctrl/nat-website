@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   output: "export",
   basePath: "/nat-website",
   assetPrefix: "/nat-website",
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
