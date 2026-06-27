@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #0d1b2a;
-  --color-navy-800: #0f2237;
-  --color-navy-700: #152c47;
-  --color-charcoal: #1e293b;
-  --color-accent: #0ea5e9;
-  --color-accent-dark: #0284c7;
-  --color-accent-light: #38bdf8;
+  --color-navy: #070d1a;
+  --color-navy-800: #0b1526;
+  --color-navy-700: #0f1e36;
+  --color-charcoal: #111d33;
+  --color-accent: #3b82f6;
+  --color-accent-dark: #2563eb;
+  --color-accent-light: #60a5fa;
+  --color-indigo: #6366f1;
+  --color-cyan: #06b6d4;
 }
 
 * {
@@ -19,8 +21,48 @@ html {
 }
 
 body {
-  background-color: #ffffff;
-  color: #0f172a;
+  background-color: #070d1a;
+  color: #f1f5f9;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #6366f1 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1, #06b6d4);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
 }
