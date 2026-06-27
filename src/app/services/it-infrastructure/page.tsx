@@ -1,0 +1,118 @@
+import type { Metadata } from "next";
+import Hero from "@/components/Hero";
+import CTASection from "@/components/CTASection";
+
+export const metadata: Metadata = {
+  title: "IT & IP Infrastructure | NAT Technologies",
+  description: "Enterprise-grade IT and IP infrastructure solutions — cloud, structured cabling, network architecture, managed services, and security resilience.",
+};
+
+const deliverables = [
+  { title: "Enterprise Connectivity", desc: "High-performance networks designed for reliability, speed, and scalability across your organisation." },
+  { title: "Integrated Security", desc: "Security embedded into every layer of infrastructure — from endpoints to the cloud." },
+  { title: "Automation Ready", desc: "Infrastructure designed to support automation, IoT, and intelligent building systems." },
+  { title: "Endpoint Management", desc: "Device management, monitoring, and protection across all connected endpoints." },
+  { title: "24/7 Monitoring", desc: "Continuous infrastructure monitoring with rapid response to performance and security events." },
+  { title: "Technical Support", desc: "Responsive, knowledgeable support from engineers who understand your environment." },
+];
+
+const services = [
+  {
+    title: "Cloud Solutions",
+    desc: "Secure, scalable cloud infrastructure design and migration — including hybrid, private, and public cloud environments tailored to your business needs.",
+  },
+  {
+    title: "Infrastructure Services",
+    desc: "Structured cabling, server environments, data centre build-out, and core network hardware supply, installation, and configuration.",
+  },
+  {
+    title: "Connectivity Solutions",
+    desc: "LAN, WAN, SD-WAN, and fibre connectivity solutions that deliver reliable, high-speed access across sites and remote locations.",
+  },
+  {
+    title: "Managed Services",
+    desc: "Ongoing management, monitoring, patching, and optimisation of your IT infrastructure through a flexible managed service model.",
+  },
+  {
+    title: "Security Resilience",
+    desc: "Firewall management, intrusion detection, endpoint protection, and network security reviews that keep your environment protected.",
+  },
+];
+
+export default function ITInfrastructurePage() {
+  return (
+    <>
+      <Hero
+        title="IT & IP Infrastructure"
+        headline="Building the Foundation for Digital Excellence"
+        copy="NAT Technologies delivers intelligent IT and IP infrastructure solutions that power connectivity, security, automation, and business growth."
+        primaryCta={{ label: "Request Consultation", href: "/contact" }}
+        breadcrumb={[{ label: "Our Services", href: "/services" }, { label: "IT & IP Infrastructure", href: "/services/it-infrastructure" }]}
+      />
+
+      {/* Value Proposition */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-slate-600 text-lg leading-relaxed">
+            From structured cabling and network architecture to cloud migration, managed services, and
+            security resilience — we design and deliver infrastructure that is{" "}
+            <strong className="text-slate-900">secure, scalable, and future-ready</strong>.
+          </p>
+        </div>
+      </section>
+
+      {/* Deliverables */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">What We Deliver</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {deliverables.map((d) => (
+              <div key={d.title} className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
+                <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-slate-900 mb-2">{d.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{d.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service Details */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Our Service Offerings</h2>
+          <div className="space-y-10">
+            {services.map((s, i) => (
+              <div
+                key={s.title}
+                className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-10 items-center`}
+              >
+                <div className={`flex-1 bg-gradient-to-br ${i % 2 === 0 ? "from-blue-900 to-navy" : "from-indigo-900 to-navy"} rounded-2xl aspect-video flex items-center justify-center`}>
+                  <svg className="w-20 h-20 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{s.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTASection
+        headline="Looking for High-Performance IT Infrastructure Solutions?"
+        subtext="Our infrastructure specialists are ready to assess your environment and design a solution that meets your needs."
+        primaryCta={{ label: "Request Consultation", href: "/contact" }}
+      />
+    </>
+  );
+}
