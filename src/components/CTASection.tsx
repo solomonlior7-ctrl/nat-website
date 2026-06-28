@@ -5,7 +5,6 @@ interface CTASectionProps {
   subtext?: string;
   primaryCta: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
-  dark?: boolean;
 }
 
 export default function CTASection({
@@ -15,36 +14,70 @@ export default function CTASection({
   secondaryCta,
 }: CTASectionProps) {
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(135deg, #1e1b4b 0%, #0f1729 40%, #0c1a3a 70%, #042f4b 100%)",
+          background: "linear-gradient(135deg, #0b0f19 0%, #0f1d3a 40%, #0b1f0f 100%)",
         }}
       />
-      <div className="absolute inset-0 opacity-30"
+      <div
+        className="absolute pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(ellipse at 20% 50%, #6366f140 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, #3b82f630 0%, transparent 60%)",
+          top: "50%", left: "15%",
+          width: "500px", height: "500px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(29,78,216,0.25) 0%, transparent 70%)",
+          filter: "blur(60px)",
+          transform: "translateY(-50%)",
         }}
       />
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "50%", right: "15%",
+          width: "400px", height: "400px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(34,197,94,0.2) 0%, transparent 70%)",
+          filter: "blur(60px)",
+          transform: "translateY(-50%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        style={{
+          backgroundImage: "radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+        <div
+          className="w-12 h-1 rounded-full mx-auto mb-8"
+          style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }}
+        />
+        <h2 className="text-3xl lg:text-5xl font-extrabold text-white mb-5 leading-tight tracking-tight">
           {headline}
         </h2>
         {subtext && (
-          <p className="text-lg text-slate-300 mb-10 leading-relaxed">{subtext}</p>
+          <p className="text-lg text-slate-400 mb-10 leading-relaxed font-medium">{subtext}</p>
         )}
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
             href={primaryCta.href}
-            className="inline-flex items-center px-8 py-3.5 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl transition-all shadow-lg shadow-accent/30 hover:shadow-accent/50 hover:-translate-y-0.5"
+            className="inline-flex items-center px-8 py-4 text-white font-bold rounded-xl transition-all hover:-translate-y-0.5 text-sm"
+            style={{
+              background: "linear-gradient(135deg, #1d4ed8, #22c55e)",
+              boxShadow: "0 0 40px rgba(29,78,216,0.4)",
+            }}
           >
             {primaryCta.label}
           </Link>
           {secondaryCta && (
             <Link
               href={secondaryCta.href}
-              className="inline-flex items-center px-8 py-3.5 font-semibold rounded-xl transition-all border border-white/20 text-slate-200 hover:text-white hover:border-white/40 hover:bg-white/5"
+              className="inline-flex items-center px-8 py-4 font-semibold rounded-xl transition-all hover:-translate-y-0.5 text-slate-300 hover:text-white text-sm"
+              style={{ border: "1px solid rgba(255,255,255,0.15)" }}
             >
               {secondaryCta.label}
             </Link>

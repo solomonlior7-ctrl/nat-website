@@ -29,7 +29,7 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -40,9 +40,7 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-navy/95 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-white/5"
-          : "bg-transparent"
+        scrolled ? "glass-header" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,18 +50,24 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                className={`relative px-4 py-2 text-sm font-semibold rounded-lg transition-all ${
                   isActive(link.href)
-                    ? "text-accent-light bg-accent/10"
-                    : "text-slate-300 hover:text-white hover:bg-white/5"
+                    ? "text-white"
+                    : "text-slate-400 hover:text-white"
                 }`}
               >
                 {link.name}
+                {isActive(link.href) && (
+                  <span
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
+                    style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }}
+                  />
+                )}
               </Link>
             ))}
 
@@ -74,10 +78,10 @@ export default function Header() {
               onMouseLeave={() => setServicesOpen(false)}
             >
               <button
-                className={`px-4 py-2 text-sm font-medium rounded-lg flex items-center gap-1.5 transition-all ${
+                className={`relative px-4 py-2 text-sm font-semibold rounded-lg flex items-center gap-1.5 transition-all ${
                   pathname.startsWith("/services")
-                    ? "text-accent-light bg-accent/10"
-                    : "text-slate-300 hover:text-white hover:bg-white/5"
+                    ? "text-white"
+                    : "text-slate-400 hover:text-white"
                 }`}
               >
                 Our Services
@@ -87,18 +91,31 @@ export default function Header() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
+                {pathname.startsWith("/services") && (
+                  <span
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
+                    style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }}
+                  />
+                )}
               </button>
 
               {servicesOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 pt-2 z-50">
-                  <div className="glass-card rounded-xl shadow-2xl shadow-black/40 py-2 overflow-hidden">
+                  <div
+                    className="rounded-xl shadow-2xl py-2 overflow-hidden"
+                    style={{
+                      background: "rgba(11,15,25,0.95)",
+                      backdropFilter: "blur(24px)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                    }}
+                  >
                     {services.map((s) => (
                       <Link
                         key={s.href}
                         href={s.href}
-                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-green shrink-0" />
                         {s.name}
                       </Link>
                     ))}
@@ -109,7 +126,11 @@ export default function Header() {
 
             <Link
               href="/contact"
-              className="ml-2 px-5 py-2 bg-accent hover:bg-accent-dark text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-accent/20"
+              className="ml-3 px-5 py-2.5 text-white text-sm font-bold rounded-xl transition-all hover:-translate-y-0.5"
+              style={{
+                background: "linear-gradient(135deg, #1d4ed8, #1e40af)",
+                boxShadow: "0 0 20px rgba(29,78,216,0.35)",
+              }}
             >
               Get in Touch
             </Link>
@@ -119,6 +140,7 @@ export default function Header() {
           <button
             className="lg:hidden text-white p-2 rounded-lg hover:bg-white/5"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {mobileOpen ? (
@@ -133,14 +155,21 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-charcoal/95 backdrop-blur-xl border-t border-white/5">
+        <div
+          className="lg:hidden border-t"
+          style={{
+            background: "rgba(11,15,25,0.97)",
+            backdropFilter: "blur(24px)",
+            borderColor: "rgba(255,255,255,0.06)",
+          }}
+        >
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`block px-4 py-2.5 text-sm font-medium rounded-lg ${
-                  isActive(link.href) ? "text-accent-light bg-accent/10" : "text-slate-300"
+                className={`block px-4 py-2.5 text-sm font-semibold rounded-lg ${
+                  isActive(link.href) ? "text-white bg-white/5" : "text-slate-400"
                 }`}
                 onClick={() => setMobileOpen(false)}
               >
@@ -149,7 +178,7 @@ export default function Header() {
             ))}
             <div>
               <button
-                className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-medium text-slate-300 rounded-lg"
+                className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-semibold text-slate-400 rounded-lg"
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
               >
                 Our Services
@@ -166,7 +195,7 @@ export default function Header() {
                     <Link
                       key={s.href}
                       href={s.href}
-                      className="block px-4 py-2 text-sm text-slate-400 hover:text-accent-light"
+                      className="block px-4 py-2 text-sm text-slate-400 hover:text-green"
                       onClick={() => setMobileOpen(false)}
                     >
                       {s.name}
@@ -178,7 +207,8 @@ export default function Header() {
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="block text-center px-4 py-3 bg-accent text-white text-sm font-semibold rounded-lg"
+                className="block text-center px-4 py-3 text-white text-sm font-bold rounded-xl"
+                style={{ background: "linear-gradient(135deg, #1d4ed8, #1e40af)" }}
                 onClick={() => setMobileOpen(false)}
               >
                 Get in Touch
