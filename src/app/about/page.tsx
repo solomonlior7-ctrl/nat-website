@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import CTASection from "@/components/CTASection";
+import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "About Us | NAT Technologies",
@@ -21,13 +22,14 @@ const steps = [
   { label: "Transform", desc: "We deliver lasting change through reliable, scalable technology that supports long-term performance and growth." },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const c = await getPageContent("about");
   return (
     <>
       <Hero
         title="About NAT Technologies"
-        headline="Technology That Works for You — Now and in the Future"
-        copy="We combine technical expertise, innovation, and best-practice delivery to create dependable solutions for businesses, homes, and communities."
+        headline={field(c, "hero_headline", "Technology That Works for You — Now and in the Future")}
+        copy={field(c, "hero_copy", "We combine technical expertise, innovation, and best-practice delivery to create dependable solutions for businesses, homes, and communities.")}
         primaryCta={{ label: "Explore Our Services", href: "/services" }}
         secondaryCta={{ label: "Contact Us", href: "/contact" }}
       />
@@ -41,21 +43,16 @@ export default function AboutPage() {
                 Who We Are
               </p>
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
-                A Trusted Technology Solutions Provider
+                {field(c, "whoweare_title", "A Trusted Technology Solutions Provider")}
               </h2>
               <p className="text-slate-600 leading-relaxed mb-4">
-                NAT Technologies is a technology solutions provider specialising in IT and IP
-                infrastructure, low-voltage systems, security solutions, smart home automation, and
-                fuel management systems.
+                {field(c, "whoweare_p1", "NAT Technologies is a technology solutions provider specialising in IT and IP infrastructure, low-voltage systems, security solutions, smart home automation, and fuel management systems.")}
               </p>
               <p className="text-slate-600 leading-relaxed mb-4">
-                We combine technical expertise, innovation, and best-practice delivery to create
-                dependable solutions for businesses, homes, and communities.
+                {field(c, "whoweare_p2", "We combine technical expertise, innovation, and best-practice delivery to create dependable solutions for businesses, homes, and communities.")}
               </p>
               <p className="text-slate-600 leading-relaxed">
-                Our integrated approach means our clients benefit from a single, trusted partner who
-                understands how each technology layer connects — from physical infrastructure and
-                network connectivity to security, automation, and operational systems.
+                {field(c, "whoweare_p3", "Our integrated approach means our clients benefit from a single, trusted partner who understands how each technology layer connects — from physical infrastructure and network connectivity to security, automation, and operational systems.")}
               </p>
             </div>
             <div className="bg-gradient-to-br from-navy to-charcoal rounded-2xl p-10 flex flex-col gap-6">
@@ -86,9 +83,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Our Mission</h3>
               <p className="text-slate-600 leading-relaxed">
-                To deliver innovative, reliable, and integrated technology solutions that improve
-                connectivity, security, automation, and operational efficiency for every client we
-                serve.
+                {field(c, "mission_text", "To deliver innovative, reliable, and integrated technology solutions that improve connectivity, security, automation, and operational efficiency for every client we serve.")}
               </p>
             </div>
             <div className="bg-white border border-slate-100 rounded-2xl p-8 shadow-sm">
@@ -100,8 +95,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Our Vision</h3>
               <p className="text-slate-600 leading-relaxed">
-                To become a trusted leader in integrated technology solutions that empower
-                communities and organisations through innovation, excellence, and sustainable growth.
+                {field(c, "vision_text", "To become a trusted leader in integrated technology solutions that empower communities and organisations through innovation, excellence, and sustainable growth.")}
               </p>
             </div>
           </div>
@@ -115,12 +109,10 @@ export default function AboutPage() {
             Our Philosophy
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-            Technology Should Be Practical, Secure, Scalable, and Transformative
+            {field(c, "philosophy_headline", "Technology Should Be Practical, Secure, Scalable, and Transformative")}
           </h2>
           <p className="text-slate-300 text-lg leading-relaxed">
-            We believe the best technology solutions are those that work invisibly in the background
-            — enabling people and organisations to focus on what they do best, supported by systems
-            that are reliable, secure, and built to last.
+            {field(c, "philosophy_text", "We believe the best technology solutions are those that work invisibly in the background — enabling people and organisations to focus on what they do best, supported by systems that are reliable, secure, and built to last.")}
           </p>
         </div>
       </section>
@@ -176,8 +168,8 @@ export default function AboutPage() {
       </section>
 
       <CTASection
-        headline="Work With a Technology Partner You Can Trust"
-        subtext="Explore our services or get in touch to discuss your technology needs."
+        headline={field(c, "cta_headline", "Work With a Technology Partner You Can Trust")}
+        subtext={field(c, "cta_subtext", "Explore our services or get in touch to discuss your technology needs.")}
         primaryCta={{ label: "Explore Our Services", href: "/services" }}
         secondaryCta={{ label: "Contact NAT Technologies", href: "/contact" }}
       />

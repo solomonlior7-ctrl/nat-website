@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import GalleryGrid from "@/components/GalleryGrid";
 import { createClient } from "@/lib/supabase/server";
-import { getSiteId } from "@/lib/get-content";
+import { getSiteId, getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "Gallery | NAT Technologies",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default async function GalleryPage() {
   const supabase = await createClient();
-  const siteId = await getSiteId();
+  const [siteId, c] = await Promise.all([getSiteId(), getPageContent("gallery")]);
 
   const { data: items } = siteId
     ? await supabase
@@ -30,11 +30,10 @@ export default async function GalleryPage() {
             Gallery
           </p>
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            Our Work in Action
+            {field(c, "page_title", "Our Work in Action")}
           </h1>
           <p className="text-slate-300 text-lg max-w-xl">
-            Browse our project gallery to see the quality, range, and capability
-            of NAT Technologies across all service areas.
+            {field(c, "page_description", "Browse our project gallery to see the quality, range, and capability of NAT Technologies across all service areas.")}
           </p>
         </div>
       </section>
@@ -48,11 +47,10 @@ export default async function GalleryPage() {
       <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">
-            Start Your Project
+            {field(c, "cta_headline", "Start Your Project")}
           </h2>
           <p className="text-slate-600 mb-8">
-            Ready to bring your technology environment up to the standard you
-            see here? Our team is ready to help.
+            {field(c, "cta_subtext", "Ready to bring your technology environment up to the standard you see here? Our team is ready to help.")}
           </p>
           <Link
             href="/contact"

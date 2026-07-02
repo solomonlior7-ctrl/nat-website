@@ -1,13 +1,7 @@
 import Link from "next/link";
 import ParticleBackground from "@/components/ParticleBackground";
 import CTASection from "@/components/CTASection";
-
-const stats = [
-  { value: "200+", label: "Projects Delivered" },
-  { value: "5", label: "Service Domains" },
-  { value: "10+", label: "Years Experience" },
-  { value: "24/7", label: "Support Available" },
-];
+import { getPageContent, field } from "@/lib/get-content";
 
 const reasons = [
   { label: "Technical Expertise", desc: "Deep domain knowledge across infrastructure, security, automation, and fuel management." },
@@ -18,7 +12,16 @@ const reasons = [
   { label: "Proven Track Record", desc: "Trusted by businesses, homes, and communities across multiple sectors and geographies." },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const c = await getPageContent("home");
+
+  const stats = [
+    { value: field(c, "stat1_value", "200+"), label: field(c, "stat1_label", "Projects Delivered") },
+    { value: field(c, "stat2_value", "5"),    label: field(c, "stat2_label", "Service Domains") },
+    { value: field(c, "stat3_value", "10+"),  label: field(c, "stat3_label", "Years Experience") },
+    { value: field(c, "stat4_value", "24/7"), label: field(c, "stat4_label", "Support Available") },
+  ];
+
   return (
     <>
       <ParticleBackground />
@@ -67,21 +70,20 @@ export default function HomePage() {
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse-glow" />
             <span className="text-accent-light text-xs font-bold uppercase tracking-[0.15em]">
-              Israel&apos;s Leading Technology Solutions Provider
+              {field(c, "hero_badge", "Israel's Leading Technology Solutions Provider")}
             </span>
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-[82px] font-extrabold leading-[1.04] tracking-tight mb-8 max-w-4xl">
-            <span className="text-white">Smarter, Safer</span>
+            <span className="text-white">{field(c, "hero_line1", "Smarter, Safer")}</span>
             <br />
-            <span className="gradient-text">Technology</span>
+            <span className="gradient-text">{field(c, "hero_gradient", "Technology")}</span>
             <br />
-            <span className="text-white">Environments</span>
+            <span className="text-white">{field(c, "hero_line3", "Environments")}</span>
           </h1>
 
           <p className="text-lg lg:text-xl text-slate-400 leading-relaxed mb-12 max-w-xl font-medium">
-            From advanced IT infrastructure to smart home automation, security
-            systems, and fuel management — we help businesses operate at their best.
+            {field(c, "hero_subtext", "From advanced IT infrastructure to smart home automation, security systems, and fuel management — we help businesses operate at their best.")}
           </p>
 
           <div className="flex flex-wrap gap-4 mb-24">
@@ -133,10 +135,10 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-3">What We Do</p>
             <h2 className="text-3xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">
-              Five Integrated Service Areas
+              {field(c, "services_title", "Five Integrated Service Areas")}
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto font-medium">
-              Each designed to work together as a seamless, connected technology ecosystem.
+              {field(c, "services_subtitle", "Each designed to work together as a seamless, connected technology ecosystem.")}
             </p>
           </div>
 
@@ -324,10 +326,10 @@ export default function HomePage() {
             <div className="lg:sticky lg:top-28">
               <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-4">Why NAT</p>
               <h2 className="text-3xl lg:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight">
-                The partner you can count on — every time
+                {field(c, "why_title", "The partner you can count on — every time")}
               </h2>
               <p className="text-slate-400 leading-relaxed mb-8 font-medium max-w-sm">
-                We combine deep technical expertise with a client-first approach to deliver solutions that genuinely make a difference — on time, on budget, and built to last.
+                {field(c, "why_subtitle", "We combine deep technical expertise with a client-first approach to deliver solutions that genuinely make a difference — on time, on budget, and built to last.")}
               </p>
               <Link
                 href="/about"
@@ -360,8 +362,8 @@ export default function HomePage() {
 
       {/* ─── CTA ───────────────────────────────────────── */}
       <CTASection
-        headline="Ready to Transform Your Technology Environment?"
-        subtext="Speak to our team today and discover how NAT Technologies can help you operate smarter, safer, and more efficiently."
+        headline={field(c, "cta_headline", "Ready to Transform Your Technology Environment?")}
+        subtext={field(c, "cta_subtext", "Speak to our team today and discover how NAT Technologies can help you operate smarter, safer, and more efficiently.")}
         primaryCta={{ label: "Speak to Our Team", href: "/contact" }}
         secondaryCta={{ label: "Explore Services", href: "/services" }}
       />

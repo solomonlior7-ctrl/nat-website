@@ -1,22 +1,25 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "Contact Us | NAT Technologies",
   description: "Get in touch with NAT Technologies. Submit an enquiry about IT infrastructure, security, smart home, low-voltage, or fuel management solutions.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const c = await getPageContent("contact");
   return (
     <>
       {/* Hero */}
       <section className="bg-navy py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">Get in Touch</p>
-          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">Contact Us</h1>
+          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            {field(c, "hero_headline", "Contact Us")}
+          </h1>
           <p className="text-slate-300 text-lg max-w-xl">
-            To contact us, please complete the form below and one of our representatives will get
-            back to you as soon as possible.
+            {field(c, "hero_subtext", "To contact us, please complete the form below and one of our representatives will get back to you as soon as possible.")}
           </p>
         </div>
       </section>
@@ -47,13 +50,13 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span className="text-slate-300 text-sm">Israel</span>
+                    <span className="text-slate-300 text-sm">{field(c, "contact_address", "Israel")}</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-slate-300 text-sm">info@nat-tech.global</span>
+                    <span className="text-slate-300 text-sm">{field(c, "contact_email", "info@nat-tech.global")}</span>
                   </div>
                 </div>
               </div>
@@ -78,8 +81,7 @@ export default function ContactPage() {
 
               <div className="bg-accent/5 border border-accent/20 rounded-2xl p-7">
                 <p className="text-slate-700 text-sm leading-relaxed">
-                  <strong>Response time:</strong> Our team typically responds within 1 business day.
-                  For urgent matters, please indicate this in your message.
+                  <strong>Response time:</strong> {field(c, "response_text", "Our team typically responds within 1 business day. For urgent matters, please indicate this in your message.")}
                 </p>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import CTASection from "@/components/CTASection";
+import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "Security Solutions | NAT Technologies",
@@ -44,13 +45,14 @@ const outcomes = [
   { label: "Strengthen Governance", desc: "Build a security programme aligned with standards, policies, and compliance requirements." },
 ];
 
-export default function SecuritySolutionsPage() {
+export default async function SecuritySolutionsPage() {
+  const c = await getPageContent("security-solutions");
   return (
     <>
       <Hero
         title="Security Solutions"
-        headline="Visibility. Protection. Control."
-        copy="NAT Technologies delivers comprehensive security services across networks, cloud platforms, identity systems, IoT devices, access control, and surveillance systems."
+        headline={field(c, "hero_headline", "Visibility. Protection. Control.")}
+        copy={field(c, "hero_copy", "NAT Technologies delivers comprehensive security services across networks, cloud platforms, identity systems, IoT devices, access control, and surveillance systems.")}
         primaryCta={{ label: "Strengthen Your Security Posture", href: "/contact" }}
         breadcrumb={[{ label: "Our Services", href: "/services" }, { label: "Security Solutions", href: "/services/security-solutions" }]}
       />
@@ -60,13 +62,10 @@ export default function SecuritySolutionsPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-slate-50 border-l-4 border-accent rounded-r-xl p-8">
             <p className="text-slate-700 text-lg leading-relaxed font-medium mb-4">
-              Do you know who is accessing your systems right now?
+              {field(c, "challenge_title", "Do you know who is accessing your systems right now?")}
             </p>
             <p className="text-slate-600 leading-relaxed">
-              Which devices are connected to your network? What is running in your cloud? Who has
-              access to your operational technology? Without complete visibility, you cannot
-              effectively protect, detect, or respond. NAT Technologies helps you see everything —
-              and secure it.
+              {field(c, "challenge_text", "Which devices are connected to your network? What is running in your cloud? Who has access to your operational technology? Without complete visibility, you cannot effectively protect, detect, or respond. NAT Technologies helps you see everything — and secure it.")}
             </p>
           </div>
         </div>
@@ -135,8 +134,8 @@ export default function SecuritySolutionsPage() {
       </section>
 
       <CTASection
-        headline="Strengthen Your Security Posture"
-        subtext="Let our security specialists assess your environment and design a protection strategy tailored to your needs."
+        headline={field(c, "cta_headline", "Strengthen Your Security Posture")}
+        subtext={field(c, "cta_subtext", "Let our security specialists assess your environment and design a protection strategy tailored to your needs.")}
         primaryCta={{ label: "Strengthen Your Security Posture", href: "/contact" }}
       />
     </>

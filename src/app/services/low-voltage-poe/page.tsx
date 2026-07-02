@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import CTASection from "@/components/CTASection";
+import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "Low Voltage & Power over Ethernet | NAT Technologies",
@@ -34,13 +35,14 @@ const processSteps = [
   "Cable Infrastructure", "Switch & Device Installation", "System Configuration", "Testing & Commissioning", "Handover & Support",
 ];
 
-export default function LowVoltagePage() {
+export default async function LowVoltagePage() {
+  const c = await getPageContent("low-voltage-poe");
   return (
     <>
       <Hero
         title="Low Voltage & PoE"
-        headline="Smarter Infrastructure. Simpler Connectivity."
-        copy="Power over Ethernet transmits both power and data through a single Ethernet cable — reducing cabling complexity, simplifying deployment, and supporting connected buildings."
+        headline={field(c, "hero_headline", "Smarter Infrastructure. Simpler Connectivity.")}
+        copy={field(c, "hero_copy", "Power over Ethernet transmits both power and data through a single Ethernet cable — reducing cabling complexity, simplifying deployment, and supporting connected buildings.")}
         primaryCta={{ label: "Modernise Your Infrastructure", href: "/contact" }}
         breadcrumb={[{ label: "Our Services", href: "/services" }, { label: "Low Voltage & PoE", href: "/services/low-voltage-poe" }]}
       />
@@ -51,16 +53,12 @@ export default function LowVoltagePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">What Is PoE?</p>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">One Cable. Two Functions.</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">{field(c, "poe_title", "One Cable. Two Functions.")}</h2>
               <p className="text-slate-600 leading-relaxed mb-4">
-                Power over Ethernet (PoE) is a technology that transmits electrical power and data
-                simultaneously through standard Ethernet cabling. This eliminates the need for
-                separate power supplies for connected devices such as IP cameras, access points, VoIP
-                phones, and access control systems.
+                {field(c, "poe_p1", "Power over Ethernet (PoE) is a technology that transmits electrical power and data simultaneously through standard Ethernet cabling. This eliminates the need for separate power supplies for connected devices such as IP cameras, access points, VoIP phones, and access control systems.")}
               </p>
               <p className="text-slate-600 leading-relaxed">
-                NAT Technologies designs, supplies, and installs complete PoE infrastructure — from
-                PoE switches and structured cabling to connected device deployment and ongoing management.
+                {field(c, "poe_p2", "NAT Technologies designs, supplies, and installs complete PoE infrastructure — from PoE switches and structured cabling to connected device deployment and ongoing management.")}
               </p>
             </div>
             <div className="bg-gradient-to-br from-cyan-900 to-navy rounded-2xl p-10 flex flex-col gap-4">
@@ -152,7 +150,7 @@ export default function LowVoltagePage() {
       </section>
 
       <CTASection
-        headline="Ready to Modernise Your Infrastructure?"
+        headline={field(c, "cta_headline", "Ready to Modernise Your Infrastructure?")}
         primaryCta={{ label: "Modernise Your Infrastructure", href: "/contact" }}
       />
     </>

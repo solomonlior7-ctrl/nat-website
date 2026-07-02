@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import CTASection from "@/components/CTASection";
+import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "Smart Home Automation | NAT Technologies",
@@ -31,13 +32,14 @@ const advantages = [
   { title: "Scalability", desc: "Start with one room and expand your system over time as your needs evolve." },
 ];
 
-export default function SmartHomePage() {
+export default async function SmartHomePage() {
+  const c = await getPageContent("smart-home");
   return (
     <>
       <Hero
         title="Smart Home Automation"
-        headline="Smart Living, Reimagined."
-        copy="NAT Technologies designs and delivers intelligent home automation solutions that improve comfort, security, convenience, and energy efficiency — tailored to the way you live."
+        headline={field(c, "hero_headline", "Smart Living, Reimagined.")}
+        copy={field(c, "hero_copy", "NAT Technologies designs and delivers intelligent home automation solutions that improve comfort, security, convenience, and energy efficiency — tailored to the way you live.")}
         primaryCta={{ label: "Plan Your Smart Home", href: "/contact" }}
         breadcrumb={[{ label: "Our Services", href: "/services" }, { label: "Smart Home Automation", href: "/services/smart-home" }]}
       />
@@ -51,17 +53,13 @@ export default function SmartHomePage() {
                 Intelligent Automation
               </p>
               <h2 className="text-3xl font-bold text-slate-900 mb-6">
-                Your Home. Your Control.
+                {field(c, "overview_title", "Your Home. Your Control.")}
               </h2>
               <p className="text-slate-600 leading-relaxed mb-4">
-                Imagine arriving home to perfect lighting, the ideal temperature, and your favourite
-                music playing — all triggered automatically. Smart home automation makes this
-                possible through intelligent, connected systems that learn your preferences and
-                respond to your routine.
+                {field(c, "overview_p1", "Imagine arriving home to perfect lighting, the ideal temperature, and your favourite music playing — all triggered automatically. Smart home automation makes this possible through intelligent, connected systems that learn your preferences and respond to your routine.")}
               </p>
               <p className="text-slate-600 leading-relaxed">
-                NAT Technologies provides end-to-end smart home solutions — from initial consultation
-                and system design to professional installation, configuration, and ongoing support.
+                {field(c, "overview_p2", "NAT Technologies provides end-to-end smart home solutions — from initial consultation and system design to professional installation, configuration, and ongoing support.")}
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -142,8 +140,8 @@ export default function SmartHomePage() {
       </section>
 
       <CTASection
-        headline="Plan Your Smart Home Today"
-        subtext="Our smart home specialists will design a system tailored to your home and lifestyle."
+        headline={field(c, "cta_headline", "Plan Your Smart Home Today")}
+        subtext={field(c, "cta_subtext", "Our smart home specialists will design a system tailored to your home and lifestyle.")}
         primaryCta={{ label: "Plan Your Smart Home", href: "/contact" }}
       />
     </>

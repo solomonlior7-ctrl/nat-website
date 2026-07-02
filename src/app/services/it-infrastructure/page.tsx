@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import CTASection from "@/components/CTASection";
+import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "IT & IP Infrastructure | NAT Technologies",
@@ -39,13 +40,14 @@ const services = [
   },
 ];
 
-export default function ITInfrastructurePage() {
+export default async function ITInfrastructurePage() {
+  const c = await getPageContent("it-infrastructure");
   return (
     <>
       <Hero
         title="IT & IP Infrastructure"
-        headline="Building the Foundation for Digital Excellence"
-        copy="NAT Technologies delivers intelligent IT and IP infrastructure solutions that power connectivity, security, automation, and business growth."
+        headline={field(c, "hero_headline", "Building the Foundation for Digital Excellence")}
+        copy={field(c, "hero_copy", "NAT Technologies delivers intelligent IT and IP infrastructure solutions that power connectivity, security, automation, and business growth.")}
         primaryCta={{ label: "Request Consultation", href: "/contact" }}
         breadcrumb={[{ label: "Our Services", href: "/services" }, { label: "IT & IP Infrastructure", href: "/services/it-infrastructure" }]}
       />
@@ -54,9 +56,7 @@ export default function ITInfrastructurePage() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-slate-600 text-lg leading-relaxed">
-            From structured cabling and network architecture to cloud migration, managed services, and
-            security resilience — we design and deliver infrastructure that is{" "}
-            <strong className="text-slate-900">secure, scalable, and future-ready</strong>.
+            {field(c, "value_prop", "From structured cabling and network architecture to cloud migration, managed services, and security resilience — we design and deliver infrastructure that is secure, scalable, and future-ready.")}
           </p>
         </div>
       </section>
@@ -109,8 +109,8 @@ export default function ITInfrastructurePage() {
       </section>
 
       <CTASection
-        headline="Looking for High-Performance IT Infrastructure Solutions?"
-        subtext="Our infrastructure specialists are ready to assess your environment and design a solution that meets your needs."
+        headline={field(c, "cta_headline", "Looking for High-Performance IT Infrastructure Solutions?")}
+        subtext={field(c, "cta_subtext", "Our infrastructure specialists are ready to assess your environment and design a solution that meets your needs.")}
         primaryCta={{ label: "Request Consultation", href: "/contact" }}
       />
     </>

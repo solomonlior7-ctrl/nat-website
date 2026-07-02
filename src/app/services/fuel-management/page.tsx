@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import CTASection from "@/components/CTASection";
+import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "Fuel Management Systems | NAT Technologies",
@@ -37,13 +38,14 @@ const features = [
   "Multi-site centralised control and reporting",
 ];
 
-export default function FuelManagementPage() {
+export default async function FuelManagementPage() {
+  const c = await getPageContent("fuel-management");
   return (
     <>
       <Hero
         title="Fuel Management Systems"
-        headline="Intelligent Fuel Control. Enhanced Operational Efficiency."
-        copy="NAT Technologies helps organisations control, monitor, and optimise fuel operations through intelligent dispensing, vehicle identification, real-time monitoring, and automated reporting."
+        headline={field(c, "hero_headline", "Intelligent Fuel Control. Enhanced Operational Efficiency.")}
+        copy={field(c, "hero_copy", "NAT Technologies helps organisations control, monitor, and optimise fuel operations through intelligent dispensing, vehicle identification, real-time monitoring, and automated reporting.")}
         primaryCta={{ label: "Request Fuel Consultation", href: "/contact" }}
         breadcrumb={[{ label: "Our Services", href: "/services" }, { label: "Fuel Management Systems", href: "/services/fuel-management" }]}
       />
@@ -57,17 +59,13 @@ export default function FuelManagementPage() {
                 Smart Fuel Management
               </p>
               <h2 className="text-3xl font-bold text-slate-900 mb-6">
-                Total Control Over Your Fuel Operations
+                {field(c, "overview_title", "Total Control Over Your Fuel Operations")}
               </h2>
               <p className="text-slate-600 leading-relaxed mb-4">
-                Fuel is a significant operational cost for any organisation managing a fleet,
-                construction site, agricultural operation, or fuel storage facility. Without
-                accurate visibility and control, waste, theft, and inefficiency can go undetected.
+                {field(c, "overview_p1", "Fuel is a significant operational cost for any organisation managing a fleet, construction site, agricultural operation, or fuel storage facility. Without accurate visibility and control, waste, theft, and inefficiency can go undetected.")}
               </p>
               <p className="text-slate-600 leading-relaxed">
-                NAT Technologies delivers complete fuel management ecosystems — from intelligent
-                dispensing systems and RFID authentication to tank monitoring, inventory
-                management, and advanced reporting dashboards.
+                {field(c, "overview_p2", "NAT Technologies delivers complete fuel management ecosystems — from intelligent dispensing systems and RFID authentication to tank monitoring, inventory management, and advanced reporting dashboards.")}
               </p>
             </div>
             <div className="space-y-3">
@@ -149,8 +147,8 @@ export default function FuelManagementPage() {
       </section>
 
       <CTASection
-        headline="Ready to Gain Control of Your Fuel Operations?"
-        subtext="Request a consultation with our fuel management specialists."
+        headline={field(c, "cta_headline", "Ready to Gain Control of Your Fuel Operations?")}
+        subtext={field(c, "cta_subtext", "Request a consultation with our fuel management specialists.")}
         primaryCta={{ label: "Request Fuel Consultation", href: "/contact" }}
       />
     </>
