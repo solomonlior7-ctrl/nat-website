@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { submitContactForm } from "@/app/contact/actions";
 
 const subjects = [
   "How can your IT and IP infrastructure solution benefit my business?",
@@ -63,8 +64,18 @@ export default function ContactForm() {
     }
     setErrors({});
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
+    const { error: serverError } = await submitContactForm({
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      subject: form.subject,
+      message: form.message,
+    });
     setLoading(false);
+    if (serverError) {
+      setErrors({ message: "Something went wrong. Please try again or contact us directly." });
+      return;
+    }
     setSubmitted(true);
   };
 

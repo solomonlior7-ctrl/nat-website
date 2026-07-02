@@ -45,9 +45,13 @@ export default function GalleryManager({ siteId, initialItems }: Props) {
     setItems(data ?? []);
   };
 
+  const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/avif"];
+
   const handleUpload = async () => {
     const file = fileInputRef.current?.files?.[0];
     if (!file) { setUploadError("Please select an image file."); return; }
+    if (!ALLOWED_TYPES.includes(file.type)) { setUploadError("Invalid file type. Only jpg, png, webp, gif, avif are allowed."); return; }
+    if (file.size > 10 * 1024 * 1024) { setUploadError("File is too large. Maximum size is 10 MB."); return; }
     if (!newTitle.trim()) { setUploadError("Please enter a title."); return; }
     if (!siteId) { setUploadError("Site not configured."); return; }
 
