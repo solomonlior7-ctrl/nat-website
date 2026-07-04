@@ -28,73 +28,59 @@ export default async function HomePage() {
       <ParticleBackground />
 
       {/* ─── HERO ─────────────────────────────────────── */}
-      <section className="relative min-h-[100svh] flex items-center overflow-hidden">
-        {/* Ambient orbs */}
+      <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-ivory">
+        {/* Subtle dot grid */}
         <div
-          className="absolute pointer-events-none"
+          className="absolute inset-0 pointer-events-none opacity-50"
           style={{
-            top: "-10%", right: "-8%",
-            width: "700px", height: "700px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(29,78,216,0.22) 0%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
-        />
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            bottom: "-5%", left: "-5%",
-            width: "550px", height: "550px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(34,197,94,0.14) 0%, transparent 70%)",
-            filter: "blur(70px)",
-          }}
-        />
-        {/* Dot grid */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(rgba(15,30,51,0.1) 1px, transparent 1px)",
             backgroundSize: "32px 32px",
-            maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent)",
+            maskImage: "radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent)",
+          }}
+        />
+        {/* Warm left glow */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            top: "-10%", left: "-5%",
+            width: "600px", height: "600px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(176,141,87,0.07) 0%, transparent 70%)",
+            filter: "blur(60px)",
           }}
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
           {/* Badge */}
           <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-10"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-10 font-sans"
             style={{
-              background: "rgba(29,78,216,0.1)",
-              border: "1px solid rgba(29,78,216,0.3)",
+              background: "rgba(30,58,95,0.07)",
+              border: "1px solid rgba(30,58,95,0.15)",
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse-glow" />
-            <span className="text-accent-light text-xs font-bold uppercase tracking-[0.15em]">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+            <span className="text-accent text-xs font-bold uppercase tracking-[0.15em]">
               {field(c, "hero_badge", "Israel's Leading Technology Solutions Provider")}
             </span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-[82px] font-extrabold leading-[1.04] tracking-tight mb-8 max-w-4xl">
-            <span className="text-white">{field(c, "hero_line1", "Smarter, Safer")}</span>
+          <h1 className="text-5xl sm:text-6xl lg:text-[80px] font-semibold leading-[1.06] tracking-tight mb-8 max-w-4xl text-ink">
+            <span>{field(c, "hero_line1", "Smarter, Safer")}</span>
             <br />
-            <span className="gradient-text">{field(c, "hero_gradient", "Technology")}</span>
+            <span className="text-accent">{field(c, "hero_gradient", "Technology")}</span>
             <br />
-            <span className="text-white">{field(c, "hero_line3", "Environments")}</span>
+            <span>{field(c, "hero_line3", "Environments")}</span>
           </h1>
 
-          <p className="text-lg lg:text-xl text-slate-400 leading-relaxed mb-12 max-w-xl font-medium">
+          <p className="font-sans text-lg lg:text-xl text-ink-soft leading-relaxed mb-12 max-w-xl">
             {field(c, "hero_subtext", "From advanced IT infrastructure to smart home automation, security systems, and fuel management — we help businesses operate at their best.")}
           </p>
 
           <div className="flex flex-wrap gap-4 mb-24">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-8 py-4 text-white font-bold rounded-xl text-sm transition-all hover:-translate-y-0.5"
-              style={{
-                background: "linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)",
-                boxShadow: "0 0 40px rgba(29,78,216,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
-              }}
+              className="inline-flex items-center gap-2 px-8 py-4 text-ivory font-bold rounded-xl text-sm transition-all hover:-translate-y-0.5 bg-accent hover:bg-accent-dark shadow-sm font-sans"
             >
               Explore Services
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -103,8 +89,7 @@ export default async function HomePage() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center px-8 py-4 text-slate-300 hover:text-white font-semibold rounded-xl text-sm transition-all hover:-translate-y-0.5"
-              style={{ border: "1px solid rgba(255,255,255,0.12)" }}
+              className="inline-flex items-center px-8 py-4 text-ink-soft hover:text-ink font-semibold rounded-xl text-sm transition-all hover:-translate-y-0.5 border border-line-deep hover:border-accent font-sans"
             >
               Contact Us
             </Link>
@@ -114,8 +99,8 @@ export default async function HomePage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-2xl lg:max-w-none">
             {stats.map((s) => (
               <div key={s.label} className="glass-card rounded-2xl p-5 text-center">
-                <div className="text-3xl lg:text-4xl font-extrabold gradient-text mb-1">{s.value}</div>
-                <div className="text-slate-400 text-sm font-medium">{s.label}</div>
+                <div className="font-sans text-3xl lg:text-4xl font-bold text-accent mb-1">{s.value}</div>
+                <div className="font-sans text-ink-muted text-sm font-medium">{s.label}</div>
               </div>
             ))}
           </div>
@@ -125,23 +110,15 @@ export default async function HomePage() {
       {/* ─── TECH CAROUSEL ─────────────────────────────── */}
       <TechCarousel />
 
-      {/* ─── SERVICES — BENTO GRID ──────────────────────
-          Desktop (3 cols):
-          [IT & IP — 2 cols        ][Security — 1 col tall x2]
-          [Low Voltage][Smart Home  ][Security — cont.        ]
-          [Fuel Management — 2 cols][CTA — 1 col             ]
-      ─────────────────────────────────────────────── */}
-      <section
-        className="py-28 lg:py-36 relative"
-        style={{ background: "linear-gradient(180deg, #0b0f19 0%, #0f1624 100%)" }}
-      >
+      {/* ─── SERVICES — BENTO GRID ─────────────────────── */}
+      <section className="py-28 lg:py-36 bg-ivory-deep">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-3">What We Do</p>
-            <h2 className="text-3xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            <p className="font-sans text-gold text-xs font-bold uppercase tracking-[0.18em] mb-3">What We Do</p>
+            <h2 className="text-3xl lg:text-5xl font-semibold text-ink mb-4 tracking-tight">
               {field(c, "services_title", "Five Integrated Service Areas")}
             </h2>
-            <p className="text-slate-400 max-w-xl mx-auto font-medium">
+            <p className="font-sans text-ink-soft max-w-xl mx-auto">
               {field(c, "services_subtitle", "Each designed to work together as a seamless, connected technology ecosystem.")}
             </p>
           </div>
@@ -153,21 +130,19 @@ export default async function HomePage() {
               href="/services/it-infrastructure"
               className="md:col-span-2 glass-card gradient-border bento-card rounded-2xl p-8 group flex flex-col justify-between min-h-[220px]"
             >
-              <div className="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl opacity-[0.08] group-hover:opacity-[0.16] transition-opacity pointer-events-none"
-                style={{ background: "#1d4ed8", transform: "translate(25%,-25%)" }} />
               <div>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(29,78,216,0.12)", border: "1px solid rgba(29,78,216,0.25)" }}>
-                  <svg className="w-7 h-7 text-accent-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 tracking-tight">IT & IP Infrastructure</h3>
-                <p className="text-slate-400 text-sm leading-relaxed max-w-md">
+                <h3 className="text-xl font-semibold text-ink mb-3 tracking-tight">IT & IP Infrastructure</h3>
+                <p className="font-sans text-ink-soft text-sm leading-relaxed max-w-md">
                   Enterprise-grade connectivity, cloud solutions, network architecture, structured cabling, and managed services that power your digital operations.
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-accent-light text-sm font-bold mt-6 group-hover:gap-3 transition-all">
+              <div className="flex items-center gap-2 text-accent text-sm font-bold mt-6 group-hover:gap-3 transition-all font-sans">
                 Learn More
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -180,29 +155,27 @@ export default async function HomePage() {
               href="/services/security-solutions"
               className="md:row-span-2 glass-card gradient-border bento-card rounded-2xl p-8 group flex flex-col justify-between min-h-[220px]"
             >
-              <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full blur-3xl opacity-[0.08] group-hover:opacity-[0.16] transition-opacity pointer-events-none"
-                style={{ background: "#22c55e", transform: "translate(-25%,25%)" }} />
               <div>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.22)" }}>
-                  <svg className="w-7 h-7 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  style={{ background: "rgba(176,141,87,0.08)", border: "1px solid rgba(176,141,87,0.18)" }}>
+                  <svg className="w-7 h-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 tracking-tight">Security Solutions</h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                <h3 className="text-xl font-semibold text-ink mb-3 tracking-tight">Security Solutions</h3>
+                <p className="font-sans text-ink-soft text-sm leading-relaxed mb-8">
                   Comprehensive visibility, protection, and control across networks, cloud platforms, IoT devices, access control, and surveillance systems.
                 </p>
                 <ul className="space-y-3">
                   {["Network Security", "Access Control", "CCTV Surveillance", "IoT Protection", "Threat Monitoring"].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-sm text-slate-300">
-                      <span className="w-1.5 h-1.5 rounded-full bg-green shrink-0" />
+                    <li key={item} className="flex items-center gap-3 font-sans text-sm text-ink-soft">
+                      <span className="w-1 h-1 rounded-full bg-gold shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="flex items-center gap-2 text-green text-sm font-bold mt-6 group-hover:gap-3 transition-all">
+              <div className="flex items-center gap-2 text-gold text-sm font-bold mt-6 group-hover:gap-3 transition-all font-sans">
                 Learn More
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -215,21 +188,19 @@ export default async function HomePage() {
               href="/services/low-voltage-poe"
               className="glass-card gradient-border bento-card rounded-2xl p-8 group flex flex-col justify-between min-h-[220px]"
             >
-              <div className="absolute top-0 right-0 w-40 h-40 rounded-full blur-3xl opacity-[0.07] group-hover:opacity-[0.14] transition-opacity pointer-events-none"
-                style={{ background: "#1d4ed8", transform: "translate(30%,-30%)" }} />
               <div>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(29,78,216,0.12)", border: "1px solid rgba(29,78,216,0.25)" }}>
-                  <svg className="w-7 h-7 text-accent-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 tracking-tight">Low Voltage & PoE</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <h3 className="text-xl font-semibold text-ink mb-3 tracking-tight">Low Voltage & PoE</h3>
+                <p className="font-sans text-ink-soft text-sm leading-relaxed">
                   Power over Ethernet solutions that deliver both power and data through a single cable — reducing complexity and simplifying deployment.
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-accent-light text-sm font-bold mt-6 group-hover:gap-3 transition-all">
+              <div className="flex items-center gap-2 text-accent text-sm font-bold mt-6 group-hover:gap-3 transition-all font-sans">
                 Learn More
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -242,21 +213,19 @@ export default async function HomePage() {
               href="/services/smart-home"
               className="glass-card gradient-border bento-card rounded-2xl p-8 group flex flex-col justify-between min-h-[220px]"
             >
-              <div className="absolute bottom-0 right-0 w-40 h-40 rounded-full blur-3xl opacity-[0.07] group-hover:opacity-[0.14] transition-opacity pointer-events-none"
-                style={{ background: "#22c55e", transform: "translate(25%,25%)" }} />
               <div>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.22)" }}>
-                  <svg className="w-7 h-7 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 tracking-tight">Smart Home Automation</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <h3 className="text-xl font-semibold text-ink mb-3 tracking-tight">Smart Home Automation</h3>
+                <p className="font-sans text-ink-soft text-sm leading-relaxed">
                   Intelligent home automation covering lighting, climate, security, shading, sensors, and voice-controlled scenes for modern living.
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-green text-sm font-bold mt-6 group-hover:gap-3 transition-all">
+              <div className="flex items-center gap-2 text-accent text-sm font-bold mt-6 group-hover:gap-3 transition-all font-sans">
                 Learn More
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -269,21 +238,19 @@ export default async function HomePage() {
               href="/services/fuel-management"
               className="md:col-span-2 glass-card gradient-border bento-card rounded-2xl p-8 group flex flex-col justify-between min-h-[220px]"
             >
-              <div className="absolute top-0 left-0 w-72 h-72 rounded-full blur-3xl opacity-[0.07] group-hover:opacity-[0.14] transition-opacity pointer-events-none"
-                style={{ background: "#1d4ed8", transform: "translate(-25%,-25%)" }} />
               <div>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(29,78,216,0.12)", border: "1px solid rgba(29,78,216,0.25)" }}>
-                  <svg className="w-7 h-7 text-accent-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 tracking-tight">Fuel Management Systems</h3>
-                <p className="text-slate-400 text-sm leading-relaxed max-w-md">
+                <h3 className="text-xl font-semibold text-ink mb-3 tracking-tight">Fuel Management Systems</h3>
+                <p className="font-sans text-ink-soft text-sm leading-relaxed max-w-md">
                   Intelligent fuel control with real-time monitoring, RFID authentication, inventory management, and automated reporting for fleets and facilities.
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-accent-light text-sm font-bold mt-6 group-hover:gap-3 transition-all">
+              <div className="flex items-center gap-2 text-accent text-sm font-bold mt-6 group-hover:gap-3 transition-all font-sans">
                 Learn More
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -293,28 +260,20 @@ export default async function HomePage() {
 
             {/* CTA Card */}
             <div
-              className="rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] relative overflow-hidden"
-              style={{
-                background: "linear-gradient(135deg, rgba(29,78,216,0.18) 0%, rgba(34,197,94,0.12) 100%)",
-                border: "1px solid rgba(29,78,216,0.28)",
-              }}
+              className="rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] relative overflow-hidden bg-navy"
             >
-              <div className="absolute inset-0 opacity-[0.06]"
+              <div className="absolute inset-0 opacity-[0.03]"
                 style={{
-                  backgroundImage: "radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)",
+                  backgroundImage: "radial-gradient(rgba(247,244,236,1) 1px, transparent 1px)",
                   backgroundSize: "20px 20px",
                 }} />
-              <p className="text-slate-400 text-sm mb-2 relative z-10">Not sure where to start?</p>
-              <p className="text-white font-bold mb-6 relative z-10 leading-snug">
+              <p className="font-sans text-sm mb-2 relative z-10" style={{ color: "rgba(247,244,236,0.5)" }}>Not sure where to start?</p>
+              <p className="font-semibold mb-6 relative z-10 leading-snug text-ivory">
                 Let&apos;s find the right solution together.
               </p>
               <Link
                 href="/contact"
-                className="px-6 py-3 text-white text-sm font-bold rounded-xl transition-all hover:-translate-y-0.5 relative z-10"
-                style={{
-                  background: "linear-gradient(135deg, #1d4ed8, #22c55e)",
-                  boxShadow: "0 8px 24px rgba(29,78,216,0.3)",
-                }}
+                className="px-6 py-3 text-accent text-sm font-bold rounded-xl transition-all hover:-translate-y-0.5 relative z-10 bg-ivory hover:bg-ivory-deep font-sans"
               >
                 Speak to Our Team
               </Link>
@@ -324,20 +283,20 @@ export default async function HomePage() {
       </section>
 
       {/* ─── WHY CHOOSE US ─────────────────────────────── */}
-      <section className="py-28 lg:py-36" style={{ background: "#0f1624" }}>
+      <section className="py-28 lg:py-36 bg-ivory">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="lg:sticky lg:top-28">
-              <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-4">Why NAT</p>
-              <h2 className="text-3xl lg:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+              <p className="font-sans text-gold text-xs font-bold uppercase tracking-[0.18em] mb-4">Why NAT</p>
+              <h2 className="text-3xl lg:text-5xl font-semibold text-ink mb-6 leading-tight tracking-tight">
                 {field(c, "why_title", "The partner you can count on — every time")}
               </h2>
-              <p className="text-slate-400 leading-relaxed mb-8 font-medium max-w-sm">
+              <p className="font-sans text-ink-soft leading-relaxed mb-8 max-w-sm">
                 {field(c, "why_subtitle", "We combine deep technical expertise with a client-first approach to deliver solutions that genuinely make a difference — on time, on budget, and built to last.")}
               </p>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-accent-light hover:text-white font-bold text-sm transition-colors group"
+                className="inline-flex items-center gap-2 text-accent hover:text-accent-dark font-bold text-sm transition-colors group font-sans"
               >
                 Learn About Us
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -350,13 +309,13 @@ export default async function HomePage() {
               {reasons.map((r) => (
                 <div key={r.label} className="glass-card rounded-xl p-5">
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-4"
-                    style={{ background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.2)" }}>
-                    <svg className="w-4 h-4 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.1)" }}>
+                    <svg className="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-sm font-bold text-white mb-1.5">{r.label}</h3>
-                  <p className="text-slate-400 text-xs leading-relaxed">{r.desc}</p>
+                  <h3 className="font-sans text-sm font-bold text-ink mb-1.5">{r.label}</h3>
+                  <p className="font-sans text-ink-muted text-xs leading-relaxed">{r.desc}</p>
                 </div>
               ))}
             </div>

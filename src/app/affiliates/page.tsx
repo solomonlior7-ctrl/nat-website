@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Hero from "@/components/Hero";
 import CTASection from "@/components/CTASection";
 import { getPageContent, field } from "@/lib/get-content";
 
@@ -15,9 +16,9 @@ const affiliates = [
     name: "LoopTag",
     tagline: "Secured RFID Fuel Control & Fleet Management",
     website: "https://loop-tag.com/",
-    accentColor: "#f97316",
-    accentBg: "rgba(249,115,22,0.1)",
-    accentBorder: "rgba(249,115,22,0.25)",
+    accentColor: "#b85c1a",
+    accentBg: "rgba(184,92,26,0.07)",
+    accentBorder: "rgba(184,92,26,0.18)",
     description:
       "LoopTag is an advanced RFID-based refueling and fleet fuel-control system that gives organisations complete control over their fuel operations. It eliminates fuel theft, prevents unauthorised refueling and misfuelling, and provides fleet managers with accurate reporting and real-time visibility.",
     relation:
@@ -30,14 +31,7 @@ const affiliates = [
       "Automated inventory management",
       "Remote system monitoring and management",
     ],
-    suitedFor: [
-      "Fuel stations",
-      "Commercial fleets",
-      "Oil & gas companies",
-      "Logistics operators",
-      "Construction sites",
-      "Agricultural operations",
-    ],
+    suitedFor: ["Fuel stations", "Commercial fleets", "Oil & gas companies", "Logistics operators", "Construction sites", "Agricultural operations"],
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
@@ -50,9 +44,9 @@ const affiliates = [
     name: "SwitchBee",
     tagline: "Advanced Smart Home & Building Automation",
     website: "https://www.switchbee.com/",
-    accentColor: "#06b6d4",
-    accentBg: "rgba(6,182,212,0.1)",
-    accentBorder: "rgba(6,182,212,0.25)",
+    accentColor: "#1e3a5f",
+    accentBg: "rgba(30,58,95,0.07)",
+    accentBorder: "rgba(30,58,95,0.18)",
     description:
       "SwitchBee is a leading smart home and building automation platform that delivers full control over lighting, shutters, air conditioning, VRF systems, sensors, irrigation, sockets, and more — all through an intuitive mobile app. Designed for fast installation without major rewiring, SwitchBee fits new builds and retrofits alike.",
     relation:
@@ -65,14 +59,7 @@ const affiliates = [
       "App-based control from anywhere",
       "Fast installation without full rewiring",
     ],
-    suitedFor: [
-      "Private residences",
-      "Luxury apartments",
-      "Commercial offices",
-      "Hotels and hospitality",
-      "Retail environments",
-      "New developments and retrofits",
-    ],
+    suitedFor: ["Private residences", "Luxury apartments", "Commercial offices", "Hotels and hospitality", "Retail environments", "New developments and retrofits"],
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -91,31 +78,14 @@ export default async function AffiliatesPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative py-24 lg:py-32 overflow-hidden" style={{ background: "#0b0f19" }}>
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "linear-gradient(rgba(29,78,216,1) 1px, transparent 1px), linear-gradient(90deg, rgba(29,78,216,1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div className="absolute pointer-events-none" style={{ top: "-10%", right: "-5%", width: "600px", height: "600px", borderRadius: "50%", background: "radial-gradient(circle, rgba(29,78,216,0.18) 0%, transparent 70%)", filter: "blur(60px)" }} />
-        <div className="absolute pointer-events-none" style={{ bottom: "-5%", left: "-5%", width: "500px", height: "500px", borderRadius: "50%", background: "radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%)", filter: "blur(70px)" }} />
+      <Hero
+        title="Strategic Partners"
+        headline={field(c, "hero_headline", "Technology Partners We Trust")}
+        copy={field(c, "hero_copy", "NAT Technologies works with best-in-class technology manufacturers and solution providers. Our affiliate partnerships allow us to offer integrated, end-to-end solutions that our clients can rely on.")}
+      />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-4">Strategic Partners</p>
-          <h1 className="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight max-w-3xl">
-            {field(c, "hero_headline", "Technology Partners We Trust")}
-          </h1>
-          <p className="text-slate-400 text-lg leading-relaxed max-w-2xl font-medium">
-            {field(c, "hero_copy", "NAT Technologies works with best-in-class technology manufacturers and solution providers. Our affiliate partnerships allow us to offer integrated, end-to-end solutions that our clients can rely on.")}
-          </p>
-        </div>
-      </section>
-
-      {/* Partnership intro strip */}
-      <div style={{ background: "rgba(255,255,255,0.02)", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      {/* Partnership stats strip */}
+      <div className="bg-ivory-deep" style={{ borderTop: "1px solid #e0d8c7", borderBottom: "1px solid #e0d8c7" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-wrap items-center gap-8 lg:gap-16">
             {[
@@ -124,8 +94,8 @@ export default async function AffiliatesPage() {
               { label: "Integrated Deployments", value: "100+" },
             ].map((s) => (
               <div key={s.label} className="flex items-center gap-3">
-                <span className="text-2xl font-extrabold gradient-text">{s.value}</span>
-                <span className="text-slate-400 text-sm font-medium">{s.label}</span>
+                <span className="font-sans text-2xl font-bold text-accent">{s.value}</span>
+                <span className="font-sans text-ink-muted text-sm font-medium">{s.label}</span>
               </div>
             ))}
           </div>
@@ -133,44 +103,35 @@ export default async function AffiliatesPage() {
       </div>
 
       {/* Affiliate Cards */}
-      <section className="py-24 lg:py-32" style={{ background: "#0b0f19" }}>
+      <section className="py-24 lg:py-32 bg-ivory">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {affiliatesWithContent.map((a, idx) => (
-            <div
-              key={a.id}
-              className="rounded-2xl overflow-hidden"
-              style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.025)" }}
-            >
+          {affiliatesWithContent.map((a) => (
+            <div key={a.id} className="glass-card rounded-2xl overflow-hidden">
               {/* Card header */}
-              <div
-                className="px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center gap-5"
-                style={{ background: "rgba(255,255,255,0.02)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
-              >
-                {/* Logo placeholder */}
+              <div className="px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center gap-5 bg-ivory-deep" style={{ borderBottom: "1px solid #e0d8c7" }}>
                 <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 font-black text-xl tracking-tight"
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 font-bold text-xl font-sans tracking-tight"
                   style={{ background: a.accentBg, border: `1px solid ${a.accentBorder}`, color: a.accentColor }}
                 >
                   {a.initials}
                 </div>
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-3 mb-1">
-                    <h2 className="text-2xl font-extrabold text-white tracking-tight">{a.name}</h2>
+                    <h2 className="text-2xl font-semibold text-ink tracking-tight">{a.name}</h2>
                     <span
-                      className="text-xs font-bold px-2.5 py-1 rounded-full"
+                      className="font-sans text-xs font-bold px-2.5 py-1 rounded-full"
                       style={{ background: a.accentBg, color: a.accentColor, border: `1px solid ${a.accentBorder}` }}
                     >
                       Authorised Partner
                     </span>
                   </div>
-                  <p className="text-slate-400 text-sm font-medium">{a.tagline}</p>
+                  <p className="font-sans text-ink-muted text-sm font-medium">{a.tagline}</p>
                 </div>
                 <a
                   href={a.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:-translate-y-0.5 shrink-0"
-                  style={{ background: `linear-gradient(135deg, ${a.accentColor}cc, ${a.accentColor}88)`, boxShadow: `0 8px 24px ${a.accentColor}22` }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-sans text-sm font-bold text-ivory transition-all hover:-translate-y-0.5 shrink-0 bg-accent hover:bg-accent-dark"
                 >
                   Visit {a.name} Website
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -184,30 +145,27 @@ export default async function AffiliatesPage() {
                 {/* Description + relation */}
                 <div className="lg:col-span-2 space-y-6">
                   <div>
-                    <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+                    <h3 className="font-semibold text-ink mb-3 flex items-center gap-2">
                       <span style={{ color: a.accentColor }}>{a.icon}</span>
                       About {a.name}
                     </h3>
-                    <p className="text-slate-400 leading-relaxed text-sm">{a.description}</p>
+                    <p className="font-sans text-ink-soft leading-relaxed text-sm">{a.description}</p>
                   </div>
-                  <div
-                    className="rounded-xl p-5"
-                    style={{ background: a.accentBg, border: `1px solid ${a.accentBorder}` }}
-                  >
-                    <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: a.accentColor }}>
+                  <div className="rounded-xl p-5" style={{ background: a.accentBg, border: `1px solid ${a.accentBorder}` }}>
+                    <p className="font-sans text-xs font-bold uppercase tracking-widest mb-2" style={{ color: a.accentColor }}>
                       How NAT Technologies Uses {a.name}
                     </p>
-                    <p className="text-slate-300 text-sm leading-relaxed">{a.relation}</p>
+                    <p className="font-sans text-ink-soft text-sm leading-relaxed">{a.relation}</p>
                   </div>
                 </div>
 
                 {/* Features + suited for */}
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-white text-sm font-bold mb-4 uppercase tracking-wider">Key Capabilities</h4>
+                    <h4 className="font-sans text-ink text-sm font-bold mb-4 uppercase tracking-wider">Key Capabilities</h4>
                     <ul className="space-y-2.5">
                       {a.features.map((f) => (
-                        <li key={f} className="flex items-start gap-2.5 text-sm text-slate-400">
+                        <li key={f} className="flex items-start gap-2.5 font-sans text-sm text-ink-soft">
                           <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ background: a.accentColor }} />
                           {f}
                         </li>
@@ -215,14 +173,10 @@ export default async function AffiliatesPage() {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="text-white text-sm font-bold mb-4 uppercase tracking-wider">Suited For</h4>
+                    <h4 className="font-sans text-ink text-sm font-bold mb-4 uppercase tracking-wider">Suited For</h4>
                     <div className="flex flex-wrap gap-2">
                       {a.suitedFor.map((s) => (
-                        <span
-                          key={s}
-                          className="text-xs font-medium px-3 py-1 rounded-lg"
-                          style={{ background: "rgba(255,255,255,0.05)", color: "#94a3b8", border: "1px solid rgba(255,255,255,0.08)" }}
-                        >
+                        <span key={s} className="font-sans text-xs font-medium px-3 py-1 rounded-lg bg-ivory-deep text-ink-soft" style={{ border: "1px solid #e0d8c7" }}>
                           {s}
                         </span>
                       ))}
@@ -236,19 +190,18 @@ export default async function AffiliatesPage() {
       </section>
 
       {/* Become a partner */}
-      <section className="py-20" style={{ background: "#0f1624", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section className="py-20 bg-ivory-deep" style={{ borderTop: "1px solid #e0d8c7" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-4">Work With Us</p>
-          <h2 className="text-3xl font-extrabold text-white mb-4 tracking-tight">
+          <p className="font-sans text-gold text-xs font-bold uppercase tracking-[0.18em] mb-4">Work With Us</p>
+          <h2 className="text-3xl font-semibold text-ink mb-4 tracking-tight">
             {field(c, "partner_cta_headline", "Interested in a Technology Partnership?")}
           </h2>
-          <p className="text-slate-400 leading-relaxed mb-8 font-medium">
+          <p className="font-sans text-ink-soft leading-relaxed mb-8">
             {field(c, "partner_cta_text", "NAT Technologies is open to strategic partnerships with technology manufacturers and solution providers whose products complement our service areas.")}
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 text-white font-bold rounded-xl text-sm transition-all hover:-translate-y-0.5"
-            style={{ background: "linear-gradient(135deg, #1d4ed8, #22c55e)", boxShadow: "0 0 32px rgba(29,78,216,0.35)" }}
+            className="inline-flex items-center gap-2 px-8 py-4 text-ivory font-bold rounded-xl font-sans text-sm transition-all hover:-translate-y-0.5 bg-accent hover:bg-accent-dark shadow-sm"
           >
             Get in Touch
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

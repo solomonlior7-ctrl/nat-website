@@ -2,10 +2,10 @@ interface LogoProps {
   variant?: "light" | "dark";
 }
 
-export default function Logo({ variant = "light" }: LogoProps) {
-  const natColor = variant === "light" ? "white" : "#0d1b2a";
-  const techColor = variant === "light" ? "#94a3b8" : "#475569";
-  const lineColor = variant === "light" ? "#334155" : "#cbd5e1";
+export default function Logo({ variant = "dark" }: LogoProps) {
+  const natColor  = variant === "light" ? "#f7f4ec" : "#0f1e33";
+  const techColor = variant === "light" ? "rgba(247,244,236,0.65)" : "#3d4b5f";
+  const lineColor = variant === "light" ? "rgba(247,244,236,0.25)" : "#e0d8c7";
 
   return (
     <svg
@@ -20,8 +20,8 @@ export default function Logo({ variant = "light" }: LogoProps) {
         d="M4 8 L4 56 L18 56 L18 32 L34 56 L48 56 L48 8 L34 8 L34 32 L18 8 Z"
         fill={natColor}
       />
-      {/* Green triangle accent on N */}
-      <polygon points="4,8 26,8 4,30" fill="#22c55e" />
+      {/* Gold triangle accent on N */}
+      <polygon points="4,8 26,8 4,30" fill="#b08d57" />
       {/* A */}
       <path
         d="M58 56 L74 8 L90 8 L106 56 L92 56 L90 48 L74 48 L72 56 Z M78 38 L86 38 L82 18 Z"

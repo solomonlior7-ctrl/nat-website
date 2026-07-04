@@ -15,7 +15,7 @@ export default async function AdminCmsLayout({
   if (!user) redirect("/admin/login");
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col">
+    <div className="min-h-screen bg-ivory-deep flex flex-col">
       <AdminNav userEmail={user.email ?? ""} />
       <div className="flex-1 max-w-5xl mx-auto w-full p-6">{children}</div>
     </div>

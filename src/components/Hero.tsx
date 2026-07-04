@@ -17,33 +17,24 @@ export default function Hero({
   primaryCta,
   secondaryCta,
   breadcrumb,
-  dark = true,
 }: HeroProps) {
   return (
-    <section
-      className={`relative py-20 lg:py-28 overflow-hidden ${
-        dark
-          ? "bg-navy"
-          : "bg-gradient-to-br from-slate-900 to-charcoal"
-      }`}
-    >
-      {/* Background grid pattern */}
+    <section className="relative py-20 lg:py-28 overflow-hidden bg-ivory-deep">
+      {/* Subtle dot grid */}
       <div
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-[0.4]"
         style={{
-          backgroundImage:
-            "linear-gradient(#0ea5e9 1px, transparent 1px), linear-gradient(90deg, #0ea5e9 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundImage: "radial-gradient(rgba(15,30,51,0.12) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          maskImage: "radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent)",
         }}
       />
-
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-transparent to-transparent opacity-80" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-navy to-transparent" />
+      {/* Soft vignette */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ivory opacity-60" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {breadcrumb && breadcrumb.length > 0 && (
-          <nav className="flex items-center gap-2 text-xs text-slate-500 mb-6">
+          <nav className="flex items-center gap-2 text-xs text-ink-muted mb-6 font-sans">
             <Link href="/" className="hover:text-accent transition-colors">
               Home
             </Link>
@@ -51,7 +42,7 @@ export default function Hero({
               <span key={i} className="flex items-center gap-2">
                 <span>/</span>
                 {i === breadcrumb.length - 1 ? (
-                  <span className="text-slate-400">{crumb.label}</span>
+                  <span className="text-ink-soft">{crumb.label}</span>
                 ) : (
                   <Link href={crumb.href} className="hover:text-accent transition-colors">
                     {crumb.label}
@@ -64,15 +55,15 @@ export default function Hero({
 
         <div className="max-w-3xl">
           {title && (
-            <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">
+            <p className="font-sans text-accent text-xs font-bold uppercase tracking-[0.2em] mb-4">
               {title}
             </p>
           )}
-          <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          <h1 className="text-4xl lg:text-6xl font-semibold text-ink leading-tight mb-6 tracking-tight text-balance">
             {headline}
           </h1>
           {copy && (
-            <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
+            <p className="font-sans text-lg text-ink-soft leading-relaxed mb-8 max-w-2xl">
               {copy}
             </p>
           )}
@@ -81,7 +72,7 @@ export default function Hero({
               {primaryCta && (
                 <Link
                   href={primaryCta.href}
-                  className="inline-flex items-center px-6 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors shadow-lg"
+                  className="inline-flex items-center px-6 py-3 bg-accent hover:bg-accent-dark text-ivory font-semibold rounded-lg transition-all hover:-translate-y-0.5 shadow-sm font-sans"
                 >
                   {primaryCta.label}
                   <svg
@@ -102,7 +93,7 @@ export default function Hero({
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="inline-flex items-center px-6 py-3 border border-slate-600 hover:border-accent text-slate-300 hover:text-white font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center px-6 py-3 border border-line-deep hover:border-accent text-ink-soft hover:text-ink font-semibold rounded-lg transition-colors font-sans"
                 >
                   {secondaryCta.label}
                 </Link>

@@ -7,8 +7,8 @@ export default function AdminDashboard() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-slate-800">Content Manager</h1>
-        <p className="text-slate-500 mt-1">
+        <h1 className="text-2xl font-semibold text-ink">Content Manager</h1>
+        <p className="font-sans text-ink-muted mt-1">
           Select a section to edit its content
         </p>
       </div>
@@ -18,13 +18,13 @@ export default function AdminDashboard() {
           <Link
             key={pageKey}
             href={`/admin/edit/${pageKey}`}
-            className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 hover:border-accent group"
+            className="glass-card rounded-xl p-6 hover:shadow-md transition-all hover:border-accent group"
           >
             <div className="text-3xl mb-3">{schema.icon}</div>
-            <h2 className="font-semibold text-slate-800 group-hover:text-accent transition-colors">
+            <h2 className="font-semibold text-ink group-hover:text-accent transition-colors">
               {schema.title}
             </h2>
-            <p className="text-slate-400 text-sm mt-1">
+            <p className="font-sans text-ink-muted text-sm mt-1">
               {Object.keys(schema.fields).length} editable fields
             </p>
           </Link>
@@ -32,26 +32,26 @@ export default function AdminDashboard() {
 
         <Link
           href="/admin/gallery-images"
-          className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 hover:border-accent group"
+          className="glass-card rounded-xl p-6 hover:shadow-md transition-all hover:border-accent group"
         >
           <div className="text-3xl mb-3">📸</div>
-          <h2 className="font-semibold text-slate-800 group-hover:text-accent transition-colors">
+          <h2 className="font-semibold text-ink group-hover:text-accent transition-colors">
             Gallery Images
           </h2>
-          <p className="text-slate-400 text-sm mt-1">
+          <p className="font-sans text-ink-muted text-sm mt-1">
             Upload and manage project photos
           </p>
         </Link>
 
         <Link
           href="/admin/client-logos"
-          className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 hover:border-accent group"
+          className="glass-card rounded-xl p-6 hover:shadow-md transition-all hover:border-accent group"
         >
           <div className="text-3xl mb-3">🏢</div>
-          <h2 className="font-semibold text-slate-800 group-hover:text-accent transition-colors">
+          <h2 className="font-semibold text-ink group-hover:text-accent transition-colors">
             Client Logos
           </h2>
-          <p className="text-slate-400 text-sm mt-1">
+          <p className="font-sans text-ink-muted text-sm mt-1">
             Upload and manage client logos on the Clients page
           </p>
         </Link>

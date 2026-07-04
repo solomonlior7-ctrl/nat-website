@@ -1,18 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #0b0f19;
-  --color-navy-800: #0f1624;
-  --color-navy-700: #141d2e;
-  --color-charcoal: #1a2332;
-  --color-accent: #1d4ed8;
-  --color-accent-dark: #1e40af;
-  --color-accent-light: #3b82f6;
-  --color-green: #22c55e;
-  --color-green-dark: #16a34a;
-  --color-green-light: #4ade80;
-  --color-indigo: #6366f1;
-  --color-cyan: #06b6d4;
+  /* ── Ivory / Ink palette ── */
+  --color-ivory:       #f7f4ec;
+  --color-ivory-deep:  #efe9db;
+  --color-ivory-card:  #faf8f3;
+  --color-ink:         #0f1e33;
+  --color-ink-soft:    #3d4b5f;
+  --color-ink-muted:   #8293a8;
+  --color-line:        #e0d8c7;
+  --color-line-deep:   #c9bfa8;
+  --color-gold:        #b08d57;
+
+  /* ── Accent (deep navy blue) ── */
+  --color-accent:      #1e3a5f;
+  --color-accent-dark: #14283f;
+  --color-accent-light:#2d6abf;
+
+  /* ── Dark navy (footer / dark accent sections) ── */
+  --color-navy:        #0f1e33;
+  --color-navy-800:    #1a2b42;
+  --color-navy-700:    #243550;
+  --color-charcoal:    #1a2b42;
 }
 
 * {
@@ -24,47 +33,51 @@ html {
 }
 
 body {
-  background-color: #0b0f19;
-  color: #f1f5f9;
-  font-family: var(--font-jakarta), system-ui, sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans, var(--font-jakarta)), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Typography ── */
-.gradient-text {
-  background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ── Serif headings ── */
+h1, h2, h3 {
+  font-family: var(--font-serif), Georgia, 'Times New Roman', serif;
 }
 
-/* ── Glass Cards ── */
+/* ── Gradient text → solid accent ── */
+.gradient-text {
+  color: var(--color-accent);
+  background: none;
+  -webkit-text-fill-color: var(--color-accent);
+  background-clip: unset;
+}
+
+/* ── Light cards ── */
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  transition: background 0.35s ease, border-color 0.35s ease,
-    transform 0.35s ease, box-shadow 0.35s ease;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 2px 12px rgba(15, 30, 51, 0.06);
+  transition: background 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(29, 78, 216, 0.45);
-  transform: translateY(-3px);
-  box-shadow: 0 24px 64px rgba(29, 78, 216, 0.14);
+  background: #fff;
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(15, 30, 51, 0.1);
 }
 
-/* ── Glass Header ── */
+/* ── Light header ── */
 .glass-header {
-  background: rgba(11, 15, 25, 0.85);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(247, 244, 236, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-line);
+  box-shadow: 0 1px 8px rgba(15, 30, 51, 0.06);
 }
 
-/* ── Gradient Border on Hover ── */
+/* ── Subtle border accent ── */
 .gradient-border {
   position: relative;
 }
@@ -75,72 +88,59 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, #1d4ed8 0%, #22c55e 100%);
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.3s ease;
 }
 
 .gradient-border:hover::before {
   opacity: 1;
 }
 
-/* ── Bento glow spotlight ── */
+/* ── Bento card ── */
 .bento-card {
   position: relative;
   overflow: hidden;
 }
 
-/* ── Input focus styles ── */
+/* ── Input fields ── */
 .input-field {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #f1f5f9;
-  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 
 .input-field::placeholder {
-  color: #64748b;
+  color: var(--color-ink-muted);
 }
 
 .input-field:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.06);
-  border-color: #22c55e;
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+  background: #fff;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
 }
 
-/* ── Animations ── */
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-20px) scale(1.02); }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-
+/* ── Animations — keep fade-in-up + marquee; remove neon decoratives ── */
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
-.animate-spin-slow { animation: spin-slow 22s linear infinite; }
-.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-.animate-fade-in-up { animation: fade-in-up 0.7s ease-out both; }
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out both; }
+
+/* Stubs — kept to avoid class-name errors in components that still reference them */
+.animate-float-slow  { }
+.animate-spin-slow   { }
+.animate-pulse-glow  { }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "@/components/Logo";
 
@@ -35,9 +37,9 @@ const supportLinks = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: "#0b0f19" }}>
-      {/* Top gradient accent line */}
-      <div className="h-px w-full" style={{ background: "linear-gradient(90deg, transparent, #1d4ed8 30%, #22c55e 70%, transparent)" }} />
+    <footer className="bg-navy">
+      {/* Top gold accent line */}
+      <div className="h-px w-full bg-gold opacity-40" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
@@ -46,7 +48,7 @@ export default function Footer() {
             <Link href="/" className="inline-block mb-5">
               <Logo variant="light" />
             </Link>
-            <p className="text-slate-500 text-sm leading-relaxed max-w-xs mb-6 font-medium">
+            <p className="text-navy-700 text-sm leading-relaxed max-w-xs mb-6 font-medium" style={{ color: "rgba(247,244,236,0.45)" }}>
               Delivering integrated technology solutions that improve connectivity,
               security, automation, and operational efficiency.
             </p>
@@ -69,8 +71,10 @@ export default function Footer() {
                   key={s.label}
                   href="#"
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-500 hover:text-white transition-all hover:-translate-y-0.5"
-                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)" }}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:-translate-y-0.5"
+                  style={{ background: "rgba(247,244,236,0.06)", border: "1px solid rgba(247,244,236,0.1)", color: "rgba(247,244,236,0.45)" }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "#f7f4ec")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(247,244,236,0.45)")}
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d={s.path} />
@@ -82,7 +86,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-white text-xs font-bold uppercase tracking-[0.14em] mb-5">
+            <h3 className="text-xs font-bold uppercase tracking-[0.14em] mb-5" style={{ color: "#b08d57" }}>
               Company
             </h3>
             <ul className="space-y-3">
@@ -90,7 +94,10 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-slate-500 hover:text-slate-200 text-sm transition-colors font-medium"
+                    className="text-sm font-medium transition-colors"
+                    style={{ color: "rgba(247,244,236,0.5)" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "rgba(247,244,236,0.85)")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(247,244,236,0.5)")}
                   >
                     {link.name}
                   </Link>
@@ -101,7 +108,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-white text-xs font-bold uppercase tracking-[0.14em] mb-5">
+            <h3 className="text-xs font-bold uppercase tracking-[0.14em] mb-5" style={{ color: "#b08d57" }}>
               Services
             </h3>
             <ul className="space-y-3">
@@ -109,7 +116,10 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-slate-500 hover:text-slate-200 text-sm transition-colors font-medium"
+                    className="text-sm font-medium transition-colors"
+                    style={{ color: "rgba(247,244,236,0.5)" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "rgba(247,244,236,0.85)")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(247,244,236,0.5)")}
                   >
                     {link.name}
                   </Link>
@@ -120,7 +130,7 @@ export default function Footer() {
 
           {/* Legal & Support */}
           <div>
-            <h3 className="text-white text-xs font-bold uppercase tracking-[0.14em] mb-5">
+            <h3 className="text-xs font-bold uppercase tracking-[0.14em] mb-5" style={{ color: "#b08d57" }}>
               Legal
             </h3>
             <ul className="space-y-3 mb-8">
@@ -128,14 +138,17 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-slate-500 hover:text-slate-200 text-sm transition-colors font-medium"
+                    className="text-sm font-medium transition-colors"
+                    style={{ color: "rgba(247,244,236,0.5)" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "rgba(247,244,236,0.85)")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(247,244,236,0.5)")}
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-            <h3 className="text-white text-xs font-bold uppercase tracking-[0.14em] mb-5">
+            <h3 className="text-xs font-bold uppercase tracking-[0.14em] mb-5" style={{ color: "#b08d57" }}>
               Support
             </h3>
             <ul className="space-y-3">
@@ -143,7 +156,10 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-slate-500 hover:text-slate-200 text-sm transition-colors font-medium"
+                    className="text-sm font-medium transition-colors"
+                    style={{ color: "rgba(247,244,236,0.5)" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "rgba(247,244,236,0.85)")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(247,244,236,0.5)")}
                   >
                     {link.name}
                   </Link>
@@ -156,9 +172,9 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           className="mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+          style={{ borderTop: "1px solid rgba(247,244,236,0.08)" }}
         >
-          <p className="text-slate-600 text-sm font-medium">
+          <p className="text-sm font-medium" style={{ color: "rgba(247,244,236,0.3)" }}>
             © {new Date().getFullYear()} NAT Technologies Ltd. All rights reserved.
           </p>
           <div className="flex gap-6">
@@ -166,7 +182,8 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-slate-600 hover:text-slate-400 text-xs transition-colors font-medium"
+                className="text-xs font-medium transition-colors"
+                style={{ color: "rgba(247,244,236,0.3)" }}
               >
                 {link.name}
               </Link>

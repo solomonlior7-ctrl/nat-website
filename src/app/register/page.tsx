@@ -8,25 +8,23 @@ export const metadata: Metadata = {
 
 export default function RegisterPage() {
   return (
-    <section className="min-h-screen bg-slate-50 flex items-center justify-center py-16 px-4">
+    <section className="min-h-screen bg-ivory flex items-center justify-center py-16 px-4">
       <div className="w-full max-w-lg">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-slate-500 mb-8">
-          <a href="/" className="hover:text-accent">Home</a>
+        <nav className="flex items-center gap-2 font-sans text-xs text-ink-muted mb-8">
+          <a href="/" className="hover:text-accent transition-colors">Home</a>
           <span>/</span>
           <span>New User</span>
           <span>/</span>
-          <span className="text-slate-700">Register</span>
+          <span className="text-ink-soft">Register</span>
         </nav>
 
-        <div className="bg-white border border-slate-100 rounded-2xl shadow-sm p-8">
-          {/* Header */}
+        <div className="glass-card rounded-2xl p-8">
           <div className="text-center mb-8">
             <a href="/" className="inline-block mb-4">
-              <span className="text-navy text-xl font-bold">NAT Technologies</span>
+              <span className="font-semibold text-ink text-xl">NAT Technologies</span>
             </a>
-            <h1 className="text-2xl font-bold text-slate-900 mb-2">Create Your Account</h1>
-            <p className="text-slate-500 text-sm">
+            <h1 className="text-2xl font-semibold text-ink mb-2">Create Your Account</h1>
+            <p className="font-sans text-ink-muted text-sm">
               Complete the form below to register. All fields marked with{" "}
               <span className="text-red-500">*</span> are required.
             </p>
@@ -34,9 +32,9 @@ export default function RegisterPage() {
 
           <RegisterForm />
 
-          <p className="mt-6 text-center text-sm text-slate-500">
+          <p className="mt-6 text-center font-sans text-sm text-ink-muted">
             Already have an account?{" "}
-            <a href="/login" className="text-accent hover:text-accent-dark font-medium">
+            <a href="/login" className="text-accent hover:text-accent-dark font-semibold transition-colors">
               Login here
             </a>
           </p>

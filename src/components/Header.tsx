@@ -47,13 +47,13 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-header" : "bg-transparent"
+        scrolled ? "glass-header" : "bg-ivory/80 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="shrink-0">
-            <Logo variant="light" />
+            <Logo variant="dark" />
           </Link>
 
           {/* Desktop Nav */}
@@ -61,12 +61,12 @@ export default function Header() {
             <Link
               href="/"
               className={`relative px-4 py-2 text-sm font-semibold rounded-lg transition-all ${
-                isActive("/") ? "text-white" : "text-slate-400 hover:text-white"
+                isActive("/") ? "text-accent" : "text-ink-soft hover:text-ink"
               }`}
             >
               Home
               {isActive("/") && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full" style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }} />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-gold" />
               )}
             </Link>
 
@@ -79,8 +79,8 @@ export default function Header() {
               <button
                 className={`relative px-4 py-2 text-sm font-semibold rounded-lg flex items-center gap-1.5 transition-all ${
                   ["/about", "/team", "/clients", "/affiliates"].some((p) => pathname.startsWith(p))
-                    ? "text-white"
-                    : "text-slate-400 hover:text-white"
+                    ? "text-accent"
+                    : "text-ink-soft hover:text-ink"
                 }`}
               >
                 Company
@@ -88,15 +88,15 @@ export default function Header() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
                 {["/about", "/team", "/clients", "/affiliates"].some((p) => pathname.startsWith(p)) && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full" style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }} />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-gold" />
                 )}
               </button>
               {companyOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-2 z-50">
-                  <div className="rounded-xl shadow-2xl py-2 overflow-hidden" style={{ background: "rgba(11,15,25,0.95)", backdropFilter: "blur(24px)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <div className="rounded-xl shadow-lg py-2 overflow-hidden bg-ivory-card border border-line">
                     {companyLinks.map((s) => (
-                      <Link key={s.href} href={s.href} className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors">
-                        <span className="w-1.5 h-1.5 rounded-full bg-green shrink-0" />
+                      <Link key={s.href} href={s.href} className="flex items-center gap-3 px-4 py-2.5 text-sm text-ink-soft hover:text-ink hover:bg-ivory-deep transition-colors">
+                        <span className="w-1 h-1 rounded-full bg-gold shrink-0" />
                         {s.name}
                       </Link>
                     ))}
@@ -114,8 +114,8 @@ export default function Header() {
               <button
                 className={`relative px-4 py-2 text-sm font-semibold rounded-lg flex items-center gap-1.5 transition-all ${
                   pathname.startsWith("/services")
-                    ? "text-white"
-                    : "text-slate-400 hover:text-white"
+                    ? "text-accent"
+                    : "text-ink-soft hover:text-ink"
                 }`}
               >
                 Our Services
@@ -126,30 +126,20 @@ export default function Header() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
                 {pathname.startsWith("/services") && (
-                  <span
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
-                    style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }}
-                  />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-gold" />
                 )}
               </button>
 
               {servicesOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 pt-2 z-50">
-                  <div
-                    className="rounded-xl shadow-2xl py-2 overflow-hidden"
-                    style={{
-                      background: "rgba(11,15,25,0.95)",
-                      backdropFilter: "blur(24px)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                    }}
-                  >
+                  <div className="rounded-xl shadow-lg py-2 overflow-hidden bg-ivory-card border border-line">
                     {services.map((s) => (
                       <Link
                         key={s.href}
                         href={s.href}
-                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-ink-soft hover:text-ink hover:bg-ivory-deep transition-colors"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-green shrink-0" />
+                        <span className="w-1 h-1 rounded-full bg-gold shrink-0" />
                         {s.name}
                       </Link>
                     ))}
@@ -164,27 +154,20 @@ export default function Header() {
                 href={link.href}
                 className={`relative px-4 py-2 text-sm font-semibold rounded-lg transition-all ${
                   isActive(link.href)
-                    ? "text-white"
-                    : "text-slate-400 hover:text-white"
+                    ? "text-accent"
+                    : "text-ink-soft hover:text-ink"
                 }`}
               >
                 {link.name}
                 {isActive(link.href) && (
-                  <span
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
-                    style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }}
-                  />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-gold" />
                 )}
               </Link>
             ))}
 
             <Link
               href="/contact"
-              className="ml-3 px-5 py-2.5 text-white text-sm font-bold rounded-xl transition-all hover:-translate-y-0.5"
-              style={{
-                background: "linear-gradient(135deg, #1d4ed8, #1e40af)",
-                boxShadow: "0 0 20px rgba(29,78,216,0.35)",
-              }}
+              className="ml-3 px-5 py-2.5 bg-accent hover:bg-accent-dark text-ivory text-sm font-bold rounded-xl transition-all hover:-translate-y-0.5 shadow-sm"
             >
               Get in Touch
             </Link>
@@ -192,7 +175,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-white p-2 rounded-lg hover:bg-white/5"
+            className="lg:hidden text-ink p-2 rounded-lg hover:bg-ivory-deep"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -209,18 +192,11 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div
-          className="lg:hidden border-t"
-          style={{
-            background: "rgba(11,15,25,0.97)",
-            backdropFilter: "blur(24px)",
-            borderColor: "rgba(255,255,255,0.06)",
-          }}
-        >
+        <div className="lg:hidden border-t border-line bg-ivory-card">
           <div className="px-4 py-4 space-y-1">
             <Link
               href="/"
-              className={`block px-4 py-2.5 text-sm font-semibold rounded-lg ${isActive("/") ? "text-white bg-white/5" : "text-slate-400"}`}
+              className={`block px-4 py-2.5 text-sm font-semibold rounded-lg ${isActive("/") ? "text-accent bg-ivory-deep" : "text-ink-soft"}`}
               onClick={() => setMobileOpen(false)}
             >
               Home
@@ -229,7 +205,7 @@ export default function Header() {
             {/* Company mobile accordion */}
             <div>
               <button
-                className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-semibold text-slate-400 rounded-lg"
+                className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-semibold text-ink-soft rounded-lg"
                 onClick={() => setMobileCompanyOpen(!mobileCompanyOpen)}
               >
                 Company
@@ -240,7 +216,7 @@ export default function Header() {
               {mobileCompanyOpen && (
                 <div className="pl-4 space-y-1 py-2">
                   {companyLinks.map((s) => (
-                    <Link key={s.href} href={s.href} className="block px-4 py-2 text-sm text-slate-400 hover:text-green" onClick={() => setMobileOpen(false)}>
+                    <Link key={s.href} href={s.href} className="block px-4 py-2 text-sm text-ink-soft hover:text-accent" onClick={() => setMobileOpen(false)}>
                       {s.name}
                     </Link>
                   ))}
@@ -251,7 +227,7 @@ export default function Header() {
             {/* Services mobile accordion */}
             <div>
               <button
-                className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-semibold text-slate-400 rounded-lg"
+                className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-semibold text-ink-soft rounded-lg"
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
               >
                 Our Services
@@ -268,7 +244,7 @@ export default function Header() {
                     <Link
                       key={s.href}
                       href={s.href}
-                      className="block px-4 py-2 text-sm text-slate-400 hover:text-green"
+                      className="block px-4 py-2 text-sm text-ink-soft hover:text-accent"
                       onClick={() => setMobileOpen(false)}
                     >
                       {s.name}
@@ -283,7 +259,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={`block px-4 py-2.5 text-sm font-semibold rounded-lg ${
-                  isActive(link.href) ? "text-white bg-white/5" : "text-slate-400"
+                  isActive(link.href) ? "text-accent bg-ivory-deep" : "text-ink-soft"
                 }`}
                 onClick={() => setMobileOpen(false)}
               >
@@ -293,8 +269,7 @@ export default function Header() {
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="block text-center px-4 py-3 text-white text-sm font-bold rounded-xl"
-                style={{ background: "linear-gradient(135deg, #1d4ed8, #1e40af)" }}
+                className="block text-center px-4 py-3 bg-accent hover:bg-accent-dark text-ivory text-sm font-bold rounded-xl transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 Get in Touch

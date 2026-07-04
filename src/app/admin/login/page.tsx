@@ -35,8 +35,8 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-navy flex items-center justify-center p-4">
       <div className="bg-charcoal rounded-2xl p-8 w-full max-w-md shadow-2xl border border-slate-700">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-accent/10 mb-4">
-            <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4" style={{ background: "rgba(176,141,87,0.12)", border: "1px solid rgba(176,141,87,0.25)" }}>
+            <svg className="w-7 h-7" style={{ color: "#b08d57" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
@@ -84,7 +84,8 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors disabled:opacity-60 mt-2"
+            className="w-full py-3 text-ivory font-semibold rounded-lg transition-colors disabled:opacity-60 mt-2"
+            style={{ background: "#b08d57" }}
           >
             {loading ? "Signing in…" : "Sign In"}
           </button>
