@@ -8,80 +8,52 @@ export const metadata: Metadata = {
   description: "Meet the team behind NAT Technologies — technical experts in IT infrastructure, security systems, smart home automation, and fuel management solutions.",
 };
 
-const team = [
-  {
-    initials: "NA",
-    role: "Founder & CEO",
-    desc: "Leads NAT Technologies with a vision for integrated technology delivery. Brings deep experience across IT infrastructure, security systems, and operational technology deployments.",
-    expertise: ["Business Strategy", "IT Infrastructure", "Solution Architecture"],
-    color: "#1d4ed8",
-  },
-  {
-    initials: "TO",
-    role: "Technical Operations Lead",
-    desc: "Oversees all technical delivery, project coordination, and quality assurance across NAT's service areas. Ensures every project meets the highest standards of performance and reliability.",
-    expertise: ["Project Management", "Technical Delivery", "Quality Assurance"],
-    color: "#22c55e",
-  },
-  {
-    initials: "IS",
-    role: "Infrastructure Specialist",
-    desc: "Designs and deploys enterprise IT and IP infrastructure — from structured cabling and network architecture to cloud solutions, managed services, and PoE systems.",
-    expertise: ["Network Design", "Cloud Architecture", "Structured Cabling"],
-    color: "#3b82f6",
-  },
-  {
-    initials: "SS",
-    role: "Security Systems Specialist",
-    desc: "Delivers comprehensive security solutions including CCTV, access control, network security, and intrusion detection. Specialises in multi-layer security architecture for complex environments.",
-    expertise: ["CCTV & Surveillance", "Access Control", "Network Security"],
-    color: "#8b5cf6",
-  },
-  {
-    initials: "AS",
-    role: "Automation Specialist",
-    desc: "Designs and programs intelligent smart home and building automation systems — covering lighting, climate, security, shading, and integrated IoT environments.",
-    expertise: ["Smart Home Automation", "IoT Integration", "Building Control"],
-    color: "#06b6d4",
-  },
-  {
-    initials: "SM",
-    role: "Support & Maintenance Coordinator",
-    desc: "Manages ongoing client support, maintenance schedules, and system monitoring — ensuring all deployed systems continue to perform at their best throughout their lifecycle.",
-    expertise: ["Client Support", "System Monitoring", "Preventive Maintenance"],
-    color: "#f97316",
-  },
-];
+const memberColors = ["#1d4ed8", "#22c55e", "#3b82f6", "#8b5cf6", "#06b6d4", "#f97316"];
+const stepColors = ["#1d4ed8", "#3b82f6", "#22c55e", "#4ade80"];
 
-const howWeWork = [
-  {
-    step: "01",
-    title: "Understand the Client Environment",
-    desc: "We start by listening. Our team conducts a thorough assessment of your environment, infrastructure, challenges, and goals — before recommending any solution.",
-    color: "#1d4ed8",
-  },
-  {
-    step: "02",
-    title: "Design the Right Solution",
-    desc: "Our specialists design a tailored solution architecture — selecting the right technologies, vendors, and approaches to meet your specific requirements, timeline, and budget.",
-    color: "#3b82f6",
-  },
-  {
-    step: "03",
-    title: "Deliver and Integrate",
-    desc: "Our engineers install, configure, and integrate every component with precision — ensuring systems work together seamlessly from day one.",
-    color: "#22c55e",
-  },
-  {
-    step: "04",
-    title: "Support, Monitor, and Improve",
-    desc: "We remain your technology partner after deployment — providing ongoing monitoring, proactive maintenance, responsive support, and continuous optimisation.",
-    color: "#4ade80",
-  },
-];
+function initials(name: string) {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
 
 export default async function TeamPage() {
   const c = await getPageContent("team");
+
+  const members = [1, 2, 3, 4, 5, 6].map((n, i) => ({
+    name: field(c, `member${n}_name`, "Team Member"),
+    role: field(c, `member${n}_role`, ["Founder & CEO", "Technical Operations Lead", "Infrastructure Specialist", "Security Systems Specialist", "Automation Specialist", "Support & Maintenance Coordinator"][i]),
+    desc: field(c, `member${n}_desc`, [
+      "Leads NAT Technologies with a vision for integrated technology delivery. Brings deep experience across IT infrastructure, security systems, and operational technology deployments.",
+      "Oversees all technical delivery, project coordination, and quality assurance across NAT's service areas. Ensures every project meets the highest standards of performance and reliability.",
+      "Designs and deploys enterprise IT and IP infrastructure — from structured cabling and network architecture to cloud solutions, managed services, and PoE systems.",
+      "Delivers comprehensive security solutions including CCTV, access control, network security, and intrusion detection. Specialises in multi-layer security architecture for complex environments.",
+      "Designs and programs intelligent smart home and building automation systems — covering lighting, climate, security, shading, and integrated IoT environments.",
+      "Manages ongoing client support, maintenance schedules, and system monitoring — ensuring all deployed systems continue to perform at their best throughout their lifecycle.",
+    ][i]),
+    expertise: field(c, `member${n}_expertise`, [
+      "Business Strategy, IT Infrastructure, Solution Architecture",
+      "Project Management, Technical Delivery, Quality Assurance",
+      "Network Design, Cloud Architecture, Structured Cabling",
+      "CCTV & Surveillance, Access Control, Network Security",
+      "Smart Home Automation, IoT Integration, Building Control",
+      "Client Support, System Monitoring, Preventive Maintenance",
+    ][i]).split(",").map((s: string) => s.trim()).filter(Boolean),
+    color: memberColors[i],
+  }));
+
+  const steps = [1, 2, 3, 4].map((n, i) => ({
+    step: `0${n}`,
+    title: field(c, `step${n}_title`, ["Understand the Client Environment", "Design the Right Solution", "Deliver and Integrate", "Support, Monitor, and Improve"][i]),
+    desc: field(c, `step${n}_desc`, [
+      "We start by listening. Our team conducts a thorough assessment of your environment, infrastructure, challenges, and goals — before recommending any solution.",
+      "Our specialists design a tailored solution architecture — selecting the right technologies, vendors, and approaches to meet your specific requirements, timeline, and budget.",
+      "Our engineers install, configure, and integrate every component with precision — ensuring systems work together seamlessly from day one.",
+      "We remain your technology partner after deployment — providing ongoing monitoring, proactive maintenance, responsive support, and continuous optimisation.",
+    ][i]),
+    color: stepColors[i],
+  }));
 
   return (
     <>
@@ -130,7 +102,7 @@ export default async function TeamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {team.map((member) => (
+            {members.map((member) => (
               <div
                 key={member.role}
                 className="rounded-2xl overflow-hidden transition-all hover:-translate-y-1 group"
@@ -146,7 +118,7 @@ export default async function TeamPage() {
                     className="w-24 h-24 rounded-full flex items-center justify-center font-black text-3xl relative z-10"
                     style={{ background: `${member.color}25`, color: member.color, border: `2px solid ${member.color}40` }}
                   >
-                    {member.initials}
+                    {initials(member.name)}
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-16" style={{ background: "linear-gradient(transparent, rgba(255,255,255,0.025))" }} />
                 </div>
@@ -154,7 +126,7 @@ export default async function TeamPage() {
                 {/* Content */}
                 <div className="p-6">
                   <div className="mb-1">
-                    <p className="text-white font-bold text-lg tracking-tight">Team Member</p>
+                    <p className="text-white font-bold text-lg tracking-tight">{member.name}</p>
                     <p className="text-xs font-bold uppercase tracking-wider mt-0.5" style={{ color: member.color }}>
                       {member.role}
                     </p>
@@ -208,9 +180,9 @@ export default async function TeamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {howWeWork.map((s, i) => (
+            {steps.map((s, i) => (
               <div key={s.step} className="relative rounded-2xl p-7" style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.07)" }}>
-                {i < howWeWork.length - 1 && (
+                {i < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-10 -right-3 z-10">
                     <svg className="w-6 h-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -596,17 +596,133 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         defaultValue:
           "Each team member brings focused expertise to their technology domain — ensuring every client project receives specialist-level attention.",
       },
+
+      // ── Team Members ──────────────────────────────────────
+      member1_name: { label: "Member 1 — Name", type: "text", defaultValue: "Team Member" },
+      member1_role: { label: "Member 1 — Role / Title", type: "text", defaultValue: "Founder & CEO" },
+      member1_desc: {
+        label: "Member 1 — Bio",
+        type: "textarea",
+        defaultValue:
+          "Leads NAT Technologies with a vision for integrated technology delivery. Brings deep experience across IT infrastructure, security systems, and operational technology deployments.",
+      },
+      member1_expertise: {
+        label: "Member 1 — Expertise Tags (comma-separated)",
+        type: "text",
+        defaultValue: "Business Strategy, IT Infrastructure, Solution Architecture",
+      },
+
+      member2_name: { label: "Member 2 — Name", type: "text", defaultValue: "Team Member" },
+      member2_role: { label: "Member 2 — Role / Title", type: "text", defaultValue: "Technical Operations Lead" },
+      member2_desc: {
+        label: "Member 2 — Bio",
+        type: "textarea",
+        defaultValue:
+          "Oversees all technical delivery, project coordination, and quality assurance across NAT's service areas. Ensures every project meets the highest standards of performance and reliability.",
+      },
+      member2_expertise: {
+        label: "Member 2 — Expertise Tags (comma-separated)",
+        type: "text",
+        defaultValue: "Project Management, Technical Delivery, Quality Assurance",
+      },
+
+      member3_name: { label: "Member 3 — Name", type: "text", defaultValue: "Team Member" },
+      member3_role: { label: "Member 3 — Role / Title", type: "text", defaultValue: "Infrastructure Specialist" },
+      member3_desc: {
+        label: "Member 3 — Bio",
+        type: "textarea",
+        defaultValue:
+          "Designs and deploys enterprise IT and IP infrastructure — from structured cabling and network architecture to cloud solutions, managed services, and PoE systems.",
+      },
+      member3_expertise: {
+        label: "Member 3 — Expertise Tags (comma-separated)",
+        type: "text",
+        defaultValue: "Network Design, Cloud Architecture, Structured Cabling",
+      },
+
+      member4_name: { label: "Member 4 — Name", type: "text", defaultValue: "Team Member" },
+      member4_role: { label: "Member 4 — Role / Title", type: "text", defaultValue: "Security Systems Specialist" },
+      member4_desc: {
+        label: "Member 4 — Bio",
+        type: "textarea",
+        defaultValue:
+          "Delivers comprehensive security solutions including CCTV, access control, network security, and intrusion detection. Specialises in multi-layer security architecture for complex environments.",
+      },
+      member4_expertise: {
+        label: "Member 4 — Expertise Tags (comma-separated)",
+        type: "text",
+        defaultValue: "CCTV & Surveillance, Access Control, Network Security",
+      },
+
+      member5_name: { label: "Member 5 — Name", type: "text", defaultValue: "Team Member" },
+      member5_role: { label: "Member 5 — Role / Title", type: "text", defaultValue: "Automation Specialist" },
+      member5_desc: {
+        label: "Member 5 — Bio",
+        type: "textarea",
+        defaultValue:
+          "Designs and programs intelligent smart home and building automation systems — covering lighting, climate, security, shading, and integrated IoT environments.",
+      },
+      member5_expertise: {
+        label: "Member 5 — Expertise Tags (comma-separated)",
+        type: "text",
+        defaultValue: "Smart Home Automation, IoT Integration, Building Control",
+      },
+
+      member6_name: { label: "Member 6 — Name", type: "text", defaultValue: "Team Member" },
+      member6_role: { label: "Member 6 — Role / Title", type: "text", defaultValue: "Support & Maintenance Coordinator" },
+      member6_desc: {
+        label: "Member 6 — Bio",
+        type: "textarea",
+        defaultValue:
+          "Manages ongoing client support, maintenance schedules, and system monitoring — ensuring all deployed systems continue to perform at their best throughout their lifecycle.",
+      },
+      member6_expertise: {
+        label: "Member 6 — Expertise Tags (comma-separated)",
+        type: "text",
+        defaultValue: "Client Support, System Monitoring, Preventive Maintenance",
+      },
+
+      // ── How We Work steps ─────────────────────────────────
       how_we_work_title: {
-        label: "How We Work — Title",
+        label: "How We Work — Section Title",
         type: "text",
         defaultValue: "How We Work",
       },
       how_we_work_subtitle: {
-        label: "How We Work — Subtitle",
+        label: "How We Work — Section Subtitle",
         type: "textarea",
         defaultValue:
           "A structured, client-focused process that delivers the right technology solution — every time.",
       },
+      step1_title: { label: "Step 1 — Title", type: "text", defaultValue: "Understand the Client Environment" },
+      step1_desc: {
+        label: "Step 1 — Description",
+        type: "textarea",
+        defaultValue:
+          "We start by listening. Our team conducts a thorough assessment of your environment, infrastructure, challenges, and goals — before recommending any solution.",
+      },
+      step2_title: { label: "Step 2 — Title", type: "text", defaultValue: "Design the Right Solution" },
+      step2_desc: {
+        label: "Step 2 — Description",
+        type: "textarea",
+        defaultValue:
+          "Our specialists design a tailored solution architecture — selecting the right technologies, vendors, and approaches to meet your specific requirements, timeline, and budget.",
+      },
+      step3_title: { label: "Step 3 — Title", type: "text", defaultValue: "Deliver and Integrate" },
+      step3_desc: {
+        label: "Step 3 — Description",
+        type: "textarea",
+        defaultValue:
+          "Our engineers install, configure, and integrate every component with precision — ensuring systems work together seamlessly from day one.",
+      },
+      step4_title: { label: "Step 4 — Title", type: "text", defaultValue: "Support, Monitor, and Improve" },
+      step4_desc: {
+        label: "Step 4 — Description",
+        type: "textarea",
+        defaultValue:
+          "We remain your technology partner after deployment — providing ongoing monitoring, proactive maintenance, responsive support, and continuous optimisation.",
+      },
+
       cta_headline: {
         label: "CTA — Headline",
         type: "text",
