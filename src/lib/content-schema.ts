@@ -1,4 +1,4 @@
-export type FieldType = "text" | "textarea";
+export type FieldType = "text" | "textarea" | "image";
 
 export interface ContentField {
   label: string;
@@ -598,6 +598,7 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
       },
 
       // ── Team Members ──────────────────────────────────────
+      member1_photo: { label: "Member 1 — Photo", type: "image", defaultValue: "" },
       member1_name: { label: "Member 1 — Name", type: "text", defaultValue: "Team Member" },
       member1_role: { label: "Member 1 — Role / Title", type: "text", defaultValue: "Founder & CEO" },
       member1_desc: {
@@ -612,6 +613,7 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         defaultValue: "Business Strategy, IT Infrastructure, Solution Architecture",
       },
 
+      member2_photo: { label: "Member 2 — Photo", type: "image", defaultValue: "" },
       member2_name: { label: "Member 2 — Name", type: "text", defaultValue: "Team Member" },
       member2_role: { label: "Member 2 — Role / Title", type: "text", defaultValue: "Technical Operations Lead" },
       member2_desc: {
@@ -626,6 +628,7 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         defaultValue: "Project Management, Technical Delivery, Quality Assurance",
       },
 
+      member3_photo: { label: "Member 3 — Photo", type: "image", defaultValue: "" },
       member3_name: { label: "Member 3 — Name", type: "text", defaultValue: "Team Member" },
       member3_role: { label: "Member 3 — Role / Title", type: "text", defaultValue: "Infrastructure Specialist" },
       member3_desc: {
@@ -640,6 +643,7 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         defaultValue: "Network Design, Cloud Architecture, Structured Cabling",
       },
 
+      member4_photo: { label: "Member 4 — Photo", type: "image", defaultValue: "" },
       member4_name: { label: "Member 4 — Name", type: "text", defaultValue: "Team Member" },
       member4_role: { label: "Member 4 — Role / Title", type: "text", defaultValue: "Security Systems Specialist" },
       member4_desc: {
@@ -654,6 +658,7 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         defaultValue: "CCTV & Surveillance, Access Control, Network Security",
       },
 
+      member5_photo: { label: "Member 5 — Photo", type: "image", defaultValue: "" },
       member5_name: { label: "Member 5 — Name", type: "text", defaultValue: "Team Member" },
       member5_role: { label: "Member 5 — Role / Title", type: "text", defaultValue: "Automation Specialist" },
       member5_desc: {
@@ -668,6 +673,7 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         defaultValue: "Smart Home Automation, IoT Integration, Building Control",
       },
 
+      member6_photo: { label: "Member 6 — Photo", type: "image", defaultValue: "" },
       member6_name: { label: "Member 6 — Name", type: "text", defaultValue: "Team Member" },
       member6_role: { label: "Member 6 — Role / Title", type: "text", defaultValue: "Support & Maintenance Coordinator" },
       member6_desc: {

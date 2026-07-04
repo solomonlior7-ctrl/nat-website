@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import CTASection from "@/components/CTASection";
 import { getPageContent, field } from "@/lib/get-content";
 
@@ -22,6 +23,7 @@ export default async function TeamPage() {
   const c = await getPageContent("team");
 
   const members = [1, 2, 3, 4, 5, 6].map((n, i) => ({
+    photo: field(c, `member${n}_photo`, ""),
     name: field(c, `member${n}_name`, "Team Member"),
     role: field(c, `member${n}_role`, ["Founder & CEO", "Technical Operations Lead", "Infrastructure Specialist", "Security Systems Specialist", "Automation Specialist", "Support & Maintenance Coordinator"][i]),
     desc: field(c, `member${n}_desc`, [
@@ -108,19 +110,31 @@ export default async function TeamPage() {
                 className="rounded-2xl overflow-hidden transition-all hover:-translate-y-1 group"
                 style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.07)" }}
               >
-                {/* Photo placeholder */}
+                {/* Photo / placeholder */}
                 <div
                   className="h-52 flex items-center justify-center relative overflow-hidden"
                   style={{ background: `linear-gradient(135deg, ${member.color}20, ${member.color}08)` }}
                 >
-                  <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
-                  <div
-                    className="w-24 h-24 rounded-full flex items-center justify-center font-black text-3xl relative z-10"
-                    style={{ background: `${member.color}25`, color: member.color, border: `2px solid ${member.color}40` }}
-                  >
-                    {initials(member.name)}
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 h-16" style={{ background: "linear-gradient(transparent, rgba(255,255,255,0.025))" }} />
+                  {member.photo ? (
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  ) : (
+                    <>
+                      <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                      <div
+                        className="w-24 h-24 rounded-full flex items-center justify-center font-black text-3xl relative z-10"
+                        style={{ background: `${member.color}25`, color: member.color, border: `2px solid ${member.color}40` }}
+                      >
+                        {initials(member.name)}
+                      </div>
+                    </>
+                  )}
+                  <div className="absolute bottom-0 left-0 right-0 h-16 z-10" style={{ background: "linear-gradient(transparent, rgba(11,15,25,0.6))" }} />
                 </div>
 
                 {/* Content */}
