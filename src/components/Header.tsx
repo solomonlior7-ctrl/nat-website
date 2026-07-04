@@ -21,7 +21,6 @@ const companyLinks = [
 ];
 
 const navLinks = [
-  { name: "Home", href: "/" },
   { name: "Gallery", href: "/gallery" },
   { name: "Profile", href: "/profile" },
   { name: "Contact Us", href: "/contact" },
