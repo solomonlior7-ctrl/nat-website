@@ -13,9 +13,15 @@ const services = [
   { name: "Fuel Management Systems", href: "/services/fuel-management" },
 ];
 
+const companyLinks = [
+  { name: "About Us", href: "/about" },
+  { name: "Meet Our Team", href: "/team" },
+  { name: "Our Clients", href: "/clients" },
+  { name: "Affiliate Companies", href: "/affiliates" },
+];
+
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
   { name: "Gallery", href: "/gallery" },
   { name: "Profile", href: "/profile" },
   { name: "Contact Us", href: "/contact" },
@@ -24,7 +30,9 @@ const navLinks = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
@@ -51,25 +59,52 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-0.5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative px-4 py-2 text-sm font-semibold rounded-lg transition-all ${
-                  isActive(link.href)
+            <Link
+              href="/"
+              className={`relative px-4 py-2 text-sm font-semibold rounded-lg transition-all ${
+                isActive("/") ? "text-white" : "text-slate-400 hover:text-white"
+              }`}
+            >
+              Home
+              {isActive("/") && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full" style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }} />
+              )}
+            </Link>
+
+            {/* Company Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setCompanyOpen(true)}
+              onMouseLeave={() => setCompanyOpen(false)}
+            >
+              <button
+                className={`relative px-4 py-2 text-sm font-semibold rounded-lg flex items-center gap-1.5 transition-all ${
+                  ["/about", "/team", "/clients", "/affiliates"].some((p) => pathname.startsWith(p))
                     ? "text-white"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
-                {link.name}
-                {isActive(link.href) && (
-                  <span
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
-                    style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }}
-                  />
+                Company
+                <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${companyOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+                {["/about", "/team", "/clients", "/affiliates"].some((p) => pathname.startsWith(p)) && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full" style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }} />
                 )}
-              </Link>
-            ))}
+              </button>
+              {companyOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-2 z-50">
+                  <div className="rounded-xl shadow-2xl py-2 overflow-hidden" style={{ background: "rgba(11,15,25,0.95)", backdropFilter: "blur(24px)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                    {companyLinks.map((s) => (
+                      <Link key={s.href} href={s.href} className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green shrink-0" />
+                        {s.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Services Dropdown */}
             <div
@@ -124,6 +159,26 @@ export default function Header() {
               )}
             </div>
 
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative px-4 py-2 text-sm font-semibold rounded-lg transition-all ${
+                  isActive(link.href)
+                    ? "text-white"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                {link.name}
+                {isActive(link.href) && (
+                  <span
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
+                    style={{ background: "linear-gradient(90deg, #1d4ed8, #22c55e)" }}
+                  />
+                )}
+              </Link>
+            ))}
+
             <Link
               href="/contact"
               className="ml-3 px-5 py-2.5 text-white text-sm font-bold rounded-xl transition-all hover:-translate-y-0.5"
@@ -164,18 +219,37 @@ export default function Header() {
           }}
         >
           <div className="px-4 py-4 space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`block px-4 py-2.5 text-sm font-semibold rounded-lg ${
-                  isActive(link.href) ? "text-white bg-white/5" : "text-slate-400"
-                }`}
-                onClick={() => setMobileOpen(false)}
+            <Link
+              href="/"
+              className={`block px-4 py-2.5 text-sm font-semibold rounded-lg ${isActive("/") ? "text-white bg-white/5" : "text-slate-400"}`}
+              onClick={() => setMobileOpen(false)}
+            >
+              Home
+            </Link>
+
+            {/* Company mobile accordion */}
+            <div>
+              <button
+                className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-semibold text-slate-400 rounded-lg"
+                onClick={() => setMobileCompanyOpen(!mobileCompanyOpen)}
               >
-                {link.name}
-              </Link>
-            ))}
+                Company
+                <svg className={`w-4 h-4 transition-transform ${mobileCompanyOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {mobileCompanyOpen && (
+                <div className="pl-4 space-y-1 py-2">
+                  {companyLinks.map((s) => (
+                    <Link key={s.href} href={s.href} className="block px-4 py-2 text-sm text-slate-400 hover:text-green" onClick={() => setMobileOpen(false)}>
+                      {s.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Services mobile accordion */}
             <div>
               <button
                 className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-semibold text-slate-400 rounded-lg"
@@ -204,6 +278,19 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`block px-4 py-2.5 text-sm font-semibold rounded-lg ${
+                  isActive(link.href) ? "text-white bg-white/5" : "text-slate-400"
+                }`}
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
             <div className="pt-2">
               <Link
                 href="/contact"

@@ -4,6 +4,9 @@ import Logo from "@/components/Logo";
 const companyLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
+  { name: "Meet Our Team", href: "/team" },
+  { name: "Our Clients", href: "/clients" },
+  { name: "Affiliate Companies", href: "/affiliates" },
   { name: "Profile", href: "/profile" },
   { name: "Gallery", href: "/gallery" },
   { name: "Contact Us", href: "/contact" },

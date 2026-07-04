@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ParticleBackground from "@/components/ParticleBackground";
 import CTASection from "@/components/CTASection";
+import TechCarousel from "@/components/TechCarousel";
 import { getPageContent, field } from "@/lib/get-content";
 
 const reasons = [
@@ -120,6 +121,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ─── TECH CAROUSEL ─────────────────────────────── */}
+      <TechCarousel />
 
       {/* ─── SERVICES — BENTO GRID ──────────────────────
           Desktop (3 cols):
