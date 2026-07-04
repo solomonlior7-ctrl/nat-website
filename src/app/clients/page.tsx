@@ -179,8 +179,12 @@ export default async function ClientsPage() {
                   </div>
                 );
 
-                return logo.website_url ? (
-                  <a key={logo.id} href={logo.website_url} target="_blank" rel="noopener noreferrer">
+                const safeUrl = logo.website_url
+                  ? logo.website_url.match(/^https?:\/\//) ? logo.website_url : `https://${logo.website_url}`
+                  : null;
+
+                return safeUrl ? (
+                  <a key={logo.id} href={safeUrl} target="_blank" rel="noopener noreferrer">
                     {card}
                   </a>
                 ) : (
