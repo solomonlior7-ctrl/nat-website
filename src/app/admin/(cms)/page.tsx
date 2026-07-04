@@ -42,6 +42,19 @@ export default function AdminDashboard() {
             Upload and manage project photos
           </p>
         </Link>
+
+        <Link
+          href="/admin/client-logos"
+          className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 hover:border-accent group"
+        >
+          <div className="text-3xl mb-3">🏢</div>
+          <h2 className="font-semibold text-slate-800 group-hover:text-accent transition-colors">
+            Client Logos
+          </h2>
+          <p className="text-slate-400 text-sm mt-1">
+            Upload and manage client logos on the Clients page
+          </p>
+        </Link>
       </div>
     </div>
   );

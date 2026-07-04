@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import CTASection from "@/components/CTASection";
-import { getPageContent, field } from "@/lib/get-content";
+import { getPageContent, field, getSiteId } from "@/lib/get-content";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Our Clients | NAT Technologies",
@@ -71,20 +73,6 @@ const categories = [
   },
 ];
 
-const logoPlaceholders = [
-  { initials: "GC", name: "Global Construction", color: "#f97316" },
-  { initials: "RE", name: "Real Estate Group", color: "#22c55e" },
-  { initials: "FL", name: "Fleet Logistics", color: "#f59e0b" },
-  { initials: "CP", name: "Commercial Properties", color: "#3b82f6" },
-  { initials: "SM", name: "Smart Manufacture", color: "#8b5cf6" },
-  { initials: "OF", name: "Oil & Fuel Corp", color: "#f97316" },
-  { initials: "TG", name: "Tech Group", color: "#06b6d4" },
-  { initials: "HL", name: "Homeland Security", color: "#22c55e" },
-  { initials: "BC", name: "BuildCo Ltd", color: "#3b82f6" },
-  { initials: "RP", name: "Retail Partners", color: "#f59e0b" },
-  { initials: "AG", name: "Agri Solutions", color: "#22c55e" },
-  { initials: "LX", name: "Luxury Homes", color: "#8b5cf6" },
-];
 
 const testimonials = [
   {
@@ -108,7 +96,18 @@ const testimonials = [
 ];
 
 export default async function ClientsPage() {
-  const c = await getPageContent("clients");
+  const [c, siteId] = await Promise.all([getPageContent("clients"), getSiteId()]);
+
+  const supabase = await createClient();
+  const { data: clientLogos } = siteId
+    ? await supabase
+        .from("client_logos")
+        .select("id, name, website_url, sector, logo_url")
+        .eq("site_id", siteId)
+        .order("sort_order", { ascending: true })
+    : { data: [] };
+
+  const logos = clientLogos ?? [];
 
   const stats = [
     { value: field(c, "stat1_value", "200+"), label: field(c, "stat1_label", "Projects Delivered") },
@@ -163,24 +162,50 @@ export default async function ClientsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4">
-            {logoPlaceholders.map((logo) => (
-              <div
-                key={logo.initials}
-                className="aspect-[3/2] rounded-xl flex flex-col items-center justify-center gap-1.5 transition-all hover:-translate-y-1"
-                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
-                title={logo.name}
-              >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm"
-                  style={{ background: `${logo.color}18`, color: logo.color, border: `1px solid ${logo.color}30` }}
-                >
-                  {logo.initials}
-                </div>
-                <span className="text-slate-500 text-[10px] font-medium text-center px-2 leading-tight">Client Logo</span>
-              </div>
-            ))}
-          </div>
+          {logos.length === 0 ? (
+            <div
+              className="rounded-2xl p-10 text-center"
+              style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}
+            >
+              <p className="text-slate-500 text-sm font-medium">
+                {field(c, "logo_grid_note", "Client logos to be added. Reach out to find out how we can support your organisation.")}
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+              {logos.map((logo) => {
+                const card = (
+                  <div
+                    className="aspect-[3/2] rounded-xl flex flex-col items-center justify-center gap-2 p-4 transition-all hover:-translate-y-1 group"
+                    style={{ background: "rgba(255,255,255,0.035)", border: "1px solid rgba(255,255,255,0.07)" }}
+                    title={logo.name}
+                  >
+                    <div className="flex-1 flex items-center justify-center w-full">
+                      <Image
+                        src={logo.logo_url}
+                        alt={logo.name}
+                        width={120}
+                        height={60}
+                        className="max-h-12 max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                        style={{ filter: "brightness(0) invert(1)" }}
+                      />
+                    </div>
+                    <span className="text-slate-500 text-[10px] font-medium text-center leading-tight group-hover:text-slate-300 transition-colors">
+                      {logo.name}
+                    </span>
+                  </div>
+                );
+
+                return logo.website_url ? (
+                  <a key={logo.id} href={logo.website_url} target="_blank" rel="noopener noreferrer">
+                    {card}
+                  </a>
+                ) : (
+                  <div key={logo.id}>{card}</div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 
