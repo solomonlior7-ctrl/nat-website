@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
+import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "Our Clients | NAT Technologies",
@@ -106,7 +107,16 @@ const testimonials = [
   },
 ];
 
-export default function ClientsPage() {
+export default async function ClientsPage() {
+  const c = await getPageContent("clients");
+
+  const stats = [
+    { value: field(c, "stat1_value", "200+"), label: field(c, "stat1_label", "Projects Delivered") },
+    { value: field(c, "stat2_value", "6"),    label: field(c, "stat2_label", "Industry Sectors") },
+    { value: field(c, "stat3_value", "100%"), label: field(c, "stat3_label", "Commitment to Quality") },
+    { value: field(c, "stat4_value", "24/7"), label: field(c, "stat4_label", "Support Available") },
+  ];
+
   return (
     <>
       {/* Hero */}
@@ -118,10 +128,10 @@ export default function ClientsPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-4">Our Clients</p>
           <h1 className="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight max-w-3xl">
-            Trusted by businesses that need reliable technology
+            {field(c, "hero_headline", "Trusted by businesses that need reliable technology")}
           </h1>
           <p className="text-slate-400 text-lg leading-relaxed max-w-2xl font-medium">
-            From enterprise IT infrastructure and advanced security to smart home automation, PoE networks, and fuel management — NAT Technologies serves organisations that cannot afford to compromise on technology quality, reliability, or security.
+            {field(c, "hero_copy", "From enterprise IT infrastructure and advanced security to smart home automation, PoE networks, and fuel management — NAT Technologies serves organisations that cannot afford to compromise on technology quality, reliability, or security.")}
           </p>
         </div>
       </section>
@@ -130,12 +140,7 @@ export default function ClientsPage() {
       <div style={{ background: "rgba(255,255,255,0.02)", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-            {[
-              { value: "200+", label: "Projects Delivered" },
-              { value: "6", label: "Industry Sectors" },
-              { value: "100%", label: "Commitment to Quality" },
-              { value: "24/7", label: "Support Available" },
-            ].map((s) => (
+            {stats.map((s) => (
               <div key={s.label}>
                 <div className="text-3xl font-extrabold gradient-text mb-1">{s.value}</div>
                 <div className="text-slate-400 text-sm font-medium">{s.label}</div>
@@ -151,10 +156,10 @@ export default function ClientsPage() {
           <div className="text-center mb-14">
             <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-3">Our Clients</p>
             <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-4 tracking-tight">
-              Organisations That Trust NAT Technologies
+              {field(c, "logo_grid_title", "Organisations That Trust NAT Technologies")}
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto font-medium">
-              Client logos to be added. Reach out to find out how we can support your organisation.
+              {field(c, "logo_grid_note", "Client logos to be added. Reach out to find out how we can support your organisation.")}
             </p>
           </div>
 
@@ -185,10 +190,10 @@ export default function ClientsPage() {
           <div className="text-center mb-14">
             <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-3">Sectors We Serve</p>
             <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-4 tracking-tight">
-              Industries We Work With
+              {field(c, "sectors_title", "Industries We Work With")}
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto font-medium">
-              We bring integrated technology solutions to organisations across six primary industry sectors.
+              {field(c, "sectors_subtitle", "We bring integrated technology solutions to organisations across six primary industry sectors.")}
             </p>
           </div>
 
@@ -259,8 +264,8 @@ export default function ClientsPage() {
       </section>
 
       <CTASection
-        headline="Want to become our next success story?"
-        subtext="Tell us about your technology challenges and let us design a solution that delivers real results."
+        headline={field(c, "cta_headline", "Want to become our next success story?")}
+        subtext={field(c, "cta_subtext", "Tell us about your technology challenges and let us design a solution that delivers real results.")}
         primaryCta={{ label: "Start a Conversation", href: "/contact" }}
         secondaryCta={{ label: "View Our Services", href: "/services" }}
       />

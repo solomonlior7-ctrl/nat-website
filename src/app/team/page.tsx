@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
+import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "Meet Our Team | NAT Technologies",
@@ -79,7 +80,9 @@ const howWeWork = [
   },
 ];
 
-export default function TeamPage() {
+export default async function TeamPage() {
+  const c = await getPageContent("team");
+
   return (
     <>
       {/* Hero */}
@@ -91,10 +94,10 @@ export default function TeamPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-4">Our People</p>
           <h1 className="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight max-w-3xl">
-            Meet the people behind NAT Technologies
+            {field(c, "hero_headline", "Meet the people behind NAT Technologies")}
           </h1>
           <p className="text-slate-400 text-lg leading-relaxed max-w-2xl font-medium">
-            Our team combines deep technical expertise with a client-first mindset. Every project — from design to delivery to ongoing support — is handled by specialists who take ownership of outcomes, not just tasks.
+            {field(c, "hero_copy", "Our team combines deep technical expertise with a client-first mindset. Every project — from design to delivery to ongoing support — is handled by specialists who take ownership of outcomes, not just tasks.")}
           </p>
         </div>
       </section>
@@ -119,10 +122,10 @@ export default function TeamPage() {
           <div className="text-center mb-14">
             <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-3">The Team</p>
             <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-4 tracking-tight">
-              Specialists Across Every Domain
+              {field(c, "team_section_title", "Specialists Across Every Domain")}
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto font-medium">
-              Each team member brings focused expertise to their technology domain — ensuring every client project receives specialist-level attention.
+              {field(c, "team_section_subtitle", "Each team member brings focused expertise to their technology domain — ensuring every client project receives specialist-level attention.")}
             </p>
           </div>
 
@@ -197,10 +200,10 @@ export default function TeamPage() {
           <div className="text-center mb-14">
             <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-3">Our Approach</p>
             <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-4 tracking-tight">
-              How We Work
+              {field(c, "how_we_work_title", "How We Work")}
             </h2>
             <p className="text-slate-400 max-w-lg mx-auto font-medium">
-              A structured, client-focused process that delivers the right technology solution — every time.
+              {field(c, "how_we_work_subtitle", "A structured, client-focused process that delivers the right technology solution — every time.")}
             </p>
           </div>
 
@@ -226,8 +229,8 @@ export default function TeamPage() {
       </section>
 
       <CTASection
-        headline="Work With a Team That Takes Ownership"
-        subtext="Our engineers don't just install technology — they design solutions, manage delivery, and support your systems for the long term."
+        headline={field(c, "cta_headline", "Work With a Team That Takes Ownership")}
+        subtext={field(c, "cta_subtext", "Our engineers don't just install technology — they design solutions, manage delivery, and support your systems for the long term.")}
         primaryCta={{ label: "Get in Touch", href: "/contact" }}
         secondaryCta={{ label: "Our Services", href: "/services" }}
       />

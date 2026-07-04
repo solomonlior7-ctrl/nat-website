@@ -446,6 +446,182 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
   },
 
   // ─────────────────────────────────────────────────────────
+  affiliates: {
+    title: "Affiliate Companies Page",
+    icon: "🤝",
+    fields: {
+      hero_headline: {
+        label: "Hero — Headline",
+        type: "text",
+        defaultValue: "Technology Partners We Trust",
+      },
+      hero_copy: {
+        label: "Hero — Copy",
+        type: "textarea",
+        defaultValue:
+          "NAT Technologies works with best-in-class technology manufacturers and solution providers. Our affiliate partnerships allow us to offer integrated, end-to-end solutions that our clients can rely on.",
+      },
+      looptag_description: {
+        label: "LoopTag — Description",
+        type: "textarea",
+        defaultValue:
+          "LoopTag is an advanced RFID-based refueling and fleet fuel-control system that gives organisations complete control over their fuel operations. It eliminates fuel theft, prevents unauthorised refueling and misfuelling, and provides fleet managers with accurate reporting and real-time visibility.",
+      },
+      looptag_relation: {
+        label: "LoopTag — How NAT Uses LoopTag",
+        type: "textarea",
+        defaultValue:
+          "NAT Technologies deploys LoopTag systems as part of our integrated fuel management service offering — combining intelligent dispensing hardware, RFID infrastructure, and centralised monitoring for comprehensive fuel control.",
+      },
+      switchbee_description: {
+        label: "SwitchBee — Description",
+        type: "textarea",
+        defaultValue:
+          "SwitchBee is a leading smart home and building automation platform that delivers full control over lighting, shutters, air conditioning, VRF systems, sensors, irrigation, sockets, and more — all through an intuitive mobile app. Designed for fast installation without major rewiring, SwitchBee fits new builds and retrofits alike.",
+      },
+      switchbee_relation: {
+        label: "SwitchBee — How NAT Uses SwitchBee",
+        type: "textarea",
+        defaultValue:
+          "NAT Technologies is an authorised SwitchBee integrator, delivering complete smart home and building automation projects — from system design and hardware supply to professional installation, configuration, and ongoing support.",
+      },
+      partner_cta_headline: {
+        label: "Partnership Enquiry — Headline",
+        type: "text",
+        defaultValue: "Interested in a Technology Partnership?",
+      },
+      partner_cta_text: {
+        label: "Partnership Enquiry — Text",
+        type: "textarea",
+        defaultValue:
+          "NAT Technologies is open to strategic partnerships with technology manufacturers and solution providers whose products complement our service areas.",
+      },
+      cta_headline: {
+        label: "CTA — Headline",
+        type: "text",
+        defaultValue: "Need a Fuel Control or Smart Home Solution?",
+      },
+      cta_subtext: {
+        label: "CTA — Sub-text",
+        type: "textarea",
+        defaultValue:
+          "Speak to our team about deploying LoopTag or SwitchBee technology for your business or property.",
+      },
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────
+  clients: {
+    title: "Our Clients Page",
+    icon: "🏢",
+    fields: {
+      hero_headline: {
+        label: "Hero — Headline",
+        type: "text",
+        defaultValue: "Trusted by businesses that need reliable technology",
+      },
+      hero_copy: {
+        label: "Hero — Copy",
+        type: "textarea",
+        defaultValue:
+          "From enterprise IT infrastructure and advanced security to smart home automation, PoE networks, and fuel management — NAT Technologies serves organisations that cannot afford to compromise on technology quality, reliability, or security.",
+      },
+      stat1_value: { label: "Stat 1 — Value", type: "text", defaultValue: "200+" },
+      stat1_label: { label: "Stat 1 — Label", type: "text", defaultValue: "Projects Delivered" },
+      stat2_value: { label: "Stat 2 — Value", type: "text", defaultValue: "6" },
+      stat2_label: { label: "Stat 2 — Label", type: "text", defaultValue: "Industry Sectors" },
+      stat3_value: { label: "Stat 3 — Value", type: "text", defaultValue: "100%" },
+      stat3_label: { label: "Stat 3 — Label", type: "text", defaultValue: "Commitment to Quality" },
+      stat4_value: { label: "Stat 4 — Value", type: "text", defaultValue: "24/7" },
+      stat4_label: { label: "Stat 4 — Label", type: "text", defaultValue: "Support Available" },
+      logo_grid_title: {
+        label: "Logo Grid — Title",
+        type: "text",
+        defaultValue: "Organisations That Trust NAT Technologies",
+      },
+      logo_grid_note: {
+        label: "Logo Grid — Note Text",
+        type: "text",
+        defaultValue: "Client logos to be added. Reach out to find out how we can support your organisation.",
+      },
+      sectors_title: {
+        label: "Sectors Section — Title",
+        type: "text",
+        defaultValue: "Industries We Work With",
+      },
+      sectors_subtitle: {
+        label: "Sectors Section — Subtitle",
+        type: "textarea",
+        defaultValue:
+          "We bring integrated technology solutions to organisations across six primary industry sectors.",
+      },
+      cta_headline: {
+        label: "CTA — Headline",
+        type: "text",
+        defaultValue: "Want to become our next success story?",
+      },
+      cta_subtext: {
+        label: "CTA — Sub-text",
+        type: "textarea",
+        defaultValue:
+          "Tell us about your technology challenges and let us design a solution that delivers real results.",
+      },
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────
+  team: {
+    title: "Meet Our Team Page",
+    icon: "👥",
+    fields: {
+      hero_headline: {
+        label: "Hero — Headline",
+        type: "text",
+        defaultValue: "Meet the people behind NAT Technologies",
+      },
+      hero_copy: {
+        label: "Hero — Copy",
+        type: "textarea",
+        defaultValue:
+          "Our team combines deep technical expertise with a client-first mindset. Every project — from design to delivery to ongoing support — is handled by specialists who take ownership of outcomes, not just tasks.",
+      },
+      team_section_title: {
+        label: "Team Grid — Title",
+        type: "text",
+        defaultValue: "Specialists Across Every Domain",
+      },
+      team_section_subtitle: {
+        label: "Team Grid — Subtitle",
+        type: "textarea",
+        defaultValue:
+          "Each team member brings focused expertise to their technology domain — ensuring every client project receives specialist-level attention.",
+      },
+      how_we_work_title: {
+        label: "How We Work — Title",
+        type: "text",
+        defaultValue: "How We Work",
+      },
+      how_we_work_subtitle: {
+        label: "How We Work — Subtitle",
+        type: "textarea",
+        defaultValue:
+          "A structured, client-focused process that delivers the right technology solution — every time.",
+      },
+      cta_headline: {
+        label: "CTA — Headline",
+        type: "text",
+        defaultValue: "Work With a Team That Takes Ownership",
+      },
+      cta_subtext: {
+        label: "CTA — Sub-text",
+        type: "textarea",
+        defaultValue:
+          "Our engineers don't just install technology — they design solutions, manage delivery, and support your systems for the long term.",
+      },
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────
   contact: {
     title: "Contact Page",
     icon: "📞",

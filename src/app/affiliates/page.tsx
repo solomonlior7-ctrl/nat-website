@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
+import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "Affiliate Companies | NAT Technologies",
@@ -80,7 +81,14 @@ const affiliates = [
   },
 ];
 
-export default function AffiliatesPage() {
+export default async function AffiliatesPage() {
+  const c = await getPageContent("affiliates");
+
+  const affiliatesWithContent = [
+    { ...affiliates[0], description: field(c, "looptag_description", affiliates[0].description), relation: field(c, "looptag_relation", affiliates[0].relation) },
+    { ...affiliates[1], description: field(c, "switchbee_description", affiliates[1].description), relation: field(c, "switchbee_relation", affiliates[1].relation) },
+  ];
+
   return (
     <>
       {/* Hero */}
@@ -98,10 +106,10 @@ export default function AffiliatesPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-4">Strategic Partners</p>
           <h1 className="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight max-w-3xl">
-            Technology Partners We Trust
+            {field(c, "hero_headline", "Technology Partners We Trust")}
           </h1>
           <p className="text-slate-400 text-lg leading-relaxed max-w-2xl font-medium">
-            NAT Technologies works with best-in-class technology manufacturers and solution providers. Our affiliate partnerships allow us to offer integrated, end-to-end solutions that our clients can rely on.
+            {field(c, "hero_copy", "NAT Technologies works with best-in-class technology manufacturers and solution providers. Our affiliate partnerships allow us to offer integrated, end-to-end solutions that our clients can rely on.")}
           </p>
         </div>
       </section>
@@ -127,7 +135,7 @@ export default function AffiliatesPage() {
       {/* Affiliate Cards */}
       <section className="py-24 lg:py-32" style={{ background: "#0b0f19" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {affiliates.map((a, idx) => (
+          {affiliatesWithContent.map((a, idx) => (
             <div
               key={a.id}
               className="rounded-2xl overflow-hidden"
@@ -231,9 +239,11 @@ export default function AffiliatesPage() {
       <section className="py-20" style={{ background: "#0f1624", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-green text-xs font-bold uppercase tracking-[0.18em] mb-4">Work With Us</p>
-          <h2 className="text-3xl font-extrabold text-white mb-4 tracking-tight">Interested in a Technology Partnership?</h2>
+          <h2 className="text-3xl font-extrabold text-white mb-4 tracking-tight">
+            {field(c, "partner_cta_headline", "Interested in a Technology Partnership?")}
+          </h2>
           <p className="text-slate-400 leading-relaxed mb-8 font-medium">
-            NAT Technologies is open to strategic partnerships with technology manufacturers and solution providers whose products complement our service areas.
+            {field(c, "partner_cta_text", "NAT Technologies is open to strategic partnerships with technology manufacturers and solution providers whose products complement our service areas.")}
           </p>
           <Link
             href="/contact"
@@ -249,8 +259,8 @@ export default function AffiliatesPage() {
       </section>
 
       <CTASection
-        headline="Need a Fuel Control or Smart Home Solution?"
-        subtext="Speak to our team about deploying LoopTag or SwitchBee technology for your business or property."
+        headline={field(c, "cta_headline", "Need a Fuel Control or Smart Home Solution?")}
+        subtext={field(c, "cta_subtext", "Speak to our team about deploying LoopTag or SwitchBee technology for your business or property.")}
         primaryCta={{ label: "Discuss Your Project", href: "/contact" }}
         secondaryCta={{ label: "View Our Services", href: "/services" }}
       />
