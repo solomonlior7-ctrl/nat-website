@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Hero from "@/components/Hero";
 import CTASection from "@/components/CTASection";
 import { getPageContent, field } from "@/lib/get-content";
@@ -89,22 +90,35 @@ export default async function ITInfrastructurePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-semibold text-ink mb-12 text-center tracking-tight">Our Service Offerings</h2>
           <div className="space-y-10">
-            {services.map((s, i) => (
-              <div
-                key={s.title}
-                className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-10 items-center`}
-              >
-                <div className="flex-1 bg-navy rounded-2xl aspect-video flex items-center justify-center">
-                  <svg className="w-20 h-20" style={{ color: "rgba(176,141,87,0.25)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
-                  </svg>
+            {services.map((s, i) => {
+              const imgUrl = field(c, `service_img_${i}`, "");
+              return (
+                <div
+                  key={s.title}
+                  className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-10 items-center`}
+                >
+                  <div className="flex-1 bg-navy rounded-2xl aspect-video overflow-hidden flex items-center justify-center">
+                    {imgUrl ? (
+                      <Image
+                        src={imgUrl}
+                        alt={s.title}
+                        width={640}
+                        height={360}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <svg className="w-20 h-20" style={{ color: "rgba(176,141,87,0.25)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+                      </svg>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-semibold text-ink mb-4 tracking-tight">{s.title}</h3>
+                    <p className="font-sans text-ink-soft leading-relaxed">{s.desc}</p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-ink mb-4 tracking-tight">{s.title}</h3>
-                  <p className="font-sans text-ink-soft leading-relaxed">{s.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

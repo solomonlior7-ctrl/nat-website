@@ -256,6 +256,11 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         defaultValue:
           "From structured cabling and network architecture to cloud migration, managed services, and security resilience — we design and deliver infrastructure that is secure, scalable, and future-ready.",
       },
+      service_img_0: { label: "Service Image — Cloud Solutions", type: "image", defaultValue: "" },
+      service_img_1: { label: "Service Image — Infrastructure Services", type: "image", defaultValue: "" },
+      service_img_2: { label: "Service Image — Connectivity Solutions", type: "image", defaultValue: "" },
+      service_img_3: { label: "Service Image — Managed Services", type: "image", defaultValue: "" },
+      service_img_4: { label: "Service Image — Security Resilience", type: "image", defaultValue: "" },
       cta_headline: {
         label: "CTA — Headline",
         type: "text",

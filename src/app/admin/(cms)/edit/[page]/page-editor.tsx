@@ -20,11 +20,13 @@ function ImageUploadField({
   label,
   value,
   onChange,
+  folder = "pages",
 }: {
   fieldKey: string;
   label: string;
   value: string;
   onChange: (url: string) => void;
+  folder?: string;
 }) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -47,7 +49,7 @@ function ImageUploadField({
     setUploading(true);
     const supabase = createClient();
     const ext = file.name.split(".").pop() ?? "jpg";
-    const path = `team/${fieldKey}-${Date.now()}.${ext}`;
+    const path = `${folder}/${fieldKey}-${Date.now()}.${ext}`;
 
     const { error: uploadError } = await supabase.storage
       .from("site-media")
@@ -179,6 +181,7 @@ export default function PageEditor({ page, schema, currentContent }: Props) {
                 label={field.label}
                 value={values[key] ?? ""}
                 onChange={(url) => setValues((v) => ({ ...v, [key]: url }))}
+                folder={page}
               />
             );
           }
