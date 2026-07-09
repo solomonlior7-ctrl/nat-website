@@ -46,6 +46,31 @@ export async function addGalleryItem({
   return { error: null };
 }
 
+export async function updateGalleryItem({
+  id,
+  title,
+  category,
+}: {
+  id: string;
+  title: string;
+  category: string;
+}) {
+  const supabase = await createClient();
+
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: "Not authenticated" };
+
+  const { error } = await supabase
+    .from("gallery_items")
+    .update({ title, category })
+    .eq("id", id);
+
+  if (error) return { error: error.message };
+
+  revalidatePath("/gallery");
+  return { error: null };
+}
+
 export async function deleteGalleryItem(id: string) {
   const supabase = await createClient();
 

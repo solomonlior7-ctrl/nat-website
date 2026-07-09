@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { addGalleryItem, deleteGalleryItem } from "./actions";
+import { addGalleryItem, deleteGalleryItem, updateGalleryItem } from "./actions";
 
 export interface GalleryItem {
   id: string;
@@ -51,6 +51,10 @@ export default function GalleryManager({ siteId, initialItems }: Props) {
   const [uploading, setUploading] = useState(false);
   const [deleting, setDeleting] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [editing, setEditing] = useState<string | null>(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editCategory, setEditCategory] = useState("");
+  const [saving, setSaving] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const refreshItems = async () => {
@@ -154,6 +158,31 @@ export default function GalleryManager({ siteId, initialItems }: Props) {
     await refreshItems();
     setQueue((prev) => prev.filter((q) => q.status !== "done"));
     setUploading(false);
+  };
+
+  const startEdit = (item: GalleryItem) => {
+    setEditing(item.id);
+    setEditTitle(item.title);
+    setEditCategory(item.category);
+  };
+
+  const cancelEdit = () => {
+    setEditing(null);
+    setEditTitle("");
+    setEditCategory("");
+  };
+
+  const handleSaveEdit = async (id: string) => {
+    if (!editTitle.trim()) return;
+    setSaving(true);
+    const result = await updateGalleryItem({ id, title: editTitle.trim(), category: editCategory });
+    if (!result?.error) {
+      setItems((prev) =>
+        prev.map((i) => i.id === id ? { ...i, title: editTitle.trim(), category: editCategory } : i)
+      );
+      cancelEdit();
+    }
+    setSaving(false);
   };
 
   const handleDelete = async (item: GalleryItem) => {
@@ -333,33 +362,86 @@ export default function GalleryManager({ siteId, initialItems }: Props) {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {items.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 group"
-            >
-              <div className="aspect-video relative overflow-hidden">
-                <img
-                  src={item.image_url}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-4 flex items-start justify-between">
-                <div>
-                  <p className="font-medium text-slate-800 text-sm">{item.title}</p>
-                  <p className="text-xs text-slate-400 mt-0.5">{item.category}</p>
+          {items.map((item) => {
+            const isEditing = editing === item.id;
+            return (
+              <div
+                key={item.id}
+                className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 group"
+              >
+                <div className="aspect-video relative overflow-hidden">
+                  <img
+                    src={item.image_url}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <button
-                  onClick={() => handleDelete(item)}
-                  disabled={deleting === item.id}
-                  className="text-red-400 hover:text-red-600 text-sm transition-colors ml-2 shrink-0 disabled:opacity-50"
-                >
-                  {deleting === item.id ? "…" : "Delete"}
-                </button>
+
+                {isEditing ? (
+                  <div className="p-4 space-y-2">
+                    <input
+                      type="text"
+                      value={editTitle}
+                      onChange={(e) => setEditTitle(e.target.value)}
+                      placeholder="Title"
+                      className="w-full px-3 py-1.5 text-sm border border-slate-200 rounded-lg text-slate-800 focus:border-accent focus:outline-none"
+                      autoFocus
+                    />
+                    <select
+                      value={editCategory}
+                      onChange={(e) => setEditCategory(e.target.value)}
+                      className="w-full px-3 py-1.5 text-sm border border-slate-200 rounded-lg text-slate-800 focus:border-accent focus:outline-none bg-white"
+                    >
+                      {CATEGORIES.map((c) => (
+                        <option key={c} value={c}>{c}</option>
+                      ))}
+                    </select>
+                    <div className="flex gap-2 pt-1">
+                      <button
+                        onClick={() => handleSaveEdit(item.id)}
+                        disabled={saving || !editTitle.trim()}
+                        className="flex-1 py-1.5 bg-accent hover:bg-accent-dark text-white text-xs font-semibold rounded-lg transition-colors disabled:opacity-60"
+                      >
+                        {saving ? "Saving…" : "Save"}
+                      </button>
+                      <button
+                        onClick={cancelEdit}
+                        disabled={saving}
+                        className="flex-1 py-1.5 border border-slate-200 text-slate-500 hover:text-slate-700 text-xs font-semibold rounded-lg transition-colors"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-4 flex items-start justify-between">
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium text-slate-800 text-sm truncate">{item.title}</p>
+                      <p className="text-xs text-slate-400 mt-0.5">{item.category}</p>
+                    </div>
+                    <div className="flex items-center gap-2 ml-2 shrink-0">
+                      <button
+                        onClick={() => startEdit(item)}
+                        className="text-slate-400 hover:text-accent text-sm transition-colors"
+                        title="Edit"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={() => handleDelete(item)}
+                        disabled={deleting === item.id}
+                        className="text-red-400 hover:text-red-600 text-sm transition-colors disabled:opacity-50"
+                      >
+                        {deleting === item.id ? "…" : "Delete"}
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
