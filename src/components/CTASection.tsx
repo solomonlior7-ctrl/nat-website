@@ -1,5 +1,28 @@
 import Link from "next/link";
 
+function Linkified({ text, className }: { text: string; className?: string }) {
+  const parts = text.split(/(https?:\/\/[^\s]+)/g);
+  return (
+    <span className={className}>
+      {parts.map((part, i) =>
+        /^https?:\/\//.test(part) ? (
+          <a
+            key={i}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:opacity-80 transition-opacity"
+          >
+            {part}
+          </a>
+        ) : (
+          part
+        )
+      )}
+    </span>
+  );
+}
+
 interface CTASectionProps {
   headline: string;
   subtext?: string;
@@ -46,7 +69,9 @@ export default function CTASection({
           {headline}
         </h2>
         {subtext && (
-          <p className="font-sans text-lg mb-10 leading-relaxed" style={{ color: "rgba(247,244,236,0.55)" }}>{subtext}</p>
+          <p className="font-sans text-lg mb-10 leading-relaxed" style={{ color: "rgba(247,244,236,0.55)" }}>
+            <Linkified text={subtext} />
+          </p>
         )}
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
