@@ -72,7 +72,7 @@ export default async function ITInfrastructurePage() {
             {deliverables.map((d) => (
               <div key={d.title} className="glass-card rounded-xl p-6">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
@@ -97,7 +97,7 @@ export default async function ITInfrastructurePage() {
                   key={s.title}
                   className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-10 items-center`}
                 >
-                  <div className="flex-1 bg-navy rounded-2xl aspect-video overflow-hidden flex items-center justify-center">
+                  <div className="flex-1 bg-ivory-deep rounded-2xl aspect-video overflow-hidden flex items-center justify-center" style={{ border: "1px solid #E5E7EB" }}>
                     {imgUrl ? (
                       <Image
                         src={imgUrl}
@@ -107,7 +107,7 @@ export default async function ITInfrastructurePage() {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <svg className="w-20 h-20" style={{ color: "rgba(176,141,87,0.25)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-20 h-20" style={{ color: "rgba(37,132,244,0.25)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
                       </svg>
                     )}

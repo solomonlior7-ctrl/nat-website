@@ -15,26 +15,24 @@ export default function AdminNav({ userEmail }: { userEmail: string }) {
   };
 
   return (
-    <nav className="bg-navy text-white px-6 py-4 flex items-center justify-between shadow-lg" style={{ borderBottom: "1px solid rgba(176,141,87,0.25)" }}>
+    <nav className="bg-white px-6 py-4 flex items-center justify-between" style={{ borderBottom: "1px solid #E5E7EB", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
       <Link href="/admin" className="flex items-center gap-2">
-        <span className="font-bold text-lg" style={{ color: "#b08d57" }}>NAT</span>
-        <span className="text-sm" style={{ color: "rgba(247,244,236,0.6)" }}>Content Manager</span>
+        <span className="font-bold text-lg text-accent">NAT</span>
+        <span className="text-sm text-ink-muted font-sans">Content Manager</span>
       </Link>
       <div className="flex items-center gap-4">
         <Link
           href="/"
           target="_blank"
-          className="text-sm transition-colors hover:text-ivory"
-          style={{ color: "rgba(247,244,236,0.5)" }}
+          className="text-sm font-sans text-ink-muted hover:text-ink transition-colors"
         >
           View Site ↗
         </Link>
-        <span style={{ color: "rgba(247,244,236,0.15)" }}>|</span>
-        <span className="text-sm hidden sm:block" style={{ color: "rgba(247,244,236,0.5)" }}>{userEmail}</span>
+        <span className="text-line-deep">|</span>
+        <span className="text-sm hidden sm:block text-ink-muted font-sans">{userEmail}</span>
         <button
           onClick={handleLogout}
-          className="px-4 py-2 rounded-lg text-sm transition-colors font-sans"
-          style={{ background: "rgba(247,244,236,0.08)", color: "rgba(247,244,236,0.8)", border: "1px solid rgba(247,244,236,0.12)" }}
+          className="px-4 py-2 rounded-lg text-sm transition-colors font-sans text-ink-soft hover:text-ink border border-line hover:border-line-deep bg-ivory-deep hover:bg-white"
         >
           Logout
         </button>

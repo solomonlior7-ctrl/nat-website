@@ -36,21 +36,21 @@ export default async function ContactPage() {
 
             {/* Contact Info */}
             <div className="space-y-6">
-              <div className="bg-navy rounded-2xl p-7">
-                <h3 className="font-semibold text-lg mb-4 text-ivory">Contact Information</h3>
+              <div className="glass-card rounded-2xl p-7">
+                <h3 className="font-semibold text-lg mb-4 text-ink">Contact Information</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 mt-0.5 shrink-0" style={{ color: "#b08d57" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 mt-0.5 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span className="font-sans text-sm" style={{ color: "rgba(247,244,236,0.65)" }}>{field(c, "contact_address", "Israel")}</span>
+                    <span className="font-sans text-sm text-ink-soft">{field(c, "contact_address", "Israel")}</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 mt-0.5 shrink-0" style={{ color: "#b08d57" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 mt-0.5 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span className="font-sans text-sm" style={{ color: "rgba(247,244,236,0.65)" }}>{field(c, "contact_email", "info@nat-tech.global")}</span>
+                    <span className="font-sans text-sm text-ink-soft">{field(c, "contact_email", "info@nat-tech.global")}</span>
                   </div>
                 </div>
               </div>
@@ -66,14 +66,14 @@ export default async function ContactPage() {
                     "Fuel Management Systems",
                   ].map((s) => (
                     <li key={s} className="flex items-center gap-2 font-sans text-sm text-ink-soft">
-                      <div className="w-1.5 h-1.5 bg-gold rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-accent rounded-full" />
                       {s}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="rounded-2xl p-7" style={{ background: "rgba(30,58,95,0.05)", border: "1px solid rgba(30,58,95,0.12)" }}>
+              <div className="rounded-2xl p-7" style={{ background: "rgba(37,132,244,0.05)", border: "1px solid rgba(37,132,244,0.12)" }}>
                 <p className="font-sans text-ink-soft text-sm leading-relaxed">
                   <strong className="text-ink">Response time:</strong>{" "}
                   {field(c, "response_text", "Our team typically responds within 1 business day. For urgent matters, please indicate this in your message.")}

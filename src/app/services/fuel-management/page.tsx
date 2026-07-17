@@ -92,7 +92,7 @@ export default async function FuelManagementPage() {
             {advantages.map((a) => (
               <div key={a.title} className="glass-card rounded-xl p-6">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
@@ -105,17 +105,17 @@ export default async function FuelManagementPage() {
         </div>
       </section>
 
-      {/* Applications — dark navy contrast */}
-      <section className="py-20 bg-navy">
+      {/* Applications */}
+      <section className="py-20 bg-ivory">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="w-10 h-px mx-auto mb-6" style={{ background: "#b08d57" }} />
-            <h2 className="text-3xl font-semibold text-ivory mb-4 tracking-tight">Target Applications</h2>
+            <div className="w-10 h-px mx-auto mb-6" style={{ background: "#2584F4" }} />
+            <h2 className="text-3xl font-semibold text-ink mb-4 tracking-tight">Target Applications</h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {applications.map((a) => (
-              <div key={a} className="rounded-xl p-5 text-center" style={{ background: "rgba(247,244,236,0.04)", border: "1px solid rgba(247,244,236,0.1)" }}>
-                <span className="font-sans text-sm font-medium" style={{ color: "rgba(247,244,236,0.75)" }}>{a}</span>
+              <div key={a} className="glass-card rounded-xl p-5 text-center">
+                <span className="font-sans text-sm font-medium text-ink-soft">{a}</span>
               </div>
             ))}
           </div>

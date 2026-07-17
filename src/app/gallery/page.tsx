@@ -47,7 +47,7 @@ export default async function GalleryPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center px-8 py-3.5 bg-accent hover:bg-accent-dark text-ivory font-semibold rounded-xl transition-all hover:-translate-y-0.5 shadow-sm font-sans"
+            className="btn-gradient inline-flex items-center px-8 py-3.5 text-white font-semibold font-sans"
           >
             Start Your Project
           </Link>

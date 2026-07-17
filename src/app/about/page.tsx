@@ -55,15 +55,15 @@ export default async function AboutPage() {
                 {field(c, "whoweare_p3", "Our integrated approach means our clients benefit from a single, trusted partner who understands how each technology layer connects — from physical infrastructure and network connectivity to security, automation, and operational systems.")}
               </p>
             </div>
-            <div className="bg-navy rounded-2xl p-10 flex flex-col gap-6">
+            <div className="glass-card rounded-2xl p-10 flex flex-col gap-6">
               {[
                 { stat: "5+", label: "Service Areas" },
                 { stat: "100%", label: "Commitment to Quality" },
                 { stat: "24/7", label: "Support Availability" },
               ].map((item) => (
-                <div key={item.label} className="flex items-center gap-5 pb-6 last:pb-0" style={{ borderBottom: "1px solid rgba(247,244,236,0.1)" }}>
-                  <span className="text-4xl font-bold font-sans" style={{ color: "#b08d57" }}>{item.stat}</span>
-                  <span className="font-sans font-medium" style={{ color: "rgba(247,244,236,0.7)" }}>{item.label}</span>
+                <div key={item.label} className="flex items-center gap-5 pb-6 last:pb-0" style={{ borderBottom: "1px solid #E5E7EB" }}>
+                  <span className="text-4xl font-bold font-sans text-accent">{item.stat}</span>
+                  <span className="font-sans font-medium text-ink-soft">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -77,7 +77,7 @@ export default async function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="glass-card rounded-2xl p-8">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                 <svg className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
@@ -89,7 +89,7 @@ export default async function AboutPage() {
             </div>
             <div className="glass-card rounded-2xl p-8">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                 <svg className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -104,17 +104,17 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Philosophy — dark navy contrast section */}
-      <section className="py-20 bg-navy">
+      {/* Philosophy */}
+      <section className="py-20 bg-ivory-deep">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-10 h-px mx-auto mb-8" style={{ background: "#b08d57" }} />
-          <p className="font-sans text-xs font-bold uppercase tracking-[0.18em] mb-3" style={{ color: "#b08d57" }}>
+          <div className="w-10 h-px mx-auto mb-8" style={{ background: "#2584F4" }} />
+          <p className="font-sans text-xs font-bold uppercase tracking-[0.18em] mb-3 text-accent">
             Our Philosophy
           </p>
-          <h2 className="text-3xl lg:text-4xl font-semibold text-ivory mb-6 tracking-tight">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-ink mb-6 tracking-tight">
             {field(c, "philosophy_headline", "Technology Should Be Practical, Secure, Scalable, and Transformative")}
           </h2>
-          <p className="font-sans text-lg leading-relaxed" style={{ color: "rgba(247,244,236,0.65)" }}>
+          <p className="font-sans text-lg leading-relaxed text-ink-soft">
             {field(c, "philosophy_text", "We believe the best technology solutions are those that work invisibly in the background — enabling people and organisations to focus on what they do best, supported by systems that are reliable, secure, and built to last.")}
           </p>
         </div>
@@ -135,7 +135,7 @@ export default async function AboutPage() {
             {values.map((v) => (
               <div key={v.label} className="glass-card rounded-2xl p-6 text-center">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                   </svg>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Meet the team behind NAT Technologies — technical experts in IT infrastructure, security systems, smart home automation, and fuel management solutions.",
 };
 
-const memberAccents = ["#1e3a5f", "#b08d57", "#1e3a5f", "#b08d57", "#1e3a5f", "#1e3a5f"];
+const memberAccents = ["#2584F4", "#2584F4", "#2584F4", "#2584F4", "#2584F4", "#2584F4"];
 
 function initials(name: string) {
   const parts = name.trim().split(/\s+/).filter(Boolean);
@@ -64,12 +64,12 @@ export default async function TeamPage() {
       />
 
       {/* Values strip */}
-      <div className="bg-ivory-deep" style={{ borderTop: "1px solid #e0d8c7", borderBottom: "1px solid #e0d8c7" }}>
+      <div className="bg-ivory-deep" style={{ borderTop: "1px solid #E5E7EB", borderBottom: "1px solid #E5E7EB" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-wrap gap-6 lg:gap-12">
             {["Technical Excellence", "Client-First Approach", "Accountable Delivery", "Continuous Support"].map((v) => (
               <div key={v} className="flex items-center gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                 <span className="font-sans text-ink-soft text-sm font-semibold">{v}</span>
               </div>
             ))}
@@ -96,7 +96,7 @@ export default async function TeamPage() {
                 {/* Photo / placeholder */}
                 <div
                   className="h-52 flex items-center justify-center relative overflow-hidden"
-                  style={{ background: `linear-gradient(135deg, ${member.accent}10, ${member.accent}05)`, borderBottom: "1px solid #e0d8c7" }}
+                  style={{ background: `linear-gradient(135deg, ${member.accent}10, ${member.accent}05)`, borderBottom: "1px solid #E5E7EB" }}
                 >
                   {member.photo ? (
                     <Image
@@ -136,7 +136,7 @@ export default async function TeamPage() {
                       <span
                         key={e}
                         className="font-sans text-xs font-medium px-2.5 py-1 rounded-lg bg-ivory-deep text-ink-soft"
-                        style={{ border: "1px solid #e0d8c7" }}
+                        style={{ border: "1px solid #E5E7EB" }}
                       >
                         {e}
                       </span>
@@ -144,7 +144,7 @@ export default async function TeamPage() {
                   </div>
 
                   {/* LinkedIn */}
-                  <div className="mt-5 pt-4 flex items-center gap-3" style={{ borderTop: "1px solid #e0d8c7" }}>
+                  <div className="mt-5 pt-4 flex items-center gap-3" style={{ borderTop: "1px solid #E5E7EB" }}>
                     <a
                       href="#"
                       className="flex items-center gap-2 font-sans text-xs font-semibold text-ink-muted hover:text-ink-soft transition-colors"
@@ -186,7 +186,7 @@ export default async function TeamPage() {
                     </svg>
                   </div>
                 )}
-                <div className="font-sans text-5xl font-black mb-4 tracking-tighter" style={{ color: "rgba(30,58,95,0.12)" }}>
+                <div className="font-sans text-5xl font-black mb-4 tracking-tighter" style={{ color: "rgba(37,132,244,0.12)" }}>
                   {s.step}
                 </div>
                 <h3 className="font-semibold text-ink mb-3 leading-snug">{s.title}</h3>

@@ -32,28 +32,29 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-navy flex items-center justify-center p-4">
-      <div className="bg-charcoal rounded-2xl p-8 w-full max-w-md shadow-2xl border border-slate-700">
+    <div className="min-h-screen bg-ivory-deep flex items-center justify-center p-4">
+      <div className="glass-card rounded-2xl p-8 w-full max-w-md shadow-xl">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4" style={{ background: "rgba(176,141,87,0.12)", border: "1px solid rgba(176,141,87,0.25)" }}>
-            <svg className="w-7 h-7" style={{ color: "#b08d57" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4"
+            style={{ background: "rgba(37,132,244,0.08)", border: "1px solid rgba(37,132,244,0.15)" }}>
+            <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-white">Admin Panel</h1>
-          <p className="text-slate-400 text-sm mt-1">NAT Technologies CMS</p>
+          <h1 className="text-2xl font-bold text-ink">Admin Panel</h1>
+          <p className="text-ink-muted text-sm mt-1 font-sans">NAT Technologies CMS</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">
+            <label className="block text-sm font-medium text-ink-soft mb-1.5 font-sans">
               Email
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-navy rounded-lg text-white placeholder-slate-500 border border-slate-700 focus:border-accent focus:outline-none transition-colors"
+              className="input-field w-full px-4 py-3 rounded-lg font-sans text-sm"
               placeholder="admin@nat-tech.global"
               required
               autoComplete="email"
@@ -61,14 +62,14 @@ export default function AdminLoginPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">
+            <label className="block text-sm font-medium text-ink-soft mb-1.5 font-sans">
               Password
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-navy rounded-lg text-white placeholder-slate-500 border border-slate-700 focus:border-accent focus:outline-none transition-colors"
+              className="input-field w-full px-4 py-3 rounded-lg font-sans text-sm"
               placeholder="••••••••"
               required
               autoComplete="current-password"
@@ -76,7 +77,7 @@ export default function AdminLoginPage() {
           </div>
 
           {error && (
-            <p className="text-red-400 text-sm bg-red-400/10 px-4 py-2 rounded-lg">
+            <p className="text-red-500 text-sm bg-red-50 px-4 py-2 rounded-lg font-sans border border-red-100">
               {error}
             </p>
           )}
@@ -84,8 +85,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 text-ivory font-semibold rounded-lg transition-colors disabled:opacity-60 mt-2"
-            style={{ background: "#b08d57" }}
+            className="btn-gradient w-full py-3 text-white font-semibold rounded-2xl transition-all disabled:opacity-60 mt-2 font-sans"
           >
             {loading ? "Signing in…" : "Sign In"}
           </button>

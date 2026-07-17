@@ -60,7 +60,7 @@ export default async function SecuritySolutionsPage() {
       {/* Challenge */}
       <section className="py-16 bg-ivory">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-r-xl p-8" style={{ borderLeft: "4px solid #1e3a5f", background: "rgba(30,58,95,0.05)" }}>
+          <div className="rounded-r-xl p-8" style={{ borderLeft: "4px solid #2584F4", background: "rgba(37,132,244,0.05)" }}>
             <p className="font-semibold text-ink text-lg leading-relaxed mb-4">
               {field(c, "challenge_title", "Do you know who is accessing your systems right now?")}
             </p>
@@ -80,7 +80,7 @@ export default async function SecuritySolutionsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {process.map((step, i) => (
               <div key={step.label} className="glass-card rounded-xl p-6 relative">
-                <span className="absolute top-4 right-4 font-sans text-4xl font-black" style={{ color: "rgba(30,58,95,0.08)" }}>{i + 1}</span>
+                <span className="absolute top-4 right-4 font-sans text-4xl font-black" style={{ color: "rgba(37,132,244,0.10)" }}>{i + 1}</span>
                 <h3 className="font-semibold text-ink mb-2 relative z-10">{step.label}</h3>
                 <p className="font-sans text-ink-muted text-sm leading-relaxed relative z-10">{step.desc}</p>
               </div>
@@ -89,24 +89,24 @@ export default async function SecuritySolutionsPage() {
         </div>
       </section>
 
-      {/* Expertise — dark navy contrast */}
-      <section className="py-20 bg-navy">
+      {/* Expertise */}
+      <section className="py-20 bg-ivory-deep">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="w-10 h-px mx-auto mb-6" style={{ background: "#b08d57" }} />
-            <h2 className="text-3xl font-semibold text-ivory mb-4 tracking-tight">Our Security Expertise</h2>
+            <div className="w-10 h-px mx-auto mb-6" style={{ background: "#2584F4" }} />
+            <h2 className="text-3xl font-semibold text-ink mb-4 tracking-tight">Our Security Expertise</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {expertise.map((e) => (
-              <div key={e.title} className="rounded-xl p-7" style={{ background: "rgba(247,244,236,0.04)", border: "1px solid rgba(247,244,236,0.1)" }}>
+              <div key={e.title} className="glass-card rounded-xl p-7">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                  style={{ background: "rgba(176,141,87,0.15)", border: "1px solid rgba(176,141,87,0.25)" }}>
-                  <svg className="w-5 h-5" style={{ color: "#b08d57" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  style={{ background: "rgba(37,132,244,0.08)", border: "1px solid rgba(37,132,244,0.15)" }}>
+                  <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-ivory text-lg mb-2">{e.title}</h3>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: "rgba(247,244,236,0.6)" }}>{e.desc}</p>
+                <h3 className="font-semibold text-ink text-lg mb-2">{e.title}</h3>
+                <p className="font-sans text-sm leading-relaxed text-ink-soft">{e.desc}</p>
               </div>
             ))}
           </div>
@@ -123,7 +123,7 @@ export default async function SecuritySolutionsPage() {
             {outcomes.map((o) => (
               <div key={o.label} className="text-center glass-card rounded-2xl p-8">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>

@@ -61,15 +61,15 @@ export default async function LowVoltagePage() {
                 {field(c, "poe_p2", "NAT Technologies designs, supplies, and installs complete PoE infrastructure — from PoE switches and structured cabling to connected device deployment and ongoing management.")}
               </p>
             </div>
-            <div className="bg-navy rounded-2xl p-10 flex flex-col gap-4">
+            <div className="glass-card rounded-2xl p-10 flex flex-col gap-4">
               {["Ethernet Cable", "PoE Switch", "Connected Device", "Power + Data"].map((item, i) => (
                 <div key={item} className="flex items-center gap-4">
-                  <span className="w-8 h-8 rounded-full flex items-center justify-center font-sans text-sm font-bold shrink-0"
-                    style={{ background: "rgba(176,141,87,0.15)", color: "#b08d57", border: "1px solid rgba(176,141,87,0.25)" }}>
+                  <span className="w-8 h-8 rounded-full flex items-center justify-center font-sans text-sm font-bold shrink-0 text-white"
+                    style={{ background: "#2584F4" }}>
                     {i + 1}
                   </span>
-                  <span className="font-sans font-medium text-ivory">{item}</span>
-                  {i < 3 && <div className="flex-1 h-px" style={{ background: "rgba(176,141,87,0.25)" }} />}
+                  <span className="font-sans font-medium text-ink">{item}</span>
+                  {i < 3 && <div className="flex-1 h-px" style={{ background: "#E5E7EB" }} />}
                 </div>
               ))}
             </div>
@@ -87,7 +87,7 @@ export default async function LowVoltagePage() {
             {benefits.map((b) => (
               <div key={b.title} className="glass-card rounded-xl p-6">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
@@ -134,21 +134,21 @@ export default async function LowVoltagePage() {
         </div>
       </section>
 
-      {/* Process — dark navy contrast */}
-      <section className="py-20 bg-navy">
+      {/* Process */}
+      <section className="py-20 bg-ivory-deep">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="w-10 h-px mx-auto mb-6" style={{ background: "#b08d57" }} />
-            <h2 className="text-3xl font-semibold text-ivory mb-4 tracking-tight">Our Deployment Process</h2>
+            <div className="w-10 h-px mx-auto mb-6" style={{ background: "#2584F4" }} />
+            <h2 className="text-3xl font-semibold text-ink mb-4 tracking-tight">Our Deployment Process</h2>
           </div>
           <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-9 gap-3">
             {processSteps.map((step, i) => (
               <div key={step} className="text-center">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2"
-                  style={{ background: "rgba(176,141,87,0.12)", border: "1px solid rgba(176,141,87,0.25)" }}>
-                  <span className="font-sans text-sm font-bold" style={{ color: "#b08d57" }}>{i + 1}</span>
+                <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2 text-white font-sans text-sm font-bold"
+                  style={{ background: "#2584F4" }}>
+                  {i + 1}
                 </div>
-                <p className="font-sans text-xs leading-tight" style={{ color: "rgba(247,244,236,0.55)" }}>{step}</p>
+                <p className="font-sans text-xs leading-tight text-ink-muted">{step}</p>
               </div>
             ))}
           </div>

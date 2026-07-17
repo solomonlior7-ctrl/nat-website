@@ -19,18 +19,25 @@ export default function Hero({
   breadcrumb,
 }: HeroProps) {
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden bg-ivory-deep">
-      {/* Subtle dot grid */}
+    <section className="relative py-20 lg:py-28 overflow-hidden bg-white">
+      {/* Top-right gradient blob */}
       <div
-        className="absolute inset-0 opacity-[0.4]"
+        className="absolute -top-24 -right-24 w-[700px] h-[700px] pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(rgba(15,30,51,0.12) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-          maskImage: "radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent)",
+          background:
+            "radial-gradient(circle at 60% 40%, rgba(37,132,244,0.13) 0%, rgba(0,196,224,0.07) 45%, transparent 70%)",
+          filter: "blur(72px)",
         }}
       />
-      {/* Soft vignette */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ivory opacity-60" />
+      {/* Bottom-left secondary blob */}
+      <div
+        className="absolute -bottom-16 -left-16 w-[400px] h-[400px] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 40% 60%, rgba(1,255,164,0.07) 0%, transparent 70%)",
+          filter: "blur(60px)",
+        }}
+      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {breadcrumb && breadcrumb.length > 0 && (
@@ -68,32 +75,22 @@ export default function Hero({
             </p>
           )}
           {(primaryCta || secondaryCta) && (
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               {primaryCta && (
                 <Link
                   href={primaryCta.href}
-                  className="inline-flex items-center px-6 py-3 bg-accent hover:bg-accent-dark text-ivory font-semibold rounded-lg transition-all hover:-translate-y-0.5 shadow-sm font-sans"
+                  className="btn-gradient inline-flex items-center px-6 py-3 font-semibold font-sans text-white shadow-sm"
                 >
                   {primaryCta.label}
-                  <svg
-                    className="ml-2 w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
+                  <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
               )}
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="inline-flex items-center px-6 py-3 border border-line-deep hover:border-accent text-ink-soft hover:text-ink font-semibold rounded-lg transition-colors font-sans"
+                  className="inline-flex items-center px-6 py-3 bg-white border border-line text-ink font-semibold rounded-2xl transition-all hover:-translate-y-0.5 hover:border-accent font-sans"
                 >
                   {secondaryCta.label}
                 </Link>

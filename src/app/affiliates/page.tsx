@@ -44,9 +44,9 @@ const affiliates = [
     name: "SwitchBee",
     tagline: "Advanced Smart Home & Building Automation",
     website: "https://www.switchbee.com/",
-    accentColor: "#1e3a5f",
-    accentBg: "rgba(30,58,95,0.07)",
-    accentBorder: "rgba(30,58,95,0.18)",
+    accentColor: "#2584F4",
+    accentBg: "rgba(37,132,244,0.07)",
+    accentBorder: "rgba(37,132,244,0.15)",
     description:
       "SwitchBee is a leading smart home and building automation platform that delivers full control over lighting, shutters, air conditioning, VRF systems, sensors, irrigation, sockets, and more — all through an intuitive mobile app. Designed for fast installation without major rewiring, SwitchBee fits new builds and retrofits alike.",
     relation:
@@ -85,7 +85,7 @@ export default async function AffiliatesPage() {
       />
 
       {/* Partnership stats strip */}
-      <div className="bg-ivory-deep" style={{ borderTop: "1px solid #e0d8c7", borderBottom: "1px solid #e0d8c7" }}>
+      <div className="bg-ivory-deep" style={{ borderTop: "1px solid #E5E7EB", borderBottom: "1px solid #E5E7EB" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-wrap items-center gap-8 lg:gap-16">
             {[
@@ -108,7 +108,7 @@ export default async function AffiliatesPage() {
           {affiliatesWithContent.map((a) => (
             <div key={a.id} className="glass-card rounded-2xl overflow-hidden">
               {/* Card header */}
-              <div className="px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center gap-5 bg-ivory-deep" style={{ borderBottom: "1px solid #e0d8c7" }}>
+              <div className="px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center gap-5 bg-ivory-deep" style={{ borderBottom: "1px solid #E5E7EB" }}>
                 <div
                   className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 font-bold text-xl font-sans tracking-tight"
                   style={{ background: a.accentBg, border: `1px solid ${a.accentBorder}`, color: a.accentColor }}
@@ -131,7 +131,7 @@ export default async function AffiliatesPage() {
                   href={a.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-sans text-sm font-bold text-ivory transition-all hover:-translate-y-0.5 shrink-0 bg-accent hover:bg-accent-dark"
+                  className="btn-gradient inline-flex items-center gap-2 px-5 py-2.5 font-sans text-sm font-bold text-white transition-all hover:-translate-y-0.5 shrink-0"
                 >
                   Visit {a.name} Website
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -176,7 +176,7 @@ export default async function AffiliatesPage() {
                     <h4 className="font-sans text-ink text-sm font-bold mb-4 uppercase tracking-wider">Suited For</h4>
                     <div className="flex flex-wrap gap-2">
                       {a.suitedFor.map((s) => (
-                        <span key={s} className="font-sans text-xs font-medium px-3 py-1 rounded-lg bg-ivory-deep text-ink-soft" style={{ border: "1px solid #e0d8c7" }}>
+                        <span key={s} className="font-sans text-xs font-medium px-3 py-1 rounded-lg bg-ivory-deep text-ink-soft" style={{ border: "1px solid #E5E7EB" }}>
                           {s}
                         </span>
                       ))}
@@ -190,7 +190,7 @@ export default async function AffiliatesPage() {
       </section>
 
       {/* Become a partner */}
-      <section className="py-20 bg-ivory-deep" style={{ borderTop: "1px solid #e0d8c7" }}>
+      <section className="py-20 bg-ivory-deep" style={{ borderTop: "1px solid #E5E7EB" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="font-sans text-gold text-xs font-bold uppercase tracking-[0.18em] mb-4">Work With Us</p>
           <h2 className="text-3xl font-semibold text-ink mb-4 tracking-tight">
@@ -201,7 +201,7 @@ export default async function AffiliatesPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 text-ivory font-bold rounded-xl font-sans text-sm transition-all hover:-translate-y-0.5 bg-accent hover:bg-accent-dark shadow-sm"
+            className="btn-gradient inline-flex items-center gap-2 px-8 py-4 text-white font-bold font-sans text-sm"
           >
             Get in Touch
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

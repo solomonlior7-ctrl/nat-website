@@ -1,27 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Ivory / Ink palette ── */
-  --color-ivory:       #f7f4ec;
-  --color-ivory-deep:  #efe9db;
-  --color-ivory-card:  #faf8f3;
-  --color-ink:         #0f1e33;
-  --color-ink-soft:    #3d4b5f;
-  --color-ink-muted:   #8293a8;
-  --color-line:        #e0d8c7;
-  --color-line-deep:   #c9bfa8;
-  --color-gold:        #b08d57;
+  /* ── Palette — plavno-inspired white/blue ── */
+  --color-ivory:        #FFFFFF;
+  --color-ivory-deep:   #F5F7FA;
+  --color-ivory-card:   #FFFFFF;
+  --color-ink:          #071A31;
+  --color-ink-soft:     #374151;
+  --color-ink-muted:    #747987;
+  --color-line:         #E5E7EB;
+  --color-line-deep:    #D1D5DB;
 
-  /* ── Accent (deep navy blue) ── */
-  --color-accent:      #1e3a5f;
-  --color-accent-dark: #14283f;
-  --color-accent-light:#2d6abf;
+  /* Blue accent (replaces gold everywhere) */
+  --color-gold:         #2584F4;
 
-  /* ── Dark navy (footer / dark accent sections) ── */
-  --color-navy:        #0f1e33;
-  --color-navy-800:    #1a2b42;
-  --color-navy-700:    #243550;
-  --color-charcoal:    #1a2b42;
+  --color-accent:       #2584F4;
+  --color-accent-dark:  #1A6DD4;
+  --color-accent-light: #4B9FF7;
+
+  /* Navy — text only, not backgrounds */
+  --color-navy:         #071A31;
+  --color-navy-800:     #0D2240;
+  --color-navy-700:     #133060;
+  --color-charcoal:     #0F172A;
 }
 
 * {
@@ -33,72 +34,47 @@ html {
 }
 
 body {
-  background-color: var(--color-ivory);
+  background-color: #FFFFFF;
   color: var(--color-ink);
-  font-family: var(--font-sans, var(--font-jakarta)), system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Serif headings ── */
+/* ── Headings — Inter (loaded as --font-serif for back-compat) ── */
 h1, h2, h3 {
-  font-family: var(--font-serif), Georgia, 'Times New Roman', serif;
+  font-family: var(--font-serif), system-ui, sans-serif;
 }
 
-/* ── Gradient text → solid accent ── */
+/* ── Gradient text ── */
 .gradient-text {
-  color: var(--color-accent);
-  background: none;
-  -webkit-text-fill-color: var(--color-accent);
-  background-clip: unset;
+  background: linear-gradient(99deg, #2584F4 14%, #00C4E0 64%, #01FFA4 120%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* ── Light cards ── */
+/* ── Cards ── */
 .glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid var(--color-line);
-  box-shadow: 0 2px 12px rgba(15, 30, 51, 0.06);
-  transition: background 0.3s ease, border-color 0.3s ease,
-    transform 0.3s ease, box-shadow 0.3s ease;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .glass-card:hover {
-  background: #fff;
   border-color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(15, 30, 51, 0.1);
+  box-shadow: 0 8px 28px rgba(37, 132, 244, 0.12);
 }
 
-/* ── Light header ── */
+/* ── Header ── */
 .glass-header {
-  background: rgba(247, 244, 236, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--color-line);
-  box-shadow: 0 1px 8px rgba(15, 30, 51, 0.06);
-}
-
-/* ── Subtle border accent ── */
-.gradient-border {
-  position: relative;
-}
-
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.gradient-border:hover::before {
-  opacity: 1;
+  border-bottom: 1px solid #E5E7EB;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* ── Bento card ── */
@@ -123,21 +99,37 @@ h1, h2, h3 {
   outline: none;
   background: #fff;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+  box-shadow: 0 0 0 3px rgba(37, 132, 244, 0.12);
 }
 
-/* ── Animations — keep fade-in-up + marquee; remove neon decoratives ── */
+/* ── Gradient CTA button ── */
+.btn-gradient {
+  background: linear-gradient(99deg, #2584F4 14%, #00C4E0 64%, #01FFA4 120%);
+  color: #FFFFFF;
+  border-radius: 16px;
+  font-weight: 600;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-gradient:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ── Animations ── */
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in-up { animation: fade-in-up 0.6s ease-out both; }
 
-/* Stubs — kept to avoid class-name errors in components that still reference them */
-.animate-float-slow  { }
-.animate-spin-slow   { }
-.animate-pulse-glow  { }
+.animate-float-slow { }
+.animate-spin-slow  { }
+.animate-pulse-glow { }
+
+.gradient-border { }
+.gradient-border::before { display: none; }
 
 @keyframes marquee {
   0%   { transform: translateX(0); }

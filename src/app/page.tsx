@@ -45,7 +45,7 @@ export default async function HomePage() {
             top: "-10%", left: "-5%",
             width: "600px", height: "600px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(176,141,87,0.07) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(37,132,244,0.08) 0%, transparent 70%)",
             filter: "blur(60px)",
           }}
         />
@@ -55,8 +55,8 @@ export default async function HomePage() {
           <div
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-10 font-sans"
             style={{
-              background: "rgba(30,58,95,0.07)",
-              border: "1px solid rgba(30,58,95,0.15)",
+              background: "rgba(37,132,244,0.07)",
+              border: "1px solid rgba(37,132,244,0.15)",
             }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-gold" />
@@ -80,7 +80,7 @@ export default async function HomePage() {
           <div className="flex flex-wrap gap-4 mb-24">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-8 py-4 text-ivory font-bold rounded-xl text-sm transition-all hover:-translate-y-0.5 bg-accent hover:bg-accent-dark shadow-sm font-sans"
+              className="btn-gradient inline-flex items-center gap-2 px-8 py-4 text-white font-bold text-sm font-sans"
             >
               Explore Services
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -89,7 +89,7 @@ export default async function HomePage() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center px-8 py-4 text-ink-soft hover:text-ink font-semibold rounded-xl text-sm transition-all hover:-translate-y-0.5 border border-line-deep hover:border-accent font-sans"
+              className="inline-flex items-center px-8 py-4 text-ink font-semibold rounded-2xl text-sm transition-all hover:-translate-y-0.5 border border-line hover:border-accent font-sans"
             >
               Contact Us
             </Link>
@@ -132,7 +132,7 @@ export default async function HomePage() {
             >
               <div>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
                   </svg>
@@ -157,8 +157,8 @@ export default async function HomePage() {
             >
               <div>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(176,141,87,0.08)", border: "1px solid rgba(176,141,87,0.18)" }}>
-                  <svg className="w-7 h-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
+                  <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
@@ -169,13 +169,13 @@ export default async function HomePage() {
                 <ul className="space-y-3">
                   {["Network Security", "Access Control", "CCTV Surveillance", "IoT Protection", "Threat Monitoring"].map((item) => (
                     <li key={item} className="flex items-center gap-3 font-sans text-sm text-ink-soft">
-                      <span className="w-1 h-1 rounded-full bg-gold shrink-0" />
+                      <span className="w-1 h-1 rounded-full bg-accent shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="flex items-center gap-2 text-gold text-sm font-bold mt-6 group-hover:gap-3 transition-all font-sans">
+              <div className="flex items-center gap-2 text-accent text-sm font-bold mt-6 group-hover:gap-3 transition-all font-sans">
                 Learn More
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -190,7 +190,7 @@ export default async function HomePage() {
             >
               <div>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
@@ -215,7 +215,7 @@ export default async function HomePage() {
             >
               <div>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
@@ -240,7 +240,7 @@ export default async function HomePage() {
             >
               <div>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
@@ -260,20 +260,18 @@ export default async function HomePage() {
 
             {/* CTA Card */}
             <div
-              className="rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] relative overflow-hidden bg-navy"
+              className="glass-card rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] relative overflow-hidden"
+              style={{
+                background: "linear-gradient(135deg, rgba(37,132,244,0.06) 0%, rgba(0,196,224,0.04) 100%)",
+              }}
             >
-              <div className="absolute inset-0 opacity-[0.03]"
-                style={{
-                  backgroundImage: "radial-gradient(rgba(247,244,236,1) 1px, transparent 1px)",
-                  backgroundSize: "20px 20px",
-                }} />
-              <p className="font-sans text-sm mb-2 relative z-10" style={{ color: "rgba(247,244,236,0.5)" }}>Not sure where to start?</p>
-              <p className="font-semibold mb-6 relative z-10 leading-snug text-ivory">
+              <p className="font-sans text-sm mb-2 text-ink-muted">Not sure where to start?</p>
+              <p className="font-semibold mb-6 leading-snug text-ink">
                 Let&apos;s find the right solution together.
               </p>
               <Link
                 href="/contact"
-                className="px-6 py-3 text-accent text-sm font-bold rounded-xl transition-all hover:-translate-y-0.5 relative z-10 bg-ivory hover:bg-ivory-deep font-sans"
+                className="btn-gradient px-6 py-3 text-white text-sm font-bold font-sans"
               >
                 Speak to Our Team
               </Link>
@@ -309,7 +307,7 @@ export default async function HomePage() {
               {reasons.map((r) => (
                 <div key={r.label} className="glass-card rounded-xl p-5">
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-4"
-                    style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.1)" }}>
+                    style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                     <svg className="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                     </svg>

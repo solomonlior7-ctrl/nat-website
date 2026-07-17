@@ -93,24 +93,24 @@ export default async function SmartHomePage() {
         </div>
       </section>
 
-      {/* Products — dark navy contrast */}
-      <section className="py-20 bg-navy">
+      {/* Products */}
+      <section className="py-20 bg-ivory-deep">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="w-10 h-px mx-auto mb-6" style={{ background: "#b08d57" }} />
-            <h2 className="text-3xl font-semibold text-ivory mb-4 tracking-tight">Product Categories</h2>
-            <p className="font-sans" style={{ color: "rgba(247,244,236,0.55)" }}>Professional-grade smart home products across every system area.</p>
+            <div className="w-10 h-px mx-auto mb-6" style={{ background: "#2584F4" }} />
+            <h2 className="text-3xl font-semibold text-ink mb-4 tracking-tight">Product Categories</h2>
+            <p className="font-sans text-ink-muted">Professional-grade smart home products across every system area.</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {products.map((p) => (
-              <div key={p} className="rounded-xl p-4 text-center" style={{ background: "rgba(247,244,236,0.04)", border: "1px solid rgba(247,244,236,0.1)" }}>
+              <div key={p} className="glass-card rounded-xl p-4 text-center">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center mx-auto mb-3"
-                  style={{ background: "rgba(176,141,87,0.12)", border: "1px solid rgba(176,141,87,0.2)" }}>
-                  <svg className="w-4 h-4" style={{ color: "#b08d57" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  style={{ background: "rgba(37,132,244,0.08)", border: "1px solid rgba(37,132,244,0.15)" }}>
+                  <svg className="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <span className="font-sans text-xs font-medium" style={{ color: "rgba(247,244,236,0.7)" }}>{p}</span>
+                <span className="font-sans text-xs font-medium text-ink-soft">{p}</span>
               </div>
             ))}
           </div>
@@ -127,7 +127,7 @@ export default async function SmartHomePage() {
             {advantages.map((a) => (
               <div key={a.title} className="flex gap-4 p-6 glass-card rounded-xl">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>

@@ -83,7 +83,7 @@ export default function ProfilePage() {
             {capabilities.map((c) => (
               <div key={c.title} className="glass-card rounded-xl p-6">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                  style={{ background: "rgba(30,58,95,0.07)", border: "1px solid rgba(30,58,95,0.12)" }}>
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
                   <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
@@ -96,18 +96,18 @@ export default function ProfilePage() {
         </div>
       </section>
 
-      {/* Project Strengths — dark navy contrast */}
-      <section className="py-20 bg-navy">
+      {/* Project Strengths */}
+      <section className="py-20 bg-ivory-deep">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="w-10 h-px mx-auto mb-6" style={{ background: "#b08d57" }} />
-            <h2 className="text-3xl font-semibold text-ivory mb-4 tracking-tight">Project Strengths</h2>
+            <div className="w-10 h-px mx-auto mb-6" style={{ background: "#2584F4" }} />
+            <h2 className="text-3xl font-semibold text-ink mb-4 tracking-tight">Project Strengths</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {strengths.map((s) => (
-              <div key={s.label} className="rounded-xl p-7" style={{ background: "rgba(247,244,236,0.04)", border: "1px solid rgba(247,244,236,0.1)" }}>
-                <h3 className="font-semibold text-ivory mb-2">{s.label}</h3>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: "rgba(247,244,236,0.6)" }}>{s.desc}</p>
+              <div key={s.label} className="glass-card rounded-xl p-7">
+                <h3 className="font-semibold text-ink mb-2">{s.label}</h3>
+                <p className="font-sans text-sm leading-relaxed text-ink-soft">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -125,13 +125,13 @@ export default function ProfilePage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/login"
-                className="px-6 py-3 bg-accent hover:bg-accent-dark text-ivory font-semibold rounded-xl font-sans text-sm transition-all hover:-translate-y-0.5"
+                className="btn-gradient px-6 py-3 text-white font-semibold font-sans text-sm"
               >
                 Login
               </Link>
               <Link
                 href="/register"
-                className="px-6 py-3 border border-line-deep hover:border-accent text-ink-soft hover:text-ink font-semibold rounded-xl font-sans text-sm transition-colors"
+                className="px-6 py-3 border border-line hover:border-accent text-ink-soft hover:text-ink font-semibold rounded-2xl font-sans text-sm transition-colors"
               >
                 Create Account
               </Link>
