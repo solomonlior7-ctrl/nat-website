@@ -105,7 +105,7 @@ export default async function TeamPage() {
                       src={member.photo}
                       alt={member.name}
                       fill
-                      className="object-cover object-top"
+                      className="object-contain object-center"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   ) : (
