@@ -157,31 +157,29 @@ export default async function ClientsPage() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            <div className="flex flex-wrap justify-center gap-5">
               {logos.map((logo) => {
-                const card = (
-                  <div
-                    className="aspect-[3/2] rounded-xl flex flex-col items-center justify-center gap-2 p-4 glass-card hover:-translate-y-1 transition-all group"
-                    title={logo.name}
-                  >
-                    <div className="flex-1 flex items-center justify-center w-full">
-                      <Image
-                        src={logo.logo_url}
-                        alt={logo.name}
-                        width={120}
-                        height={60}
-                        className="max-h-12 max-w-full object-contain opacity-60 group-hover:opacity-100 transition-opacity"
-                      />
-                    </div>
-                    <span className="font-sans text-ink-muted text-[10px] font-medium text-center leading-tight group-hover:text-ink-soft transition-colors">
-                      {logo.name}
-                    </span>
-                  </div>
-                );
-
                 const safeUrl = logo.website_url
                   ? logo.website_url.match(/^https?:\/\//) ? logo.website_url : `https://${logo.website_url}`
                   : null;
+
+                const card = (
+                  <div className="glass-card rounded-xl p-6 flex flex-col items-center text-center hover:-translate-y-1 transition-all group w-56">
+                    <div className="h-16 flex items-center justify-center mb-4 w-full">
+                      <Image
+                        src={logo.logo_url}
+                        alt={logo.name}
+                        width={140}
+                        height={64}
+                        className="max-h-14 max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                      />
+                    </div>
+                    <p className="font-semibold text-ink text-sm mb-1">{logo.name}</p>
+                    {logo.sector && (
+                      <p className="font-sans text-ink-muted text-xs leading-relaxed">{logo.sector}</p>
+                    )}
+                  </div>
+                );
 
                 return safeUrl ? (
                   <a key={logo.id} href={safeUrl} target="_blank" rel="noopener noreferrer">

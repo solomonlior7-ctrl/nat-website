@@ -15,16 +15,6 @@ export interface ClientLogo {
   sort_order: number;
 }
 
-const SECTORS = [
-  "",
-  "Construction & Engineering",
-  "Real Estate & Smart Homes",
-  "Fuel & Fleet",
-  "Retail & Commercial",
-  "Corporate Offices",
-  "Security-Sensitive",
-  "Other",
-];
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/avif", "image/svg+xml"];
 
@@ -170,16 +160,14 @@ export default function ClientLogosManager({ siteId, initialItems }: Props) {
             />
           </div>
           <div>
-            <label className="block text-sm text-slate-600 mb-1">Sector (optional)</label>
-            <select
+            <label className="block text-sm text-slate-600 mb-1">Description (optional)</label>
+            <input
+              type="text"
               value={newSector}
               onChange={(e) => setNewSector(e.target.value)}
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-slate-800 focus:border-accent focus:outline-none bg-white"
-            >
-              {SECTORS.map((s) => (
-                <option key={s} value={s}>{s || "— Select sector —"}</option>
-              ))}
-            </select>
+              placeholder="e.g. Construction & fuel management client in Nigeria"
+              className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-slate-800 focus:border-accent focus:outline-none"
+            />
           </div>
         </div>
 
@@ -279,15 +267,13 @@ export default function ClientLogosManager({ siteId, initialItems }: Props) {
                         placeholder="https://..."
                         className="w-full px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-800 focus:border-accent focus:outline-none"
                       />
-                      <select
+                      <input
+                        type="text"
                         value={editValues.sector}
                         onChange={(e) => setEditValues((v) => ({ ...v, sector: e.target.value }))}
-                        className="w-full px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-800 focus:border-accent focus:outline-none bg-white"
-                      >
-                        {SECTORS.map((s) => (
-                          <option key={s} value={s}>{s || "— No sector —"}</option>
-                        ))}
-                      </select>
+                        placeholder="Short description…"
+                        className="w-full px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-800 focus:border-accent focus:outline-none"
+                      />
                       <div className="flex gap-2 pt-1">
                         <button
                           onClick={() => saveEdit(item.id)}
