@@ -164,8 +164,8 @@ export default async function ClientsPage() {
                   : null;
 
                 const card = (
-                  <div className="glass-card rounded-xl p-6 flex flex-col items-center text-center hover:-translate-y-1 transition-all group w-56">
-                    <div className="h-16 flex items-center justify-center mb-4 w-full">
+                  <div className="glass-card rounded-xl p-6 flex flex-col items-center text-center hover:-translate-y-1 transition-all group w-52 h-44 justify-between">
+                    <div className="flex-1 flex items-center justify-center w-full">
                       <Image
                         src={logo.logo_url}
                         alt={logo.name}
@@ -174,10 +174,12 @@ export default async function ClientsPage() {
                         className="max-h-14 max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                       />
                     </div>
-                    <p className="font-semibold text-ink text-sm mb-1">{logo.name}</p>
-                    {logo.sector && (
-                      <p className="font-sans text-ink-muted text-xs leading-relaxed">{logo.sector}</p>
-                    )}
+                    <div className="mt-3 w-full">
+                      <p className="font-semibold text-ink text-sm line-clamp-2 leading-snug mb-0.5">{logo.name}</p>
+                      {logo.sector && (
+                        <p className="font-sans text-ink-muted text-xs line-clamp-1">{logo.sector}</p>
+                      )}
+                    </div>
                   </div>
                 );
 
