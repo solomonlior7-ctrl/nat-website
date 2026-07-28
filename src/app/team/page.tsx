@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Meet the team behind NAT Technologies — technical experts in IT infrastructure, security systems, smart home automation, and fuel management solutions.",
 };
 
-const memberAccents = ["#2584F4", "#2584F4", "#2584F4", "#2584F4", "#2584F4", "#2584F4"];
+const memberAccents = ["#2584F4", "#2584F4", "#2584F4", "#2584F4", "#2584F4", "#2584F4", "#2584F4"];
 
 function initials(name: string) {
   const parts = name.trim().split(/\s+/).filter(Boolean);
@@ -21,10 +21,10 @@ function initials(name: string) {
 export default async function TeamPage() {
   const c = await getPageContent("team");
 
-  const members = [1, 2, 3, 4, 5, 6].map((n, i) => ({
+  const members = [1, 2, 3, 4, 5, 6, 7].map((n, i) => ({
     photo: field(c, `member${n}_photo`, ""),
     name: field(c, `member${n}_name`, "Team Member"),
-    role: field(c, `member${n}_role`, ["Founder & CEO", "Technical Operations Lead", "Infrastructure Specialist", "Security Systems Specialist", "Automation Specialist", "Support & Maintenance Coordinator"][i]),
+    role: field(c, `member${n}_role`, ["Founder & CEO", "Technical Operations Lead", "Infrastructure Specialist", "Security Systems Specialist", "Automation Specialist", "Support & Maintenance Coordinator", "Fuel Management Specialist"][i]),
     desc: field(c, `member${n}_desc`, [
       "Leads NAT Technologies with a vision for integrated technology delivery. Brings deep experience across IT infrastructure, security systems, and operational technology deployments.",
       "Oversees all technical delivery, project coordination, and quality assurance across NAT's service areas. Ensures every project meets the highest standards of performance and reliability.",
@@ -32,6 +32,7 @@ export default async function TeamPage() {
       "Delivers comprehensive security solutions including CCTV, access control, network security, and intrusion detection. Specialises in multi-layer security architecture for complex environments.",
       "Designs and programs intelligent smart home and building automation systems — covering lighting, climate, security, shading, and integrated IoT environments.",
       "Manages ongoing client support, maintenance schedules, and system monitoring — ensuring all deployed systems continue to perform at their best throughout their lifecycle.",
+      "Deploys and manages intelligent fuel management systems — including RFID authentication, real-time tank monitoring, fleet reporting, and automated inventory control for commercial operations.",
     ][i]),
     expertise: field(c, `member${n}_expertise`, [
       "Business Strategy, IT Infrastructure, Solution Architecture",
@@ -40,6 +41,7 @@ export default async function TeamPage() {
       "CCTV & Surveillance, Access Control, Network Security",
       "Smart Home Automation, IoT Integration, Building Control",
       "Client Support, System Monitoring, Preventive Maintenance",
+      "Fuel Systems, RFID Technology, Fleet Management",
     ][i]).split(",").map((s: string) => s.trim()).filter(Boolean),
     accent: memberAccents[i],
   }));

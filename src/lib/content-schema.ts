@@ -693,6 +693,21 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         defaultValue: "Client Support, System Monitoring, Preventive Maintenance",
       },
 
+      member7_photo: { label: "Member 7 — Photo", type: "image", defaultValue: "" },
+      member7_name: { label: "Member 7 — Name", type: "text", defaultValue: "Team Member" },
+      member7_role: { label: "Member 7 — Role / Title", type: "text", defaultValue: "Fuel Management Specialist" },
+      member7_desc: {
+        label: "Member 7 — Bio",
+        type: "textarea",
+        defaultValue:
+          "Deploys and manages intelligent fuel management systems — including RFID authentication, real-time tank monitoring, fleet reporting, and automated inventory control for commercial operations.",
+      },
+      member7_expertise: {
+        label: "Member 7 — Expertise Tags (comma-separated)",
+        type: "text",
+        defaultValue: "Fuel Systems, RFID Technology, Fleet Management",
+      },
+
       // ── How We Work steps ─────────────────────────────────
       how_we_work_title: {
         label: "How We Work — Section Title",
