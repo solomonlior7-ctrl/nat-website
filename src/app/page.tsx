@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import ParticleBackground from "@/components/ParticleBackground";
 import CTASection from "@/components/CTASection";
 import TechCarousel from "@/components/TechCarousel";
@@ -50,59 +51,76 @@ export default async function HomePage() {
           }}
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
-          {/* Badge */}
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-10 font-sans"
-            style={{
-              background: "rgba(37,132,244,0.07)",
-              border: "1px solid rgba(37,132,244,0.15)",
-            }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-            <span className="text-accent text-xs font-bold uppercase tracking-[0.15em]">
-              {field(c, "hero_badge", "Israel's Leading Technology Solutions Provider")}
-            </span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl lg:text-[80px] font-semibold leading-[1.06] tracking-tight mb-8 max-w-4xl text-ink">
-            <span>{field(c, "hero_line1", "Smarter, Safer")}</span>
-            <br />
-            <span className="text-accent">{field(c, "hero_gradient", "Technology")}</span>
-            <br />
-            <span>{field(c, "hero_line3", "Environments")}</span>
-          </h1>
-
-          <p className="font-sans text-lg lg:text-xl text-ink-soft leading-relaxed mb-12 max-w-xl">
-            {field(c, "hero_subtext", "From advanced IT infrastructure to smart home automation, security systems, and fuel management — we help businesses operate at their best.")}
-          </p>
-
-          <div className="flex flex-wrap gap-4 mb-24">
-            <Link
-              href="/services"
-              className="btn-gradient inline-flex items-center gap-2 px-8 py-4 text-white font-bold text-sm font-sans"
-            >
-              Explore Services
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-8 py-4 text-ink font-semibold rounded-2xl text-sm transition-all hover:-translate-y-0.5 border border-line hover:border-accent font-sans"
-            >
-              Contact Us
-            </Link>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-2xl lg:max-w-none">
-            {stats.map((s) => (
-              <div key={s.label} className="glass-card rounded-2xl p-5 text-center">
-                <div className="font-sans text-3xl lg:text-4xl font-bold text-accent mb-1">{s.value}</div>
-                <div className="font-sans text-ink-muted text-sm font-medium">{s.label}</div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left — text */}
+            <div>
+              {/* Badge */}
+              <div
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-10 font-sans"
+                style={{
+                  background: "rgba(37,132,244,0.07)",
+                  border: "1px solid rgba(37,132,244,0.15)",
+                }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                <span className="text-accent text-xs font-bold uppercase tracking-[0.15em]">
+                  {field(c, "hero_badge", "Israel's Leading Technology Solutions Provider")}
+                </span>
               </div>
-            ))}
+
+              <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-semibold leading-[1.06] tracking-tight mb-8 text-ink">
+                <span>{field(c, "hero_line1", "Smarter, Safer")}</span>
+                <br />
+                <span className="text-accent">{field(c, "hero_gradient", "Technology")}</span>
+                <br />
+                <span>{field(c, "hero_line3", "Environments")}</span>
+              </h1>
+
+              <p className="font-sans text-lg lg:text-xl text-ink-soft leading-relaxed mb-12 max-w-lg">
+                {field(c, "hero_subtext", "From advanced IT infrastructure to smart home automation, security systems, and fuel management — we help businesses operate at their best.")}
+              </p>
+
+              <div className="flex flex-wrap gap-4 mb-16">
+                <Link
+                  href="/services"
+                  className="btn-gradient inline-flex items-center gap-2 px-8 py-4 text-white font-bold text-sm font-sans"
+                >
+                  Explore Services
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center px-8 py-4 text-ink font-semibold rounded-2xl text-sm transition-all hover:-translate-y-0.5 border border-line hover:border-accent font-sans"
+                >
+                  Contact Us
+                </Link>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {stats.map((s) => (
+                  <div key={s.label} className="glass-card rounded-2xl p-5 text-center">
+                    <div className="font-sans text-2xl lg:text-3xl font-bold text-accent mb-1">{s.value}</div>
+                    <div className="font-sans text-ink-muted text-xs font-medium">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — diagram */}
+            <div className="hidden lg:flex items-center justify-center">
+              <Image
+                src="/nat-diagram.png"
+                alt="NAT Technologies — Services Overview"
+                width={620}
+                height={580}
+                className="w-full max-w-[580px] object-contain drop-shadow-xl"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
