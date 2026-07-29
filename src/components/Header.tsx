@@ -96,12 +96,12 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="shrink-0">
+          <Link href="/" className="shrink-0" aria-label="NAT Technologies — Home">
             <Logo variant="dark" />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-0.5">
+          <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
             <Link
               href="/"
               className={`relative px-4 py-2 text-sm font-semibold rounded-lg transition-all ${

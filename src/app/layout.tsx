@@ -28,9 +28,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased bg-white">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-bold focus:text-white"
+          style={{ background: "#2584F4" }}
+        >
+          Skip to main content
+        </a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
         <Footer />
+        {/* TODO: Replace with real accessibility widget script after domain registration
+        <Script src="https://cdn.nagish.co.il/widget.js" data-id="YOUR_ID" strategy="afterInteractive" />
+        */}
       </body>
     </html>
   );
