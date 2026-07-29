@@ -107,14 +107,14 @@ export default function AccessibilityPage() {
                 style={{ background: "rgba(37,132,244,0.05)", border: "1px solid rgba(37,132,244,0.12)" }}
               >
                 <p className="font-semibold text-ink">Accessibility Coordinator</p>
-                <p className="text-ink-muted">NAT Technologies Ltd.</p>
+                <p className="text-ink-muted">Lior Solomon — NAT Technologies Ltd.</p>
                 <p className="text-ink-muted">
                   Email:{" "}
-                  <a href="mailto:info@nat-tech.global" className="text-accent hover:underline">
-                    info@nat-tech.global
+                  <a href="mailto:lior@nat-tech.global" className="text-accent hover:underline">
+                    lior@nat-tech.global
                   </a>
                 </p>
-                <p className="text-ink-muted">Phone: +972-XX-XXX-XXXX</p>
+                <p className="text-ink-muted">Phone: 077-752-4492</p>
                 <p className="text-ink-muted text-xs mt-2">
                   We aim to respond to accessibility enquiries within 2 business days.
                 </p>
