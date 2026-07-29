@@ -703,6 +703,140 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
   },
 
   // ─────────────────────────────────────────────────────────
+  terms: {
+    title: "Terms & Conditions",
+    icon: "📄",
+    fields: {
+      intro: {
+        label: "Introduction",
+        type: "textarea",
+        defaultValue: "These Terms and Conditions govern your use of the services provided by NAT Technologies Ltd. ('NAT Technologies', 'we', 'us', or 'our'). By engaging our services or accessing our website, you agree to be bound by these terms.",
+      },
+      services_scope: {
+        label: "Scope of Services",
+        type: "textarea",
+        defaultValue: "NAT Technologies provides integrated technology solutions including IT and IP infrastructure, low-voltage systems, security solutions, smart home automation, and fuel management systems. The specific scope of services for each project is defined in a written proposal or service agreement agreed between the parties prior to commencement.",
+      },
+      client_obligations: {
+        label: "Client Obligations",
+        type: "textarea",
+        defaultValue: "The client agrees to provide NAT Technologies with accurate information, timely access to premises and systems, and any necessary approvals required to perform the agreed services. The client is responsible for ensuring that all required permits and regulatory approvals are obtained prior to installation.",
+      },
+      payment_terms: {
+        label: "Payment Terms",
+        type: "textarea",
+        defaultValue: "Payment terms are specified in each project proposal or service agreement. Unless otherwise agreed in writing, invoices are due within 30 days of issue. NAT Technologies reserves the right to suspend services in the event of non-payment.",
+      },
+      liability: {
+        label: "Limitation of Liability",
+        type: "textarea",
+        defaultValue: "To the maximum extent permitted by applicable law, NAT Technologies shall not be liable for any indirect, incidental, or consequential damages arising from the use or inability to use our services. Our total liability in connection with any project shall not exceed the total fees paid by the client for that project.",
+      },
+      intellectual_property: {
+        label: "Intellectual Property",
+        type: "textarea",
+        defaultValue: "All designs, documentation, and proprietary methodologies produced by NAT Technologies remain the intellectual property of NAT Technologies unless otherwise agreed in writing. Upon full payment, clients receive a non-exclusive licence to use deliverables for their intended purpose.",
+      },
+      governing_law: {
+        label: "Governing Law",
+        type: "textarea",
+        defaultValue: "These Terms and Conditions are governed by the laws of the State of Israel. Any disputes arising from or related to these terms shall be subject to the exclusive jurisdiction of the competent courts of Israel.",
+      },
+      last_updated: {
+        label: "Last Updated Date",
+        type: "text",
+        defaultValue: "July 2026",
+      },
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────
+  privacy: {
+    title: "Privacy Notice",
+    icon: "🔐",
+    fields: {
+      intro: {
+        label: "Introduction",
+        type: "textarea",
+        defaultValue: "NAT Technologies Ltd. is committed to protecting your personal data. This Privacy Notice explains how we collect, use, store, and protect information in accordance with applicable privacy legislation, including the Israeli Privacy Protection Law (1981) and its regulations.",
+      },
+      data_collected: {
+        label: "Data We Collect",
+        type: "textarea",
+        defaultValue: "We may collect the following categories of personal data: contact information (name, email address, phone number), business information (company name, job title), technical data submitted through contact forms or service enquiries, and usage data relating to your interaction with our website.",
+      },
+      data_usage: {
+        label: "How We Use Your Data",
+        type: "textarea",
+        defaultValue: "We use your personal data to respond to enquiries and provide our services, to send project-related communications, to fulfil contractual and legal obligations, and to improve our website and services. We do not sell or rent your personal data to third parties.",
+      },
+      data_retention: {
+        label: "Data Retention",
+        type: "textarea",
+        defaultValue: "We retain personal data only for as long as necessary to fulfil the purposes for which it was collected, or as required by law. Contact and project data is typically retained for 7 years in accordance with Israeli statutory requirements.",
+      },
+      third_parties: {
+        label: "Third Parties",
+        type: "textarea",
+        defaultValue: "We may share your data with trusted service providers who assist us in operating our website and delivering our services (such as cloud hosting and communications providers). All third-party providers are contractually required to handle your data securely and in compliance with applicable law.",
+      },
+      your_rights: {
+        label: "Your Rights",
+        type: "textarea",
+        defaultValue: "You have the right to access, correct, or request deletion of your personal data. To exercise these rights, please contact us at the address below. We will respond to all verified requests within 30 days.",
+      },
+      contact: {
+        label: "Privacy Contact",
+        type: "textarea",
+        defaultValue: "For privacy-related enquiries, please contact: Lior Solomon, NAT Technologies Ltd. Email: lior@nat-tech.global | Phone: +972-77-752-4492",
+      },
+      last_updated: {
+        label: "Last Updated Date",
+        type: "text",
+        defaultValue: "July 2026",
+      },
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────
+  cookies: {
+    title: "Cookie Policy",
+    icon: "🍪",
+    fields: {
+      intro: {
+        label: "Introduction",
+        type: "textarea",
+        defaultValue: "This Cookie Policy explains how NAT Technologies Ltd. uses cookies and similar tracking technologies on our website (nat-tech.global). By continuing to use our website, you consent to our use of cookies as described in this policy.",
+      },
+      what_are_cookies: {
+        label: "What Are Cookies",
+        type: "textarea",
+        defaultValue: "Cookies are small text files stored on your device when you visit a website. They allow the website to remember your preferences and actions over time, and help us understand how visitors use our site.",
+      },
+      cookies_we_use: {
+        label: "Cookies We Use",
+        type: "textarea",
+        defaultValue: "We use the following types of cookies: Essential cookies — required for the website to function correctly; Analytics cookies — help us understand how visitors interact with our website (using aggregated, anonymised data); Preference cookies — remember your settings and preferences to improve your experience.",
+      },
+      third_party_cookies: {
+        label: "Third-Party Cookies",
+        type: "textarea",
+        defaultValue: "Our website may include functionality provided by third-party services (such as analytics or accessibility tools) which may set their own cookies. We do not control these cookies. Please refer to the respective third-party privacy policies for details.",
+      },
+      managing_cookies: {
+        label: "Managing Cookies",
+        type: "textarea",
+        defaultValue: "You can control or disable cookies through your browser settings at any time. Please note that disabling certain cookies may affect the functionality of our website. Most browsers provide instructions on managing cookies in their help sections.",
+      },
+      last_updated: {
+        label: "Last Updated Date",
+        type: "text",
+        defaultValue: "July 2026",
+      },
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────
   gallery: {
     title: "Gallery Page",
     icon: "🖼️",
