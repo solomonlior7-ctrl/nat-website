@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 export default function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
@@ -20,7 +21,10 @@ export default function ForgotPasswordForm() {
     }
     setEmailError("");
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
+    const supabase = createClient();
+    await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: "https://nat-tech.global/update-password",
+    });
     setLoading(false);
     setSubmitted(true);
   };
