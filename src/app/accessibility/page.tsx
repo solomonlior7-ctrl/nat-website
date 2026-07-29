@@ -114,7 +114,7 @@ export default function AccessibilityPage() {
                     lior@nat-tech.global
                   </a>
                 </p>
-                <p className="text-ink-muted">Phone: 077-752-4492</p>
+                <p className="text-ink-muted">Phone: +972-77-752-4492</p>
                 <p className="text-ink-muted text-xs mt-2">
                   We aim to respond to accessibility enquiries within 2 business days.
                 </p>
