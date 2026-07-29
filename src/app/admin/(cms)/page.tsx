@@ -55,6 +55,19 @@ export default function AdminDashboard() {
             Upload and manage client logos on the Clients page
           </p>
         </Link>
+
+        <Link
+          href="/admin/team-members"
+          className="glass-card rounded-xl p-6 hover:shadow-md transition-all hover:border-accent group"
+        >
+          <div className="text-3xl mb-3">👥</div>
+          <h2 className="font-semibold text-ink group-hover:text-accent transition-colors">
+            Team Members
+          </h2>
+          <p className="font-sans text-ink-muted text-sm mt-1">
+            Add, edit, reorder, or remove team members
+          </p>
+        </Link>
       </div>
     </div>
   );

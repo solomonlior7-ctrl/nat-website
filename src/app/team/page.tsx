@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Hero from "@/components/Hero";
 import CTASection from "@/components/CTASection";
-import { getPageContent, field } from "@/lib/get-content";
+import { getPageContent, field, getSiteId } from "@/lib/get-content";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Meet Our Team | NAT Technologies",
   description: "Meet the team behind NAT Technologies — technical experts in IT infrastructure, security systems, smart home automation, and fuel management solutions.",
 };
-
-const memberAccents = ["#2584F4", "#2584F4", "#2584F4", "#2584F4", "#2584F4", "#2584F4", "#2584F4"];
 
 function initials(name: string) {
   const parts = name.trim().split(/\s+/).filter(Boolean);
@@ -19,31 +18,27 @@ function initials(name: string) {
 }
 
 export default async function TeamPage() {
-  const c = await getPageContent("team");
+  const [c, siteId, supabase] = await Promise.all([
+    getPageContent("team"),
+    getSiteId(),
+    createClient(),
+  ]);
 
-  const members = [1, 2, 3, 4, 5, 6, 7].map((n, i) => ({
-    photo: field(c, `member${n}_photo`, ""),
-    name: field(c, `member${n}_name`, "Team Member"),
-    role: field(c, `member${n}_role`, ["Founder & CEO", "Technical Operations Lead", "Infrastructure Specialist", "Security Systems Specialist", "Automation Specialist", "Support & Maintenance Coordinator", "Fuel Management Specialist"][i]),
-    desc: field(c, `member${n}_desc`, [
-      "Leads NAT Technologies with a vision for integrated technology delivery. Brings deep experience across IT infrastructure, security systems, and operational technology deployments.",
-      "Oversees all technical delivery, project coordination, and quality assurance across NAT's service areas. Ensures every project meets the highest standards of performance and reliability.",
-      "Designs and deploys enterprise IT and IP infrastructure — from structured cabling and network architecture to cloud solutions, managed services, and PoE systems.",
-      "Delivers comprehensive security solutions including CCTV, access control, network security, and intrusion detection. Specialises in multi-layer security architecture for complex environments.",
-      "Designs and programs intelligent smart home and building automation systems — covering lighting, climate, security, shading, and integrated IoT environments.",
-      "Manages ongoing client support, maintenance schedules, and system monitoring — ensuring all deployed systems continue to perform at their best throughout their lifecycle.",
-      "Deploys and manages intelligent fuel management systems — including RFID authentication, real-time tank monitoring, fleet reporting, and automated inventory control for commercial operations.",
-    ][i]),
-    expertise: field(c, `member${n}_expertise`, [
-      "Business Strategy, IT Infrastructure, Solution Architecture",
-      "Project Management, Technical Delivery, Quality Assurance",
-      "Network Design, Cloud Architecture, Structured Cabling",
-      "CCTV & Surveillance, Access Control, Network Security",
-      "Smart Home Automation, IoT Integration, Building Control",
-      "Client Support, System Monitoring, Preventive Maintenance",
-      "Fuel Systems, RFID Technology, Fleet Management",
-    ][i]).split(",").map((s: string) => s.trim()).filter(Boolean),
-    accent: memberAccents[i],
+  const { data: membersData } = siteId
+    ? await supabase
+        .from("team_members")
+        .select("id, name, role, bio, expertise, photo_url")
+        .eq("site_id", siteId)
+        .order("sort_order", { ascending: true })
+    : { data: [] };
+
+  const members = (membersData ?? []).map((m) => ({
+    photo: m.photo_url,
+    name: m.name,
+    role: m.role,
+    desc: m.bio,
+    expertise: (m.expertise as string).split(",").map((s: string) => s.trim()).filter(Boolean),
+    accent: "#2584F4",
   }));
 
   const steps = [1, 2, 3, 4].map((n, i) => ({
@@ -93,8 +88,8 @@ export default async function TeamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {members.map((member) => (
-              <div key={member.role} className="glass-card rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform duration-200">
+            {members.map((member, idx) => (
+              <div key={idx} className="glass-card rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform duration-200">
                 {/* Photo / placeholder */}
                 <div
                   className="h-52 flex items-center justify-center relative overflow-hidden"
