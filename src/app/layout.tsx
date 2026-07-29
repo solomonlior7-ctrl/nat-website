@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -38,9 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
-        {/* TODO: Replace with real accessibility widget script after domain registration
-        <Script src="https://cdn.nagish.co.il/widget.js" data-id="YOUR_ID" strategy="afterInteractive" />
-        */}
+        <Script src="https://cdn.userway.org/widget.js" data-account="QseOUD5Okb" strategy="afterInteractive" />
       </body>
     </html>
   );
