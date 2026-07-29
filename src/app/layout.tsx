@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
-        <Script src="https://cdn.userway.org/widget.js" data-account="QseOUD5Okb" strategy="afterInteractive" />
+        <Script src="https://cdn.userway.org/widget.js" data-account="QseOUD5Okb" data-position="bottom-right" strategy="afterInteractive" />
       </body>
     </html>
   );
