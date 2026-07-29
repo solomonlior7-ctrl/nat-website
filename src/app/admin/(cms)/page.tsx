@@ -68,6 +68,19 @@ export default function AdminDashboard() {
             Add, edit, reorder, or remove team members
           </p>
         </Link>
+
+        <Link
+          href="/admin/change-password"
+          className="glass-card rounded-xl p-6 hover:shadow-md transition-all hover:border-accent group"
+        >
+          <div className="text-3xl mb-3">🔑</div>
+          <h2 className="font-semibold text-ink group-hover:text-accent transition-colors">
+            Change Password
+          </h2>
+          <p className="font-sans text-ink-muted text-sm mt-1">
+            Update your admin account password
+          </p>
+        </Link>
       </div>
     </div>
   );
