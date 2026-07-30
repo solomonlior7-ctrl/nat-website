@@ -190,7 +190,7 @@ export default function Header() {
               </button>
 
               {servicesOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50" style={{ width: "1050px" }}>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50" style={{ width: "860px" }}>
                   <div className="rounded-2xl shadow-xl bg-white border border-line overflow-hidden">
                     <div className="grid grid-cols-4 gap-0">
                       {megaMenuColumns.map((col, ci) => (
