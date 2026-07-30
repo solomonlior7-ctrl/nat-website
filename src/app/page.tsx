@@ -276,9 +276,34 @@ export default async function HomePage() {
               </div>
             </Link>
 
+            {/* Card 6: Software Development */}
+            <Link
+              href="/services/software-development"
+              className="glass-card gradient-border bento-card rounded-2xl p-8 group flex flex-col justify-between min-h-[220px]"
+            >
+              <div>
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+                  style={{ background: "rgba(37,132,244,0.07)", border: "1px solid rgba(37,132,244,0.12)" }}>
+                  <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-ink mb-3 tracking-tight">Software Development</h3>
+                <p className="font-sans text-ink-soft text-sm leading-relaxed">
+                  Custom software, enterprise applications, web portals, workflow automation, APIs, and dashboards built around your organisation.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-accent text-sm font-bold mt-6 group-hover:gap-3 transition-all font-sans">
+                Learn More
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </Link>
+
             {/* CTA Card */}
             <div
-              className="glass-card rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] relative overflow-hidden"
+              className="md:col-span-3 glass-card rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[160px] relative overflow-hidden"
               style={{
                 background: "linear-gradient(135deg, rgba(37,132,244,0.06) 0%, rgba(0,196,224,0.04) 100%)",
               }}
