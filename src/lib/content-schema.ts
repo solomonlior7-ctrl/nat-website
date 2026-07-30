@@ -210,6 +210,12 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         defaultValue:
           "Intelligent fuel dispensing, real-time monitoring, RFID authentication, tank-level visibility, and automated reporting for fleets and facilities.",
       },
+      software_summary: {
+        label: "Software Development — Card Summary",
+        type: "textarea",
+        defaultValue:
+          "Custom software, enterprise applications, web portals, workflow automation, APIs, integrations, and dashboards designed around your organisation.",
+      },
       integrated_headline: {
         label: "Integrated Delivery — Headline",
         type: "text",
@@ -698,6 +704,78 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         type: "text",
         defaultValue:
           "Our team typically responds within 1 business day. For urgent matters, please indicate this in your message.",
+      },
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────
+  "software-development": {
+    title: "Software Development",
+    icon: "💻",
+    fields: {
+      hero_headline: {
+        label: "Hero — Headline",
+        type: "text",
+        defaultValue: "Purpose-Built Software for Smarter Operations",
+      },
+      hero_copy: {
+        label: "Hero — Copy",
+        type: "textarea",
+        defaultValue:
+          "NAT Technologies designs and delivers secure, scalable software that simplifies operations, connects people and systems, and supports long-term business growth.",
+      },
+      value_prop: {
+        label: "Overview — Paragraph",
+        type: "textarea",
+        defaultValue:
+          "From enterprise applications and web portals to workflow automation, document management, APIs, e-commerce, and reporting dashboards, we build solutions around the way your organisation works.",
+      },
+      service_img_0: {
+        label: "Offering Image 1 — Enterprise Business Applications",
+        type: "image",
+        defaultValue: "",
+      },
+      service_img_1: {
+        label: "Offering Image 2 — Web Applications & Portals",
+        type: "image",
+        defaultValue: "",
+      },
+      service_img_2: {
+        label: "Offering Image 3 — Document & Workflow Management",
+        type: "image",
+        defaultValue: "",
+      },
+      service_img_3: {
+        label: "Offering Image 4 — Customer Service & Employee Experience",
+        type: "image",
+        defaultValue: "",
+      },
+      service_img_4: {
+        label: "Offering Image 5 — Integration, Data & Digital Commerce",
+        type: "image",
+        defaultValue: "",
+      },
+      capability_title: {
+        label: "Capability Library — Title",
+        type: "text",
+        defaultValue: "Full Scope of Software Solutions",
+      },
+      capability_subtitle: {
+        label: "Capability Library — Subtitle",
+        type: "textarea",
+        defaultValue:
+          "A comprehensive reference of our software offerings — from enterprise systems to digital commerce.",
+      },
+      cta_headline: {
+        label: "CTA — Headline",
+        type: "text",
+        defaultValue: "Ready to Build Software Around Your Business?",
+      },
+      cta_subtext: {
+        label: "CTA — Sub-text",
+        type: "textarea",
+        defaultValue:
+          "Our software specialists are ready to understand your processes and design a secure, scalable solution that fits your organisation.",
       },
     },
   },

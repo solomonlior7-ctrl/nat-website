@@ -75,6 +75,17 @@ export default async function ServicesPage() {
         </svg>
       ),
     },
+    {
+      title: "Software Development",
+      href: "/services/software-development",
+      summary: field(c, "software_summary", "Custom software, enterprise applications, web portals, workflow automation, APIs, integrations, and dashboards designed around your organisation."),
+      accent: "#2584F4",
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      ),
+    },
   ];
 
   return (

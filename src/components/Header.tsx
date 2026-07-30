@@ -50,6 +50,21 @@ const megaMenuColumns = [
       { name: "Fleet Reporting", href: "/services/fuel-management" },
     ],
   },
+  {
+    title: "Software Development",
+    href: "/services/software-development",
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+    items: [
+      { name: "Enterprise Applications", href: "/services/software-development" },
+      { name: "Web Portals & APIs", href: "/services/software-development" },
+      { name: "Workflow Automation", href: "/services/software-development" },
+      { name: "Dashboards & Reporting", href: "/services/software-development" },
+    ],
+  },
 ];
 
 const companyLinks = [
@@ -175,9 +190,9 @@ export default function Header() {
               </button>
 
               {servicesOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50" style={{ width: "800px" }}>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50" style={{ width: "1050px" }}>
                   <div className="rounded-2xl shadow-xl bg-white border border-line overflow-hidden">
-                    <div className="grid grid-cols-3 gap-0">
+                    <div className="grid grid-cols-4 gap-0">
                       {megaMenuColumns.map((col, ci) => (
                         <div
                           key={col.href}
