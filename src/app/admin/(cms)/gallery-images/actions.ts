@@ -1,19 +1,18 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { getSiteId } from "@/lib/get-content";
 import { revalidatePath } from "next/cache";
 
 const ALLOWED_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "gif", "avif"];
 
 export async function addGalleryItem({
-  siteId,
   title,
   category,
   imageUrl,
   storagePath,
   sortOrder,
 }: {
-  siteId: string;
   title: string;
   category: string;
   imageUrl: string;
@@ -30,6 +29,9 @@ export async function addGalleryItem({
     await supabase.storage.from("site-media").remove([storagePath]);
     return { error: "Invalid file type. Only jpg, png, webp, gif, avif are allowed." };
   }
+
+  const siteId = await getSiteId();
+  if (!siteId) return { error: "Site not found" };
 
   const { error } = await supabase.from("gallery_items").insert({
     site_id: siteId,

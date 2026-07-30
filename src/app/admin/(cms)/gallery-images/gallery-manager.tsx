@@ -136,7 +136,6 @@ export default function GalleryManager({ siteId, initialItems }: Props) {
         } = supabase.storage.from("site-media").getPublicUrl(path);
 
         const result = await addGalleryItem({
-          siteId,
           title: item.title.trim() || fileToTitle(item.file.name),
           category: item.category,
           imageUrl: publicUrl,
