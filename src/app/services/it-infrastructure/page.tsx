@@ -104,7 +104,7 @@ export default async function ITInfrastructurePage() {
                         alt={s.title}
                         width={640}
                         height={360}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     ) : (
                       <svg className="w-20 h-20" style={{ color: "rgba(37,132,244,0.25)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">

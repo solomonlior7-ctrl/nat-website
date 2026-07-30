@@ -209,7 +209,7 @@ export default async function SoftwareDevelopmentPage() {
                         alt={s.title}
                         width={640}
                         height={360}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     ) : (
                       <svg
