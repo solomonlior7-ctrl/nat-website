@@ -6,7 +6,7 @@ import { getPageContent, field } from "@/lib/get-content";
 
 export const metadata: Metadata = {
   title: "Our Services | NAT Technologies",
-  description: "Explore NAT Technologies' integrated service areas: IT & IP infrastructure, low-voltage & PoE, security solutions, smart home automation, and fuel management systems.",
+  description: "Explore NAT Technologies' six integrated service areas: IT & IP infrastructure, low-voltage & PoE, security solutions, smart home automation, fuel management, and software development.",
 };
 
 const process = [

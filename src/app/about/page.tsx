@@ -57,7 +57,7 @@ export default async function AboutPage() {
             </div>
             <div className="glass-card rounded-2xl p-10 flex flex-col gap-6">
               {[
-                { stat: "5+", label: "Service Areas" },
+                { stat: "6+", label: "Service Areas" },
                 { stat: "100%", label: "Commitment to Quality" },
                 { stat: "24/7", label: "Support Availability" },
               ].map((item) => (

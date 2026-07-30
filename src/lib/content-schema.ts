@@ -46,7 +46,7 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
       },
       stat1_value: { label: "Stat 1 — Value", type: "text", defaultValue: "200+" },
       stat1_label: { label: "Stat 1 — Label", type: "text", defaultValue: "Projects Delivered" },
-      stat2_value: { label: "Stat 2 — Value", type: "text", defaultValue: "5" },
+      stat2_value: { label: "Stat 2 — Value", type: "text", defaultValue: "6" },
       stat2_label: { label: "Stat 2 — Label", type: "text", defaultValue: "Service Domains" },
       stat3_value: { label: "Stat 3 — Value", type: "text", defaultValue: "10+" },
       stat3_label: { label: "Stat 3 — Label", type: "text", defaultValue: "Years Experience" },
@@ -55,7 +55,7 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
       services_title: {
         label: "Services Section — Title",
         type: "text",
-        defaultValue: "Five Integrated Service Areas",
+        defaultValue: "Six Integrated Service Areas",
       },
       services_subtitle: {
         label: "Services Section — Subtitle",
@@ -178,7 +178,7 @@ export const CONTENT_SCHEMA: Record<string, PageSchema> = {
         label: "Hero — Copy",
         type: "textarea",
         defaultValue:
-          "Five specialised service areas — each designed to connect seamlessly across infrastructure, security, automation, and operations.",
+          "Six specialised service areas — each designed to connect seamlessly across infrastructure, security, automation, operations, and software.",
       },
       it_summary: {
         label: "IT & IP — Card Summary",
