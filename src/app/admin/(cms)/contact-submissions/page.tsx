@@ -1,14 +1,11 @@
 import { createClient } from "@/lib/supabase/server";
-import { getSiteId } from "@/lib/get-content";
 
 export default async function ContactSubmissionsPage() {
   const supabase = await createClient();
-  const siteId = await getSiteId();
 
   const { data: submissions } = await supabase
     .from("contact_submissions")
     .select("*")
-    .eq("site_id", siteId)
     .order("created_at", { ascending: false });
 
   return (
