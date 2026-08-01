@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 export default async function ContactSubmissionsPage() {
   const supabase = await createClient();
 
-  const { data: submissions } = await supabase
+  const { data: submissions, error } = await supabase
     .from("contact_submissions")
     .select("*")
     .order("created_at", { ascending: false });
@@ -18,6 +18,12 @@ export default async function ContactSubmissionsPage() {
           </p>
         </div>
       </div>
+
+      {error && (
+        <div className="mb-6 rounded-xl p-4 font-sans text-sm" style={{ background: "#FEF2F2", border: "1px solid #FECACA", color: "#B91C1C" }}>
+          <strong>Database error:</strong> {error.message}
+        </div>
+      )}
 
       {!submissions || submissions.length === 0 ? (
         <div className="glass-card rounded-2xl p-16 text-center">
