@@ -5,7 +5,8 @@ export default async function ContactSubmissionsPage() {
 
   const { data: submissions, error } = await supabase
     .from("contact_submissions")
-    .select("*");
+    .select("*")
+    .order("submitted_at", { ascending: false });
 
   return (
     <div>
@@ -35,27 +36,43 @@ export default async function ContactSubmissionsPage() {
           {submissions.map((s) => (
             <div key={s.id} className="glass-card rounded-2xl p-6">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
-                <div>
-                  <p className="font-semibold text-ink text-base">{s.name}</p>
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1">
-                    <a
-                      href={`mailto:${s.email}`}
-                      className="font-sans text-sm text-accent hover:underline"
+                <div className="flex items-center gap-3">
+                  {!s.read && (
+                    <span
+                      className="shrink-0 text-xs font-bold px-2 py-0.5 rounded-full font-sans"
+                      style={{ background: "rgba(37,132,244,0.10)", color: "#2584F4", border: "1px solid rgba(37,132,244,0.20)" }}
                     >
-                      {s.email}
-                    </a>
-                    {s.phone && (
+                      New
+                    </span>
+                  )}
+                  <div>
+                    <p className="font-semibold text-ink text-base">{s.name}</p>
+                    <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1">
                       <a
-                        href={`tel:${s.phone}`}
-                        className="font-sans text-sm text-ink-muted hover:text-ink"
+                        href={`mailto:${s.email}`}
+                        className="font-sans text-sm text-accent hover:underline"
                       >
-                        {s.phone}
+                        {s.email}
                       </a>
-                    )}
+                      {s.phone && (
+                        <a
+                          href={`tel:${s.phone}`}
+                          className="font-sans text-sm text-ink-muted hover:text-ink"
+                        >
+                          {s.phone}
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <span className="font-sans text-xs text-ink-muted shrink-0 font-mono">
-                  {JSON.stringify(Object.keys(s))}
+                <span className="font-sans text-xs text-ink-muted shrink-0">
+                  {new Date(s.submitted_at).toLocaleString("en-GB", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
                 </span>
               </div>
 
