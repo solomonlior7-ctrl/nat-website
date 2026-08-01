@@ -5,8 +5,7 @@ export default async function ContactSubmissionsPage() {
 
   const { data: submissions, error } = await supabase
     .from("contact_submissions")
-    .select("*")
-    .order("created_at", { ascending: false });
+    .select("*");
 
   return (
     <div>
@@ -55,14 +54,8 @@ export default async function ContactSubmissionsPage() {
                     )}
                   </div>
                 </div>
-                <span className="font-sans text-xs text-ink-muted shrink-0">
-                  {new Date(s.created_at).toLocaleString("en-GB", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
+                <span className="font-sans text-xs text-ink-muted shrink-0 font-mono">
+                  {JSON.stringify(Object.keys(s))}
                 </span>
               </div>
 
