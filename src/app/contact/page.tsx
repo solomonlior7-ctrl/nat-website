@@ -14,21 +14,21 @@ const offices = [
     city: "Haifa",
     country: "Israel",
     address: "Lochmey Hagetot 28A, Haifa, Israel",
-    mapSrc: "https://maps.google.com/maps?q=Lochmey+Hagetot+28A,+Haifa,+Israel&t=&z=14&ie=UTF8&iwloc=&output=embed",
+    mapSrc: "https://maps.google.com/maps?q=Lochmey+Hagetot+28A,+Haifa,+Israel&t=&z=14&ie=UTF8&iwloc=&output=embed&hl=en",
   },
   {
     name: "NAT Nigeria",
     city: "Abuja",
     country: "Nigeria",
     address: "Euphrates, Plot 33, Abuja, Nigeria",
-    mapSrc: "https://maps.google.com/maps?q=Euphrates+Street+Plot+33,+Abuja,+Nigeria&t=&z=14&ie=UTF8&iwloc=&output=embed",
+    mapSrc: "https://maps.google.com/maps?q=Euphrates+Street+Plot+33,+Abuja,+Nigeria&t=&z=14&ie=UTF8&iwloc=&output=embed&hl=en",
   },
   {
     name: "NAT United Kingdom",
     city: "London",
     country: "United Kingdom",
     address: "5 North End Road, London NW11 7RJ, United Kingdom",
-    mapSrc: "https://maps.google.com/maps?q=5+North+End+Road,+London+NW11+7RJ,+United+Kingdom&t=&z=14&ie=UTF8&iwloc=&output=embed",
+    mapSrc: "https://maps.google.com/maps?q=5+North+End+Road,+London+NW11+7RJ,+United+Kingdom&t=&z=14&ie=UTF8&iwloc=&output=embed&hl=en",
   },
 ];
 
